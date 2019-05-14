@@ -14,18 +14,25 @@ public class Main {
 		//re.printCoursesStats();
 		//re.printCourses();
 		
+		//test for github
+		
+	    System.out.println("test for github");
+	    
+	    //test 2 for github
+	    System.out.println("test 2 for github");
+		
 		File myDir = new File("C:\\Users\\GEORGE MICHOS\\eclipse-workspace\\MyUom");
 		File lessons = new File(myDir, "lessons.txt");
 		
 		try {
 			FileWriter w = new FileWriter(lessons);
 			w.write("My name is JEEEFFF \r\n");
-			w.write("Διακριτα μαθηματικα \r\n");
-			w.write("Διακριτα μαθηματικα1 \r\n");
-			w.write("Διακριτα μαθηματικα2 \r\n");
-			w.write("Διακριτα μαθηματικα3 \r\n");
-			w.write("Διακριτα μαθηματικα4 \r\n");
-			w.write("Διακριτα μαθηματικα5 \r\n");
+			w.write("Î”Î¹Î±ÎºÏ�Î¹Ï„Î± Î¼Î±Î¸Î·Î¼Î±Ï„Î¹ÎºÎ± \r\n");
+			w.write("Î”Î¹Î±ÎºÏ�Î¹Ï„Î± Î¼Î±Î¸Î·Î¼Î±Ï„Î¹ÎºÎ±1 \r\n");
+			w.write("Î”Î¹Î±ÎºÏ�Î¹Ï„Î± Î¼Î±Î¸Î·Î¼Î±Ï„Î¹ÎºÎ±2 \r\n");
+			w.write("Î”Î¹Î±ÎºÏ�Î¹Ï„Î± Î¼Î±Î¸Î·Î¼Î±Ï„Î¹ÎºÎ±3 \r\n");
+			w.write("Î”Î¹Î±ÎºÏ�Î¹Ï„Î± Î¼Î±Î¸Î·Î¼Î±Ï„Î¹ÎºÎ±4 \r\n");
+			w.write("Î”Î¹Î±ÎºÏ�Î¹Ï„Î± Î¼Î±Î¸Î·Î¼Î±Ï„Î¹ÎºÎ±5 \r\n");
 			w.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
