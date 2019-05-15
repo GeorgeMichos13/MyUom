@@ -1,13 +1,14 @@
-/CheckBoxGUI$1ActionHandler.class
+/CheckBoxGUI$1ActionHandler$1.class
 /CheckBoxGUI$1ItemHandler.class
+/CheckBoxGUI$1ActionHandler.class
 /CheckBoxGUI.class
 /Course.class
 /CourseStats.class
 /Main$1.class
 /Main.class
+/MyProfileGUI$3.class
 /MyProfileGUI$1.class
 /MyProfileGUI$2.class
-/MyProfileGUI$3.class
 /MyProfileGUI$4.class
 /MyProfileGUI.class
 /RankGUI$1.class
@@ -16,3 +17,7 @@
 /ShowResultsGUI$1.class
 /ShowResultsGUI.class
 /XlsReader.class
+/MainFrame.class
+/MainFrame$1ActionHandler.class
+/MainFrame$1ActionHandler$1.class
+/MyProfileGUI$1$1.class

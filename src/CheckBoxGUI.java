@@ -2,6 +2,7 @@
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -64,7 +65,7 @@ public class CheckBoxGUI {
 		 
 		   HashSet<String> hashcourses = new HashSet<String>();
 		   ArrayList<String> arrcourses = new ArrayList();
-		   
+		   ArrayList<JCheckBox> arcboxes = new ArrayList();
 		   
 							
 							
@@ -81,6 +82,10 @@ public class CheckBoxGUI {
 					
 					JComboBox comboBoxS = new JComboBox();
 					comboBoxS.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					comboBoxS.setToolTipText("-Επιλέξτε Εξάμηνο-");
+					comboBoxS.setFont(new Font("Arial", Font.BOLD, 11));
+					comboBoxS.setModel(new DefaultComboBoxModel(new String[] {"Εξάμηνο 2ο", "Εξάμηνο 4ο", "Εξάμηνο 6ο ", "Εξάμηνο 8ο"}));
+					
 					
 					JComboBox comboBoxD = new JComboBox();
 					comboBoxD.setFont(new Font("Arial", Font.BOLD, 11));
@@ -92,80 +97,100 @@ public class CheckBoxGUI {
 					
 	
 					
-					comboBoxS.setToolTipText("-Επιλέξτε Εξάμηνο-");
-					comboBoxS.setFont(new Font("Arial", Font.BOLD, 11));
-					comboBoxS.setModel(new DefaultComboBoxModel(new String[] {"Εξάμηνο 2ο", "Εξάμηνο 4ο", "Εξάμηνο 6ο ", "Εξάμηνο 8ο"}));
 					
 					
-					
-					JCheckBox checkBox1 = new JCheckBox(re.getCoursesStats().get(0).getName());
-					checkBox1.setVerticalAlignment(SwingConstants.TOP);
-					checkBox1.setToolTipText("Mέρα, Ώρα, Αίθουσα");
-					
-					
-					JCheckBox checkBox2 = new JCheckBox(re.getCoursesStats().get(1).getName());
-					checkBox2.setVerticalAlignment(SwingConstants.TOP);
-					
-					JCheckBox checkBox3 = new JCheckBox(re.getCoursesStats().get(2).getName());
-					checkBox3.setHorizontalAlignment(SwingConstants.LEFT);
-					
-					JCheckBox checkBox4 = new JCheckBox(re.getCoursesStats().get(3).getName());
-					checkBox4.setVerticalAlignment(SwingConstants.TOP);
+						
+						JCheckBox checkBox1 = new JCheckBox(re.getCoursesStats().get(0).getName());
+						checkBox1.setVerticalAlignment(SwingConstants.TOP);
+						checkBox1.setToolTipText("Mέρα, Ώρα, Αίθουσα");
+						arcboxes.add(checkBox1);
+						
+						
+						JCheckBox checkBox2 = new JCheckBox(re.getCoursesStats().get(1).getName());
+						checkBox2.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox2);
+						
+						JCheckBox checkBox3 = new JCheckBox(re.getCoursesStats().get(2).getName());
+						checkBox3.setHorizontalAlignment(SwingConstants.LEFT);
+						arcboxes.add(checkBox3);
+						
+						JCheckBox checkBox4 = new JCheckBox(re.getCoursesStats().get(3).getName());
+						checkBox4.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox4);
 					
 
 						JCheckBox checkBox5 = new JCheckBox(re.getCoursesStats().get(4).getName());
 						checkBox5.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox5);
 						
 						JCheckBox checkBox6 = new JCheckBox(re.getCoursesStats().get(5).getName());
-						checkBox6.show();
 						checkBox6.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox6);
 						
-						JCheckBox checkBox7 = new JCheckBox(re.getCoursesStats().get(6).getName());
+						JCheckBox checkBox7 = new JCheckBox((String) null);
 						checkBox7.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox7);
 						
-						
-						JCheckBox checkBox8 = new JCheckBox(re.getCoursesStats().get(7).getName());
+						JCheckBox checkBox8 = new JCheckBox((String) null);
 						checkBox8.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox8);
 						
 						
-						JCheckBox checkBox9 = new JCheckBox(re.getCoursesStats().get(8).getName());
+						JCheckBox checkBox9 = new JCheckBox((String) null);
 						checkBox9.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox9);
 						
-						JCheckBox checkBox10 = new JCheckBox(re.getCoursesStats().get(9).getName());
+						JCheckBox checkBox10 = new JCheckBox((String) null);
 						checkBox10.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox10);
 						
-						JCheckBox checkBox15 = new JCheckBox((String) null);
-						checkBox15.setVerticalAlignment(SwingConstants.TOP);
 						
-						JCheckBox checkBox14 = new JCheckBox((String) null);
-						checkBox14.setVerticalAlignment(SwingConstants.TOP);
-						
-						JCheckBox checkBox13 = new JCheckBox((String) null);
-						checkBox13.setVerticalAlignment(SwingConstants.TOP);
 						
 						JCheckBox checkBox11 = new JCheckBox((String) null);
 						checkBox11.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox11);
 						
 						JCheckBox checkBox12 = new JCheckBox((String) null);
 						checkBox12.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox12);
+						
+						JCheckBox checkBox13 = new JCheckBox((String) null);
+						checkBox13.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox13);
+						
+						JCheckBox checkBox14 = new JCheckBox((String) null);
+						checkBox14.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox14);
+						
+						JCheckBox checkBox15 = new JCheckBox((String) null);
+						checkBox15.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox15);
+						
 						
 						JCheckBox checkBox16 = new JCheckBox((String) null);
 						checkBox16.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox16);
 						
 						JCheckBox checkBox17 = new JCheckBox((String) null);
 						checkBox17.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox17);
 						
 						JCheckBox checkBox18 = new JCheckBox((String) null);
 						checkBox18.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox18);
 						
 						JCheckBox checkBox19 = new JCheckBox((String) null);
 						checkBox19.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox19);
 						
 						JCheckBox checkBox20 = new JCheckBox((String) null);
 						checkBox20.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox20);
 						
 						JCheckBox checkBox21 = new JCheckBox((String) null);
 						checkBox21.setVerticalAlignment(SwingConstants.TOP);
+						arcboxes.add(checkBox21);
+						
 						
 						GroupLayout gl_panel = new GroupLayout(panel);
 						gl_panel.setHorizontalGroup(
@@ -364,23 +389,14 @@ public class CheckBoxGUI {
 						
 							
 							
-							checkBox7.hide();
-							checkBox8.hide();
-							checkBox9.hide();
-							checkBox10.hide();
-							checkBox11.hide();
-							checkBox12.hide();
-							checkBox13.hide();
-							checkBox14.hide();
-							checkBox15.hide();
-							checkBox16.hide();
-							checkBox17.hide();
-							checkBox18.hide();
-							checkBox19.hide();
-							checkBox20.hide();
-							checkBox21.hide();
-							
-							
+						
+						for(int i=7; i<arcboxes.size();i++) {
+							arcboxes.get(i-1).hide();
+						}
+						
+							checkBox21.hide(); //bug 
+						
+
 									
 		
 		frmInitScreen.setBounds(100, 100, 697, 440);
@@ -409,7 +425,7 @@ public class CheckBoxGUI {
 						
 			}
 			
-	
+		
 			
 			public int Semester(int sem_index) {
 				int x=2;
@@ -438,347 +454,31 @@ public class CheckBoxGUI {
 				
 			}
 			
+			//int efi=0;
+			
+			
 			public void Efarmosmeni(int S){
+				int cbi=0;
 				if(S==2) { //IDIA MATHIMATA EFARM KAI DIOIKHSH STO 2o EKSAMINO
-					if(re.getCoursesStats().get(0).getSemesterN()==S) {  
-						checkBox1.show();
-						checkBox1.setSelected(false);
-						checkBox1.setText(re.getCoursesStats().get(0).getName());
-
-						}
-						if(re.getCoursesStats().get(1).getSemesterN()==S) {  
-							checkBox2.show();
-							checkBox2.setSelected(false);
-							checkBox2.setText(re.getCoursesStats().get(1).getName());
-							} 
-						if(re.getCoursesStats().get(2).getSemesterN()==S) {  
-							checkBox3.show();
-							checkBox3.setSelected(false);
-							checkBox3.setText(re.getCoursesStats().get(2).getName());
-							}
-						
-						if(re.getCoursesStats().get(3).getSemesterN()==S) {  
-							checkBox4.show();
-							checkBox4.setSelected(false);
-							checkBox4.setText(re.getCoursesStats().get(3).getName());
-							}
-						if(re.getCoursesStats().get(4).getSemesterN()==S) {  
-							checkBox5.show();
-							checkBox5.setSelected(false);
-							checkBox5.setText(re.getCoursesStats().get(4).getName());
-							}
-						if(re.getCoursesStats().get(5).getSemesterN()==S) {  
-							checkBox6.show();
-							checkBox6.setSelected(false);
-							checkBox6.setText(re.getCoursesStats().get(5).getName());
-							}
-						
-						
-						
-						checkBox7.hide();
-						checkBox7.setSelected(false);
 					
-						checkBox8.hide();
-						checkBox8.setSelected(false);
-						
-						checkBox9.hide();
-						checkBox9.setSelected(false);
-						
-						checkBox10.hide();
-						checkBox10.setSelected(false);
-						
-						checkBox11.hide();
-						checkBox11.setSelected(false);
-						
-						checkBox12.hide();
-						checkBox12.setSelected(false);
-						
-						checkBox13.hide();
-						checkBox13.setSelected(false);
-						
-						checkBox14.hide();
-						checkBox14.setSelected(false);
-						
-						checkBox15.hide();
-						checkBox15.setSelected(false);
-						
-						checkBox16.hide();
-						checkBox16.setSelected(false);
-						
-						checkBox17.hide();
-						checkBox17.setSelected(false);
-						
-						checkBox18.hide();
-						checkBox18.setSelected(false);
-						
-						checkBox19.hide();
-						checkBox19.setSelected(false);
-						
-						checkBox20.hide();
-						checkBox20.setSelected(false);
-						
-						checkBox21.hide();
-						checkBox21.setSelected(false);
+					setCheckBoxes(0,5);
 				}
-				else if(S==4) { //ep
-					if(re.getCoursesStats().get(6).getSemesterN()==S) {  
-						checkBox1.setSelected(false);
-						checkBox1.setText(re.getCoursesStats().get(6).getName());
-						}
-						if(re.getCoursesStats().get(7).getSemesterN()==S) {  
-							checkBox2.setText(re.getCoursesStats().get(7).getName());
-							checkBox2.setSelected(false);
-							} 
-						
-						if(re.getCoursesStats().get(8).getSemesterN()==S) {  
-							checkBox3.setSelected(false);
-							checkBox3.setText(re.getCoursesStats().get(8).getName());
-							}
-						
-						if(re.getCoursesStats().get(9).getSemesterN()==S) {  
-							checkBox4.setSelected(false);
-							checkBox4.setText(re.getCoursesStats().get(9).getName());
-							}
-						if(re.getCoursesStats().get(10).getSemesterN()==S) {  
-							checkBox5.setSelected(false);
-							checkBox5.setText(re.getCoursesStats().get(10).getName());
-							}
-						if(re.getCoursesStats().get(11).getSemesterN()==S) {  
-							checkBox6.show();
-							checkBox6.setSelected(false);
-							checkBox6.setText(re.getCoursesStats().get(11).getName());
-							}
-						
-						
-						checkBox7.hide();
-						checkBox7.setSelected(false);
+				
+				else if(S==4) { 
 					
-						checkBox8.hide();
-						checkBox8.setSelected(false);
-						
-						checkBox9.hide();
-						checkBox9.setSelected(false);
-						
-						checkBox10.hide();
-						checkBox10.setSelected(false);
-						
-						checkBox11.hide();
-						checkBox11.setSelected(false);
-						
-						checkBox12.hide();
-						checkBox12.setSelected(false);
-						
-						checkBox13.hide();
-						checkBox13.setSelected(false);
-						
-						checkBox14.hide();
-						checkBox14.setSelected(false);
-						
-						checkBox15.hide();
-						checkBox15.setSelected(false);
-						
-						checkBox16.hide();
-						checkBox16.setSelected(false);
-						
-						checkBox17.hide();
-						checkBox17.setSelected(false);
-						
-						checkBox18.hide();
-						checkBox18.setSelected(false);
-						
-						checkBox19.hide();
-						checkBox19.setSelected(false);
-						
-						checkBox20.hide();
-						checkBox20.setSelected(false);
-						
-						checkBox21.hide();
-						checkBox21.setSelected(false);
+					setCheckBoxes(6,11);
+					
 				}
-				else if(S==6) { //ep
-					if(re.getCoursesStats().get(12).getSemesterN()==S) {  
-						checkBox1.setSelected(false);
-						checkBox1.setText(re.getCoursesStats().get(12).getName());
-						}
-						if(re.getCoursesStats().get(13).getSemesterN()==S) {
-							checkBox2.setSelected(false);
-							checkBox2.setText(re.getCoursesStats().get(13).getName());
-							} 
-						if(re.getCoursesStats().get(14).getSemesterN()==S) {  
-							checkBox3.setSelected(false);
-							checkBox3.setText(re.getCoursesStats().get(14).getName());
-							}
-						
-						if(re.getCoursesStats().get(15).getSemesterN()==S) {  
-							checkBox4.setSelected(false);
-							checkBox4.setText(re.getCoursesStats().get(15).getName());
-							}
-						if(re.getCoursesStats().get(16).getSemesterN()==S) {
-							checkBox5.setSelected(false); 
-							checkBox5.setText(re.getCoursesStats().get(16).getName());
-							}
-						
-						
-						
-						checkBox6.hide();
-						checkBox6.setSelected(false);
-						
-						checkBox7.hide();
-						checkBox7.setSelected(false);
+				
+				else if(S==6) { 
 					
-						checkBox8.hide();
-						checkBox8.setSelected(false);
-						
-						checkBox9.hide();
-						checkBox9.setSelected(false);
-						
-						checkBox10.hide();
-						checkBox10.setSelected(false);
-						
-						checkBox11.hide();
-						checkBox11.setSelected(false);
-						
-						checkBox12.hide();
-						checkBox12.setSelected(false);
-						
-						checkBox13.hide();
-						checkBox13.setSelected(false);
-						
-						checkBox14.hide();
-						checkBox14.setSelected(false);
-						
-						checkBox15.hide();
-						checkBox15.setSelected(false);
-						
-						checkBox16.hide();
-						checkBox16.setSelected(false);
-						
-						checkBox17.hide();
-						checkBox17.setSelected(false);
-						
-						checkBox18.hide();
-						checkBox18.setSelected(false);
-						
-						checkBox19.hide();
-						checkBox19.setSelected(false);
-						
-						checkBox20.hide();
-						checkBox20.setSelected(false);
-						
-						checkBox21.hide();
-						checkBox21.setSelected(false);
+					setCheckBoxes(12,16);
+	
 				}
 				else if(S==8) { //ep
-					if(re.getCoursesStats().get(17).getSemesterN()==S) {  
-						checkBox1.setSelected(false);
-						checkBox1.setText(re.getCoursesStats().get(17).getName());
-						}
-						if(re.getCoursesStats().get(18).getSemesterN()==S) { 
-							checkBox2.setSelected(false);
-							checkBox2.setText(re.getCoursesStats().get(18).getName());
-							} 
-						if(re.getCoursesStats().get(19).getSemesterN()==S) {
-							checkBox3.setSelected(false);
-							checkBox3.setText(re.getCoursesStats().get(19).getName());
-							}
-						
-						if(re.getCoursesStats().get(20).getSemesterN()==S) {
-							checkBox4.setSelected(false);
-							checkBox4.setText(re.getCoursesStats().get(20).getName());
-							}
-						if(re.getCoursesStats().get(21).getSemesterN()==S) {  
-							checkBox5.show();
-							checkBox5.setSelected(false);
-							checkBox5.setText(re.getCoursesStats().get(21).getName());
-							}
-						if(re.getCoursesStats().get(22).getSemesterN()==S) {
-							checkBox6.show();
-							checkBox6.setSelected(false);
-							checkBox6.setText(re.getCoursesStats().get(22).getName());
-						}
-						if(re.getCoursesStats().get(23).getSemesterN()==S) {  
-							checkBox7.show();
-							checkBox7.setSelected(false);
-							checkBox7.setText(re.getCoursesStats().get(23).getName());
-							}
-							if(re.getCoursesStats().get(24).getSemesterN()==S) {  
-								checkBox8.show();
-								checkBox8.setSelected(false);
-								checkBox8.setText(re.getCoursesStats().get(24).getName());
-								} 
-							if(re.getCoursesStats().get(25).getSemesterN()==S) {  
-								checkBox9.show();
-								checkBox9.setSelected(false);
-								checkBox9.setText(re.getCoursesStats().get(25).getName());
-								}
-							
-							if(re.getCoursesStats().get(26).getSemesterN()==S) {  
-								checkBox10.show();
-								checkBox10.setSelected(false);
-								checkBox10.setText(re.getCoursesStats().get(26).getName());
-								}
-							if(re.getCoursesStats().get(27).getSemesterN()==S) {  
-								checkBox11.show();
-								checkBox11.setSelected(false);
-								checkBox11.setText(re.getCoursesStats().get(27).getName());
-								}
-							if(re.getCoursesStats().get(28).getSemesterN()==S) {  
-								checkBox12.show();
-								checkBox12.setSelected(false);
-								checkBox12.setText(re.getCoursesStats().get(28).getName());
-								}
-								if(re.getCoursesStats().get(29).getSemesterN()==S) {  
-									checkBox13.show();
-									checkBox13.setSelected(false);
-									checkBox13.setText(re.getCoursesStats().get(29).getName());
-									} 
-								if(re.getCoursesStats().get(30).getSemesterN()==S) {  
-									checkBox14.show();
-									checkBox14.setSelected(false);
-									checkBox14.setText(re.getCoursesStats().get(30).getName());
-									}
-								
-								if(re.getCoursesStats().get(31).getSemesterN()==S) {  
-									checkBox15.show();
-									checkBox15.setSelected(false);
-									checkBox15.setText(re.getCoursesStats().get(31).getName());
-									}
-								if(re.getCoursesStats().get(32).getSemesterN()==S) {  
-									checkBox16.show();
-									checkBox16.setSelected(false);
-									checkBox16.setText(re.getCoursesStats().get(32).getName());
-									}
-								if(re.getCoursesStats().get(33).getSemesterN()==S) {  
-									checkBox16.show();
-									checkBox16.setText(re.getCoursesStats().get(33).getName());
-									}
-									if(re.getCoursesStats().get(34).getSemesterN()==S) {  
-										checkBox17.show();
-										checkBox17.setSelected(false);
-										checkBox17.setText(re.getCoursesStats().get(34).getName());
-										} 
-									if(re.getCoursesStats().get(35).getSemesterN()==S) {  
-										checkBox18.show();
-										checkBox18.setSelected(false);
-										checkBox18.setText(re.getCoursesStats().get(35).getName());
-										}
-									
-									if(re.getCoursesStats().get(36).getSemesterN()==S) {  
-										checkBox19.show();
-										checkBox19.setSelected(false);
-										checkBox19.setText(re.getCoursesStats().get(36).getName());
-										}
-									if(re.getCoursesStats().get(37).getSemesterN()==S) {  
-										checkBox20.show();
-										checkBox20.setSelected(false);
-										checkBox20.setText(re.getCoursesStats().get(37).getName());
-										}
-									if(re.getCoursesStats().get(38).getSemesterN()==S) {  
-										checkBox21.show();
-										checkBox21.setSelected(false);
-										checkBox21.setText(re.getCoursesStats().get(38).getName());
-										}
-									
+				
+					setCheckBoxes(17,38);
+					
 				}
 				
 				
@@ -789,310 +489,47 @@ public class CheckBoxGUI {
 				
 					if(S==2) { //STO 2o EKSAMINO TA MATHIMATA EINAI IDIA ALLA THA EINAI TA IDIA KAI STIS DYO KATEYTHINSEIS 
 						
-						if(re.getCoursesStats().get(0).getSemesterN()==S) {  
-							checkBox1.setSelected(false);
-							checkBox1.setText(re.getCoursesStats().get(0).getName());
-							
-							}
-							if(re.getCoursesStats().get(1).getSemesterN()==S) {
-								checkBox2.setSelected(false);
-								checkBox2.setText(re.getCoursesStats().get(1).getName());
-								} 
-							if(re.getCoursesStats().get(2).getSemesterN()==S) {
-								checkBox3.setSelected(false);
-								checkBox3.setText(re.getCoursesStats().get(2).getName());
-								}
-							
-							if(re.getCoursesStats().get(3).getSemesterN()==S) {  
-								checkBox4.setSelected(false);
-								checkBox4.setText(re.getCoursesStats().get(3).getName());
-								}
-							if(re.getCoursesStats().get(4).getSemesterN()==S) {
-								checkBox5.setSelected(false);
-								checkBox5.setText(re.getCoursesStats().get(4).getName());
-								}
-							if(re.getCoursesStats().get(5).getSemesterN()==S) {
-								checkBox6.setSelected(false);
-								checkBox6.setText(re.getCoursesStats().get(5).getName());
-								}
-							checkBox7.hide();
-							checkBox7.setSelected(false);
-						
-							checkBox8.hide();
-							checkBox8.setSelected(false);
-							
-							checkBox9.hide();
-							checkBox9.setSelected(false);
-							
-							checkBox10.hide();
-							checkBox10.setSelected(false);
-							
-							checkBox11.hide();
-							checkBox11.setSelected(false);
-							
-							checkBox12.hide();
-							checkBox12.setSelected(false);
-							
-							checkBox13.hide();
-							checkBox13.setSelected(false);
-							
-							checkBox14.hide();
-							checkBox14.setSelected(false);
-							
-							checkBox15.hide();
-							checkBox15.setSelected(false);
-							
-							checkBox16.hide();
-							checkBox16.setSelected(false);
-							
-							checkBox17.hide();
-							checkBox17.setSelected(false);
-							
-							checkBox18.hide();
-							checkBox18.setSelected(false);
-							
-							checkBox19.hide();
-							checkBox19.setSelected(false);
-							
-							checkBox20.hide();
-							checkBox20.setSelected(false);
-							
-							checkBox21.hide();
-							checkBox21.setSelected(false);
+						setCheckBoxes(0,5);
 					}
 					else if(S==4) {
 						
-						if(re.getCoursesStats().get(39).getSemesterN()==S) {  
-							checkBox1.setSelected(false);
-							checkBox1.setText(re.getCoursesStats().get(39).getName());
-							}
-							if(re.getCoursesStats().get(40).getSemesterN()==S) {  
-								checkBox2.setSelected(false);
-								checkBox2.setText(re.getCoursesStats().get(40).getName());
-								} 
-							if(re.getCoursesStats().get(41).getSemesterN()==S) {  
-								checkBox3.setSelected(false);
-								checkBox3.setText(re.getCoursesStats().get(41).getName());
-								}
-							
-							if(re.getCoursesStats().get(42).getSemesterN()==S) {  
-								checkBox4.setSelected(false);
-								checkBox4.setText(re.getCoursesStats().get(42).getName());
-								}
-							if(re.getCoursesStats().get(43).getSemesterN()==S) {  
-								checkBox5.setSelected(false);
-								checkBox5.setText(re.getCoursesStats().get(43).getName());
-								}
-							
-							checkBox6.hide();
-							checkBox6.setSelected(false);
-							
-							checkBox7.hide();
-							checkBox7.setSelected(false);
-						
-							checkBox8.hide();
-							checkBox8.setSelected(false);
-							
-							checkBox9.hide();
-							checkBox9.setSelected(false);
-							
-							checkBox10.hide();
-							checkBox10.setSelected(false);
-							
-							checkBox11.hide();
-							checkBox11.setSelected(false);
-							
-							checkBox12.hide();
-							checkBox12.setSelected(false);
-							
-							checkBox13.hide();
-							checkBox13.setSelected(false);
-							
-							checkBox14.hide();
-							checkBox14.setSelected(false);
-							
-							checkBox15.hide();
-							checkBox15.setSelected(false);
-							
-							checkBox16.hide();
-							checkBox16.setSelected(false);
-							
-							checkBox17.hide();
-							checkBox17.setSelected(false);
-							
-							checkBox18.hide();
-							checkBox18.setSelected(false);
-							
-							checkBox19.hide();
-							checkBox19.setSelected(false);
-							
-							checkBox20.hide();
-							checkBox20.setSelected(false);
-							
-							checkBox21.hide();
-							checkBox21.setSelected(false);
+						setCheckBoxes(39,43);
 					}
 					else if(S==6) {
-						if(re.getCoursesStats().get(44).getSemesterN()==S) {  
-							checkBox1.setSelected(false);
-							checkBox1.setText(re.getCoursesStats().get(44).getName());
-							}
-							if(re.getCoursesStats().get(45).getSemesterN()==S) {
-								checkBox2.setSelected(false);
-								checkBox2.setText(re.getCoursesStats().get(45).getName());
-								} 
-							if(re.getCoursesStats().get(46).getSemesterN()==S) {
-								checkBox3.setSelected(false);
-								checkBox3.setText(re.getCoursesStats().get(46).getName());
-								}
-							
-							if(re.getCoursesStats().get(47).getSemesterN()==S) {
-								checkBox4.setSelected(false);
-								checkBox4.setText(re.getCoursesStats().get(47).getName());
-								}
-							if(re.getCoursesStats().get(48).getSemesterN()==S) {
-								checkBox5.setSelected(false);
-								checkBox5.setText(re.getCoursesStats().get(48).getName());
-								}
-							if(re.getCoursesStats().get(49).getSemesterN()==S) {  
-								checkBox6.show();
-								checkBox6.setSelected(false);
-								checkBox6.setText(re.getCoursesStats().get(49).getName());
-								}
-						    
-							checkBox7.hide();
-							checkBox7.setSelected(false);
-						
-							checkBox8.hide();
-							checkBox8.setSelected(false);
-							
-							checkBox9.hide();
-							checkBox9.setSelected(false);
-							
-							checkBox10.hide();
-							checkBox10.setSelected(false);
-							
-							checkBox11.hide();
-							checkBox11.setSelected(false);
-							
-							checkBox12.hide();
-							checkBox12.setSelected(false);
-							
-							checkBox13.hide();
-							checkBox13.setSelected(false);
-							
-							checkBox14.hide();
-							checkBox14.setSelected(false);
-							
-							checkBox15.hide();
-							checkBox15.setSelected(false);
-							
-							checkBox16.hide();
-							checkBox16.setSelected(false);
-							
-							checkBox17.hide();
-							checkBox17.setSelected(false);
-							
-							checkBox18.hide();
-							checkBox18.setSelected(false);
-							
-							checkBox19.hide();
-							checkBox19.setSelected(false);
-							
-							checkBox20.hide();
-							checkBox20.setSelected(false);
-							
-							checkBox21.hide();
-							checkBox21.setSelected(false);
-						
+						setCheckBoxes(44,49);
 					}
 					else if(S==8) {
 
-						if(re.getCoursesStats().get(50).getSemesterN()==S) {  
-							checkBox1.setSelected(false);
-							checkBox1.setText(re.getCoursesStats().get(50).getName());
-							}
-							if(re.getCoursesStats().get(51).getSemesterN()==S) {  
-								checkBox2.setSelected(false);
-								checkBox2.setText(re.getCoursesStats().get(51).getName());
-								} 
-							if(re.getCoursesStats().get(52).getSemesterN()==S) {
-								checkBox3.setSelected(false);
-								checkBox3.setText(re.getCoursesStats().get(52).getName());
-								}
-							
-							if(re.getCoursesStats().get(53).getSemesterN()==S) {
-								checkBox4.setSelected(false);
-								checkBox4.setText(re.getCoursesStats().get(53).getName());
-								}
-							
-							checkBox5.hide();
-							checkBox5.setSelected(false);
-							
-							checkBox6.hide();
-							checkBox6.setSelected(false);
-							
-							checkBox7.hide();
-							checkBox7.setSelected(false);
-						
-							checkBox8.hide();
-							checkBox8.setSelected(false);
-							
-							checkBox9.hide();
-							checkBox9.setSelected(false);
-							
-							checkBox10.hide();
-							checkBox10.setSelected(false);
-							
-							checkBox11.hide();
-							checkBox11.setSelected(false);
-							
-							checkBox12.hide();
-							checkBox12.setSelected(false);
-							
-							checkBox13.hide();
-							checkBox13.setSelected(false);
-							
-							checkBox14.hide();
-							checkBox14.setSelected(false);
-							
-							checkBox15.hide();
-							checkBox15.setSelected(false);
-							
-							checkBox16.hide();
-							checkBox16.setSelected(false);
-							
-							checkBox17.hide();
-							checkBox17.setSelected(false);
-							
-							checkBox18.hide();
-							checkBox18.setSelected(false);
-							
-							checkBox19.hide();
-							checkBox19.setSelected(false);
-							
-							checkBox20.hide();
-							checkBox20.setSelected(false);
-							
-							checkBox21.hide();
-							checkBox21.setSelected(false);
+						setCheckBoxes(50,53);
 					}
 				
 			}
 			
-			
+			public void setCheckBoxes(int start, int end) { //!lag
+				int checkboxcounter=0;
+				for(int cindex = start; cindex<=end;cindex++) {
+					arcboxes.get(checkboxcounter).show();
+					arcboxes.get(checkboxcounter).setSelected(false);
+					arcboxes.get(checkboxcounter).setText(re.getCoursesStats().get(cindex).getName());
+					checkboxcounter++;
+				}
+				
+				for(int i=checkboxcounter; i<arcboxes.size();i++) {
+					arcboxes.get(i).hide();
+					arcboxes.get(i).setSelected(false);
+				}
+			}
 
 			
 		}//itemlistener
 	
 
 	
+	
+	
 	class ActionHandler implements ActionListener{
 		
-		
-		
-		
-		
+	
 		
 		@Override
 		public void actionPerformed(ActionEvent ae) {
@@ -1100,20 +537,22 @@ public class CheckBoxGUI {
 			if(ae.getSource()==nextframebutton) {
 				
 				if (arrcourses.size()>0 && arrcourses.size()<=10) {
-					new MyProfileGUI();
-					
+					//new MyProfileGUI();
+					EventQueue.invokeLater(new Runnable() {
+						public void run() {
+							try {
+								MainFrame window = new MainFrame();
+								window.frmMainframe.setVisible(true);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					});
 					frmInitScreen.setVisible(false);
+					
+					
 				
-				
-				/*
-				 * 
-				 * 
-				 *   KLHSH EPOMENOU PARATHIROU
-				 *   UKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-				 * 
-				 * 
-				 * 
-				 */
+			
 				}
 				
 				else {
@@ -1168,7 +607,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox5.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 5 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox5.getText());
@@ -1177,7 +616,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox6.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 6 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox6.getText());
@@ -1186,7 +625,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox7.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 7 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox7.getText());
@@ -1195,7 +634,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox8.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 8 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox8.getText());
@@ -1204,7 +643,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox9.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 9 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox9.getText());
@@ -1213,7 +652,7 @@ public class CheckBoxGUI {
 			}
 		
 			if(checkBox10.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 10 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox10.getText());
@@ -1222,7 +661,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox11.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 11 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox11.getText());
@@ -1231,7 +670,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox12.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 12 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox12.getText());
@@ -1240,7 +679,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox13.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 13 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox13.getText());
@@ -1249,7 +688,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox14.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 14 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox14.getText());
@@ -1258,7 +697,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox15.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 15 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox15.getText());
@@ -1267,7 +706,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox16.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 16 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox16.getText());
@@ -1276,7 +715,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox17.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 17 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox17.getText());
@@ -1285,7 +724,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox18.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 18 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox18.getText());
@@ -1294,7 +733,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox19.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 19 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox19.getText());
@@ -1303,7 +742,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox20.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 20 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox20.getText());
@@ -1312,7 +751,7 @@ public class CheckBoxGUI {
 			}
 			
 			if(checkBox21.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
+				infotext.setText("tsekares to 21 koutaki");
 			     
 				if(ae.getSource()==addbutton) {
 					hashcourses.add(checkBox21.getText());
@@ -1353,7 +792,7 @@ public class CheckBoxGUI {
 
 		   
 		    
-		  // System.out.println(arrcourses);
+		 
 		   textcourses.setText(toString2(arrcourses));  
 		}
 		

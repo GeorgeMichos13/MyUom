@@ -1,4 +1,5 @@
 
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -18,7 +19,7 @@ public class MyProfileGUI extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	
-	private JPanel myProfilePanel;
+	public JPanel myProfilePanel;
 	private JTextArea nameArea;
 	private JTextArea selectedLessonsArea;
 	private JButton backButton;
@@ -57,8 +58,21 @@ public class MyProfileGUI extends JFrame{
 		
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent back) {
+				
 				setVisible(false);
+				
+				EventQueue.invokeLater(new Runnable() { //Go Back to MainFrame
+					public void run() {
+						try {
+							MainFrame window = new MainFrame();
+							window.frmMainframe.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 				//new mainFrame(); 
+				
 			}
 			
 		});
