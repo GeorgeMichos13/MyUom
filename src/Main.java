@@ -14,15 +14,7 @@ public class Main {
 		//re.printCoursesStats();
 		//re.printCourses();
 		
-<<<<<<< HEAD
-=======
-		//test for github
-		
-	    System.out.println("test for github");
-	    
-	    //test 2 for github
-	    System.out.println("test 2 for github");
->>>>>>> parent of 8d22573... commit test 2 (2)
+
 		
 		File myDir = new File("C:\\Users\\GEORGE MICHOS\\eclipse-workspace\\MyUom");
 		File lessons = new File(myDir, "lessons.txt");

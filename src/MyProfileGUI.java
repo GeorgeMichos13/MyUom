@@ -96,8 +96,18 @@ public class MyProfileGUI extends JFrame{
 		resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							CheckBoxGUI window = new CheckBoxGUI();
+							window.frmInitScreen.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 				//delete all file except from statistics
-				//example with selectedLesson //it works bitchies
+				
 				Path filePath = Paths.get("lessons.txt");
 				
 				String input = filePath.toString();
@@ -105,8 +115,7 @@ public class MyProfileGUI extends JFrame{
 				File lessonsPath = new File(input);
 				
 				if(lessonsPath.delete()) {
-					CheckBoxGUI window = new CheckBoxGUI();
-					window.frmInitScreen.setVisible(true);
+					
 				}
 			}
 			

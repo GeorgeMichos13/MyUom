@@ -3,6 +3,8 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -89,7 +91,34 @@ public class MainFrame {
 		frmMainframe.setBounds(100, 100, 424, 280);
 		frmMainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-	
+		frmMainframe.addComponentListener(new ComponentListener() {
+
+            @Override
+            public void componentHidden(ComponentEvent arg0) {
+            }
+
+            @Override
+            public void componentMoved(ComponentEvent arg0) {
+            }
+
+            @Override
+            public void componentResized(ComponentEvent arg0) {
+                int width = frmMainframe.getWidth();
+                int height = frmMainframe.getHeight();
+      
+                mapsbutton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, (width + height) / 40));
+                programbutton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, (width + height) / 40));
+                infobutton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, (width + height) / 40));
+                notesbutton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, (width + height) / 40));
+                profilebutton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, (width + height) / 40));
+                frmMainframe.getContentPane().revalidate();
+            }
+
+            @Override
+            public void componentShown(ComponentEvent e) {
+
+            }
+        });
 		
 		class ActionHandler implements ActionListener{
 			@Override
