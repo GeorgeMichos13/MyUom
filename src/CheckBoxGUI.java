@@ -30,6 +30,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
 import java.awt.List;
 
@@ -58,7 +59,7 @@ public class CheckBoxGUI {
 
 		
 		frmInitScreen = new JFrame();
-		frmInitScreen.setTitle("CheckBoxes");
+		frmInitScreen.setTitle("Select Courses");
 		frmInitScreen.getContentPane().setBackground(Color.LIGHT_GRAY);
 		
 		
@@ -537,9 +538,13 @@ public class CheckBoxGUI {
 			if(ae.getSource()==nextframebutton) {
 				
 				if (arrcourses.size()>0 && arrcourses.size()<=10) {
-					//new MyProfileGUI();
+	
+					//writeSelectedCourses();  this method is called on XlsReader 
+		
+					//ask for username
+					
 					EventQueue.invokeLater(new Runnable() {
-						public void run() {
+						public void run() {		
 							try {
 								MainFrame window = new MainFrame();
 								window.frmMainframe.setVisible(true);
@@ -556,16 +561,30 @@ public class CheckBoxGUI {
 				}
 				
 				else {
-					/* 
-					 * 
-					 *   POP UP WARNING WINDOW 
-					 * 
-					 */
+					  	//error Pop up
+					JOptionPane.showMessageDialog(null, 
+                            "Select Up to 10 Courses", 
+                            "Error", 
+                            JOptionPane.WARNING_MESSAGE);
 				}
 			}
 			
 			
 			
+			setupSelectedBoxes(ae);
+			
+			
+			if(ae.getSource()==clearbutton)  //deletes all selected courses 
+			{
+				hashcourses.clear();
+				textcourses.setText(null);
+			}	
+			
+			
+			
+		}//actionPerformed
+		
+		public void setupSelectedBoxes(ActionEvent ae){  
 			if(checkBox1.isSelected()) {
 				infotext.setText("tsekares to prwto koutaki");
 				     
@@ -760,18 +779,7 @@ public class CheckBoxGUI {
 						
 			}
 			
-			
-			if(ae.getSource()==clearbutton) 
-			{
-				
-				hashcourses.clear();
-				textcourses.setText(null);
-			}	
-			
-			
-			
-		}//actionPerformed
-		
+		}
 		
 		public void printAll(HashSet<String> courses, JTextArea textcourses) {
 			
@@ -808,6 +816,8 @@ public class CheckBoxGUI {
 			return strOutput; 
 			
 		}
+		
+		
 		
 		
 	} //actionListener

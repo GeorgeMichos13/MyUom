@@ -11,6 +11,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MainFrame {
 
@@ -56,30 +57,43 @@ public class MainFrame {
 		
 		JButton profilebutton = new JButton("Προφίλ");
 		profilebutton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		
+		JButton timerbutton = new JButton("Timers");
+		timerbutton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(profilebutton, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-					.addGap(74)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(programbutton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-						.addComponent(mapsbutton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-						.addComponent(infobutton, GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-						.addComponent(notesbutton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(profilebutton, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+							.addGap(74))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(timerbutton, GroupLayout.PREFERRED_SIZE, 46, Short.MAX_VALUE)
+							.addGap(74)))
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(programbutton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+						.addComponent(mapsbutton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+						.addComponent(infobutton, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+						.addComponent(notesbutton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(22)
-					.addComponent(programbutton, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-					.addGap(18)
-					.addComponent(mapsbutton, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-					.addGap(18)
-					.addComponent(infobutton, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-					.addGap(18)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(programbutton, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+							.addGap(18)
+							.addComponent(mapsbutton, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+							.addGap(18)
+							.addComponent(infobutton, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+							.addGap(18))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(timerbutton, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+							.addGap(134)))
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(profilebutton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
 						.addComponent(notesbutton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
@@ -130,6 +144,11 @@ public class MainFrame {
 					 * Program()
 					 */
 				}
+				else if (ev.getSource() == timerbutton) {
+					
+					JFrame frame = new JFrame();
+					Timer gui = new Timer(frame);
+				}
 				else if(ev.getSource() == mapsbutton){
 					
 					/*
@@ -177,6 +196,8 @@ public class MainFrame {
 		ActionListener notesbuttonlistener = new ActionHandler();
 		ActionListener infobuttonlistener = new ActionHandler();
 		ActionListener profilebuttonlistener = new ActionHandler();
+		ActionListener timerbuttonlistener = new ActionHandler();
+		
 		
 		
 		programbutton.addActionListener(programbuttonlistener);
@@ -184,10 +205,8 @@ public class MainFrame {
 		notesbutton.addActionListener(notesbuttonlistener);
 		infobutton.addActionListener(infobuttonlistener);
 		profilebutton.addActionListener(profilebuttonlistener);
+		timerbutton.addActionListener(timerbuttonlistener);
 		
 		
 	}//mainframe
-	
-	
-	
 }//Mainframe
