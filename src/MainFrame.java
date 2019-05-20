@@ -137,13 +137,27 @@ public class MainFrame {
 		class ActionHandler implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent ev) {
-				if(ev.getSource() == programbutton){
+				
+				
+				if(ev.getSource() == programbutton){ //Schedule 
 					
-					/*
-					 * 
-					 * Program()
-					 */
+					frmMainframe.setVisible(false);
+					EventQueue.invokeLater(new Runnable() {
+						public void run() {		
+							try {
+								CreateSchedule schedulewindow = new CreateSchedule();
+								schedulewindow.schedulefrm.setVisible(true);
+							} catch (Exception e) {
+								e.printStackTrace();
+								System.out.println("den anoikse");
+							}
+						}
+					});
+					
 				}
+				
+				
+				
 				else if (ev.getSource() == timerbutton) {
 					
 					JFrame frame = new JFrame();

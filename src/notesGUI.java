@@ -43,9 +43,9 @@ public class notesGUI extends JFrame {
 		
 
 		NotePanel.setBackground(Color.GRAY);
-		System.out.println("The size of the array is "+ SubjectList.size());
 		
-			System.out.println("\n");
+		
+			
 			
 			/* Frame Initialization */
 			NoteFrame.setPreferredSize(new Dimension(WIDTH, HEIGHT));

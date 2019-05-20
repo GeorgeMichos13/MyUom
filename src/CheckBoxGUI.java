@@ -48,6 +48,29 @@ public class CheckBoxGUI {
 	/**
 	 * Launch occurs in class Main
 	 */
+	   private HashSet<String> hashcourses = new HashSet<String>();
+	   private ArrayList<String> arrcourses = new ArrayList<String>();
+	   private ArrayList<JCheckBox> arcboxes = new ArrayList<JCheckBox>();
+		
+	   public JFrame getFrmInitScreen() {
+		return frmInitScreen;
+	}
+
+	public JButton getNextframebutton() {
+		return nextframebutton;
+	}
+
+	public HashSet<String> getHashcourses() {
+		return hashcourses;
+	}
+
+	public ArrayList<String> getArrcourses() {
+		return arrcourses;
+	}
+
+	public ArrayList<JCheckBox> getArcboxes() {
+		return arcboxes;
+	}
 
 	
 	@SuppressWarnings("unchecked")
@@ -64,9 +87,7 @@ public class CheckBoxGUI {
 		
 		
 		 
-		   HashSet<String> hashcourses = new HashSet<String>();
-		   ArrayList<String> arrcourses = new ArrayList();
-		   ArrayList<JCheckBox> arcboxes = new ArrayList();
+		  
 		   
 							
 							
@@ -829,27 +850,10 @@ public class CheckBoxGUI {
 		ActionListener clearbuttonListener = new ActionHandler();
 		ActionListener nextframebuttonListener = new ActionHandler();
 		
-		checkBox1.addActionListener(checkboxListener);
-		checkBox2.addActionListener(checkboxListener);
-		checkBox3.addActionListener(checkboxListener);
-		checkBox4.addActionListener(checkboxListener);
-		checkBox5.addActionListener(checkboxListener);
-		checkBox6.addActionListener(checkboxListener);
-		checkBox7.addActionListener(checkboxListener);
-		checkBox8.addActionListener(checkboxListener);
-		checkBox9.addActionListener(checkboxListener);
-		checkBox10.addActionListener(checkboxListener);
-		checkBox11.addActionListener(checkboxListener);
-		checkBox12.addActionListener(checkboxListener);
-		checkBox13.addActionListener(checkboxListener);
-		checkBox14.addActionListener(checkboxListener);
-		checkBox15.addActionListener(checkboxListener);
-		checkBox16.addActionListener(checkboxListener);
-		checkBox17.addActionListener(checkboxListener);
-		checkBox18.addActionListener(checkboxListener);
-		checkBox19.addActionListener(checkboxListener);
-		checkBox20.addActionListener(checkboxListener);
-		checkBox21.addActionListener(checkboxListener);
+		
+		for(int i=0;i<arcboxes.size();i++)
+			arcboxes.get(i).addActionListener(checkboxListener);
+		
 		
 		addbutton.addActionListener(addbuttonListener);
 		clearbutton.addActionListener(clearbuttonListener);
