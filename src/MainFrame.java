@@ -158,9 +158,7 @@ public class MainFrame {
 				}
 				else if(ev.getSource() == notesbutton) {
 					
-					/*
-					 * Notes()
-					 */
+					notesGUI s1 = new notesGUI() ;
 				}
 				else if(ev.getSource() == infobutton) {
 					
