@@ -494,12 +494,12 @@ public class CheckBoxGUI {
 				
 				else if(S==6) { 
 					
-					setCheckBoxes(12,16);
+					setCheckBoxes(12,17);
 	
 				}
 				else if(S==8) { //ep
 				
-					setCheckBoxes(17,38);
+					setCheckBoxes(18,38);
 					
 				}
 				
@@ -515,14 +515,14 @@ public class CheckBoxGUI {
 					}
 					else if(S==4) {
 						
-						setCheckBoxes(39,43);
+						setCheckBoxes(39,44);
 					}
 					else if(S==6) {
-						setCheckBoxes(44,49);
+						setCheckBoxes(45,50);
 					}
 					else if(S==8) {
 
-						setCheckBoxes(50,53);
+						setCheckBoxes(51,61);
 					}
 				
 			}
@@ -559,8 +559,10 @@ public class CheckBoxGUI {
 			if(ae.getSource()==nextframebutton) {
 				
 				if (arrcourses.size()>0 && arrcourses.size()<=10) {
-	
-					//writeSelectedCourses();  this method is called on XlsReader 
+					re.setArrayString(arrcourses);
+					re.writeSelectedCourses();  
+
+
 		
 					//ask for username
 					
@@ -811,7 +813,7 @@ public class CheckBoxGUI {
 			
 			arrcourses.clear();
 			while(it.hasNext()) {
-				String arcS = ((String) it.next() + "\n");
+				String arcS = ((String) it.next()+"\n");
 				arrcourses.add(arcS);
 				hashS = hashS + arcS;
 				

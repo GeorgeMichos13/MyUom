@@ -1,8 +1,9 @@
 
 
+import java.io.Serializable;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class CourseStats implements Comparable<CourseStats>{
+public class CourseStats implements Comparable<CourseStats>,Serializable{
 	private String name;
 	private int stat;
 	private String semester;

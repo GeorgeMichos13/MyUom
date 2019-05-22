@@ -9,8 +9,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//XlsReader re = new XlsReader();	GINONTAI STHN CHECKBOXGUI()
-		//re.read();						GINONTAI STHN CHECKBOXGUI()		  
+		//XlsReader re = new XlsReader();	
+		//re.read();						  
 		//re.printCoursesStats();
 		//re.printCourses();
 		

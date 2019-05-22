@@ -1,7 +1,9 @@
 
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -16,8 +18,12 @@ import jxl.read.biff.BiffException;
 public class XlsReader {	
 	// private static final String EXCEL_FILE_LOCATION = "C:\\Users\\Savvas\\Desktop\\Error 1101\\program\\Timetable.xls";
 	 private ArrayList<Course> alist=new ArrayList<Course>();
+	 private ArrayList<Course> alist2=new ArrayList<Course>();
 	 private HashSet<String> courseDistinct = new HashSet<String>(); 
+	 private HashSet<String> courseDistinct2 = new HashSet<String>(); 
 	 private ArrayList<CourseStats> courseStats = new ArrayList<CourseStats>();
+	 private ArrayList<CourseStats> courseStats2 = new ArrayList<CourseStats>();
+	 private ArrayList<String> courseStr = new ArrayList<String>();
 	 
 	    public void read() {
 	    	int i;
@@ -114,7 +120,15 @@ public class XlsReader {
 			            			{
 			            				counter = 0;
 			            				alist.add(new Course(course,day,hour,classr,classs,sheetName2,sheetName));
-			            				added = courseDistinct.add(course);
+			            				added = false;
+			            				if(sheetName.equals("ΚΕΠ") || sheetName.equals("ΚΟΙΝΟ") )
+			            				{
+			            					added = courseDistinct.add(course);
+			            				}
+			            				else if(sheetName.equals("ΚΔΤ") || sheetName.equals("ΚΟΙΝΟ"))
+			            				{
+			            					added = courseDistinct2.add(course);
+			            				}
 			            				if (added == true)
 			            				{
 			            					courseStats.add(new CourseStats(course,sheetName2,sheetName));	            					
@@ -129,7 +143,15 @@ public class XlsReader {
 		            				classs = alist.get(alist.size()-1).getClasss();	
 		            				classr = alist.get(alist.size()-1).getClassr();	
 		            				alist.add(new Course(course,day,hour,classr,classs,sheetName2,sheetName));
-		            				added = courseDistinct.add(course);
+		            				added = false;
+		            				if(sheetName.equals("ΚΕΠ") || sheetName.equals("ΚΟΙΝΟ"))
+		            				{
+		            					added = courseDistinct.add(course);
+		            				}
+		            				else if(sheetName.equals("ΚΔΤ") || sheetName.equals("ΚΟΙΝΟ"))
+		            				{
+		            					added = courseDistinct2.add(course);
+		            				}
 		            				if (added == true)
 		            				{
 		            					courseStats.add(new CourseStats(course,sheetName2,sheetName));	            					
@@ -207,6 +229,66 @@ public class XlsReader {
 			}	
 	    }
 	    
+	    public void setArrayString(ArrayList<String> anArray) {
+	    	this.courseStr.addAll(anArray);
+	    	
+	    }
+	    
+		public void writeSelectedCourses() {
+			
+			for(int i=0;i<courseStr.size();i++)
+			{
+				String temp = courseStr.get(i).replace("\n","");
+				courseStr.remove(i);
+				courseStr.add(i,temp);
+				
+				for(int j=0;j<alist.size();j++)
+				{
+					if(courseStr.get(i).equals(alist.get(j).getName()))
+					{
+						alist2.add(alist.get(j));
+						
+					}
+				}
+				for(int k=0;k<courseStats.size();k++)
+				{
+					if(courseStr.get(i).equals(courseStats.get(k).getName()))
+					{
+
+						courseStats2.add(courseStats.get(k));;
+					}
+				}
+				
+			}
+
+			
+			try {
+				FileOutputStream fileOut = new FileOutputStream("Course.ser");
+				ObjectOutputStream out = new ObjectOutputStream(fileOut);
+				out.writeObject(alist2);
+				out.close();
+				fileOut.close();		
+			}
+			catch(IOException i) {
+				i.printStackTrace();
+			}
+			finally {
+				System.out.println("Serialization Attempted...");
+			}
+			try {
+				FileOutputStream fileOut = new FileOutputStream("CourseStats.ser");
+				ObjectOutputStream out = new ObjectOutputStream(fileOut);
+				out.writeObject(courseStats2);
+				out.close();
+				fileOut.close();		
+			}
+			catch(IOException i) {
+				i.printStackTrace();
+			}
+			finally {
+				System.out.println("Serialization Attempted...");
+			}
+		}
 	    
 	    
 }

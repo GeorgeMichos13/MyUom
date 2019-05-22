@@ -1,6 +1,6 @@
+import java.io.Serializable;
 
-
-public class Course {
+public class Course implements Serializable{
 	private int hour;
 	private int dayΝ;
 	private String day;
@@ -42,7 +42,7 @@ public class Course {
 	}
 		
 	public String toString() {
-		return("Μαθημα: " + name + " Μέρα: " + day + " Ώρα: " + hour + ":00 Αίθουσα: " + classr + " Τμήμα: " + classs + "Eξάμηνο: " +semester + " Κατεύθυνση: " + direction);		
+		return("Μαθημα: " + name + " Μέρα: " + day + " Ώρα: " + hour + ":00 Αίθουσα: " + classr + " Τμήμα: " + classs + " Eξάμηνο: " +semester + " Κατεύθυνση: " + direction);		
 	}
 	
 	public String getName() {
