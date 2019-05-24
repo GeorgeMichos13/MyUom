@@ -62,6 +62,8 @@ public class MyProfileGUI extends JFrame{
 		
 		printSelectedLessonsIntoGUI();
 		
+		System.out.println(FCourseStats.toString());
+		
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent back) {
 				
@@ -212,6 +214,7 @@ public class MyProfileGUI extends JFrame{
 			System.out.println("De-Serialization Attempted...");
 			return FCourseStats;
 		}
+		
 		
 	}
 	

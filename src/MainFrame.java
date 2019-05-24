@@ -171,8 +171,12 @@ public class MainFrame {
 					 */
 				}
 				else if(ev.getSource() == notesbutton) {
+					frmMainframe.setVisible(false);
 					
-					notesGUI s1 = new notesGUI() ;
+					MyProfileGUI profilewindow = new MyProfileGUI();
+					profilewindow.setVisible(false);
+					notesGUI s1 = new notesGUI(profilewindow.readCourses()) ;
+					
 				}
 				else if(ev.getSource() == infobutton) {
 					
