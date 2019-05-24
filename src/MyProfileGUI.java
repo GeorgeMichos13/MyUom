@@ -4,11 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,8 +29,11 @@ public class MyProfileGUI extends JFrame{
 	private JButton rankButton;
 	private JButton showResultsButton;
 	private JButton resetButton;
+	private ArrayList<CourseStats> FCourseStats = new ArrayList<CourseStats>();
+	private ArrayList<Course> FCourses = new ArrayList<Course>();
 	
 	public MyProfileGUI() {
+		readCourses();
 		myProfilePanel = new JPanel();
 		
 		nameArea = new JTextArea(2,20);
@@ -168,6 +174,49 @@ public class MyProfileGUI extends JFrame{
 		}
 		
 		
+	}
+	
+	@SuppressWarnings("finally")
+	public ArrayList<CourseStats> readCourses(){
+		try {
+			FileInputStream fileIn = new FileInputStream("Course.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			FCourses = (ArrayList<Course>) in.readObject();
+			in.close();
+			fileIn.close();		
+		}
+		catch(IOException i) {
+			i.printStackTrace();
+		}
+		catch(ClassNotFoundException c) {
+			c.printStackTrace();
+		}
+		finally {
+			System.out.println("De-Serialization Attempted...");
+		}
+		
+		try {
+			FileInputStream fileIn = new FileInputStream("CourseStats.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			FCourseStats = (ArrayList<CourseStats>) in.readObject();
+			in.close();
+			fileIn.close();		
+		}
+		catch(IOException i) {
+			i.printStackTrace();
+		}
+		catch(ClassNotFoundException c) {
+			c.printStackTrace();
+		}
+		finally {
+			System.out.println("De-Serialization Attempted...");
+			return FCourseStats;
+		}
+		
+	}
+	
+	public ArrayList<Course> getCourses(){
+		return FCourses;
 	}
 
 }

@@ -34,24 +34,43 @@ public class Main {
 			e.printStackTrace();
 		}
 		
+			GUI();
 		
-		GUI();	//Panel Initiation
+			//Panel Initiation
 	
 		
 		
 	}//main
 	
 	public static void GUI() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CheckBoxGUI window = new CheckBoxGUI();
-					window.frmInitScreen.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
+		File tempFile = new File( "CourseStats.ser" ); 
+		boolean exists = tempFile.exists();
+		if(exists)
+		{
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						MainFrame window = new MainFrame();
+						window.frmMainframe.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
-			}
-		});
+			});
+		}
+		else
+		{	
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						CheckBoxGUI window = new CheckBoxGUI();
+						window.frmInitScreen.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
 	}//GUI
 	
 

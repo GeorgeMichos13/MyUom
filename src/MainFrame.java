@@ -189,6 +189,7 @@ public class MainFrame {
 						public void run() {
 							try {
 								MyProfileGUI profilewindow = new MyProfileGUI();
+								
 								profilewindow.myProfilePanel.setVisible(true);
 							} catch (Exception e) {
 								e.printStackTrace();

@@ -8,13 +8,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -23,16 +28,12 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.AbstractListModel;
-import java.awt.List;
 
 
 
@@ -562,9 +563,23 @@ public class CheckBoxGUI {
 					re.setArrayString(arrcourses);
 					re.writeSelectedCourses();  
 
-
-		
 					//ask for username
+					String username = "";
+					
+					while(username.trim().length()==0) { //while username is only white spaces
+						username = JOptionPane.showInputDialog("Enter Username");		//ask for username
+						
+					}
+					
+					
+					try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("username.txt"), StandardCharsets.UTF_8))) {
+					    writer.write(username);
+					    /*write username into file */  
+					} 
+					catch (IOException ex) {
+					    ex.printStackTrace();
+					    System.out.println("username failed");
+					}
 					
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {		
