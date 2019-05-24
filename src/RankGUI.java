@@ -127,16 +127,16 @@ public class RankGUI extends JFrame{
 		slider10.setPaintTicks(true);
 		slider10.setPaintLabels(true);
 		
-		field1 = new JTextField ("������1");
-		field2 = new JTextField ("������1");
-		field3 = new JTextField ("������1");
-		field4 = new JTextField ("������1");
-		field5 = new JTextField ("������1");
-		field6 = new JTextField ("������1");
-		field7 = new JTextField ("������1");
-		field8 = new JTextField ("������1");
-		field9 = new JTextField ("������1");
-		field10 = new JTextField ("������1");
+		field1 = new JTextField ("");
+		field2 = new JTextField ("");
+		field3 = new JTextField ("");
+		field4 = new JTextField ("");
+		field5 = new JTextField ("");
+		field6 = new JTextField ("");
+		field7 = new JTextField ("");
+		field8 = new JTextField ("");
+		field9 = new JTextField ("");
+		field10 = new JTextField ("");
 		
 		field1.setEditable(false);
 		field2.setEditable(false);
@@ -196,7 +196,7 @@ public class RankGUI extends JFrame{
 		this.setContentPane(rankGuiPanel);
 		this.setVisible(true);
 		this.setSize(250,500);
-		this.setTitle("����������� ���������");
+		this.setTitle("Rank panel");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
