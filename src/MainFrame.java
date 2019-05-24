@@ -173,8 +173,7 @@ public class MainFrame {
 				else if(ev.getSource() == notesbutton) {
 					frmMainframe.setVisible(false);
 					
-					MyProfileGUI profilewindow = new MyProfileGUI();
-					profilewindow.setVisible(false);
+					MyProfile profilewindow = new MyProfile();
 					notesGUI s1 = new notesGUI(profilewindow.readCourses()) ;
 					
 				}
