@@ -10,6 +10,7 @@ public class MyProfile {
 	private ArrayList<CourseStats> FCourseStats = new ArrayList<CourseStats>();
 	private ArrayList<Course> FCourses = new ArrayList<Course>();
 	private ArrayList<String> Courses = new ArrayList<String>();
+	private ArrayList<Integer> stats = new ArrayList<Integer>();
 	
 	public MyProfile() {
 		readCourses();
@@ -64,6 +65,13 @@ public class MyProfile {
 		return Courses;
 	}
 	
+	public ArrayList<Integer> getStats(){
+		for(int i = 0; i<FCourseStats.size(); i++) {
+			int stat = FCourseStats.get(i).getStat();
+			stats.add(stat);
+		}
+		return stats;
+	}
 	
 	public void reset() {
 		//Courses deleted
