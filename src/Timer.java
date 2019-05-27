@@ -1,6 +1,7 @@
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,6 +41,7 @@ public class Timer extends JFrame{
 	protected JScrollPane sp;
 	protected ArrayList<String[]> event_data = new ArrayList<String[]>();
 	protected DefaultTableModel model;
+	protected JButton backButton;
 	
 	public Timer(JFrame frame) {
 		this.frame=frame;
@@ -47,6 +49,7 @@ public class Timer extends JFrame{
 		model.addColumn("Τίτλος");
 		model.addColumn("Προθεσμία");
 		model.addColumn("Απομένουν");
+		backButton = new JButton("Back");
 		try {
 			BufferedReader fr = new BufferedReader(new FileReader("events.txt"));
 			String line1,line2;
@@ -65,6 +68,7 @@ public class Timer extends JFrame{
 		delete = new JButton("Διαγραφή");
 		show = new JButton("Προβολή");
 		cancel = new JButton("Ακύρωση");
+		panel.add(backButton);
 		panel.add(add);
 		panel.add(show);
 		panel.add(delete);
@@ -81,6 +85,27 @@ public class Timer extends JFrame{
 		delete.addActionListener(listenerDelete);
 		ButtonListenerCancel listenerCancel = new ButtonListenerCancel();
 		cancel.addActionListener(listenerCancel);
+		
+		
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent back) {
+				
+				EventQueue.invokeLater(new Runnable() { //Go Back to MainFrame
+					public void run() {
+						try {
+							frame.setVisible(false);
+							MainFrame window = new MainFrame();
+							window.frmMainframe.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				//new mainFrame(); 
+				
+			}
+			
+		});
 	}
 	
 	class ButtonListenerAdd extends JFrame implements ActionListener{        

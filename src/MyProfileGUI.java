@@ -3,18 +3,17 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -111,8 +110,16 @@ public class MyProfileGUI extends JFrame{
 		
 		rankButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				new RankGUI();
+				Path path = Paths.get("didRank.txt");
+				final JPanel panel = new JPanel();
+				if(Files.exists(path)) {
+				    JOptionPane.showMessageDialog(panel, "You can rank only once. Sorry.", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					 JOptionPane.showMessageDialog(panel, "You can rank once, so be sure to rank(click and drag!) every lesson.", "Advise", JOptionPane.INFORMATION_MESSAGE);
+					setVisible(false);
+					new RankGUI();
+				}
 			}
 			
 		});

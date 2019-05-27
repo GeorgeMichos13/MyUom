@@ -159,7 +159,7 @@ public class MainFrame {
 				
 				
 				else if (ev.getSource() == timerbutton) {
-					
+					frmMainframe.setVisible(false);
 					JFrame frame = new JFrame();
 					Timer gui = new Timer(frame);
 				}

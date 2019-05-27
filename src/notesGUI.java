@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +28,7 @@ public class notesGUI extends JFrame {
 	private JScrollPane scroll = new JScrollPane(NotePanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	private static final int WIDTH = 1200;
 	private static final int HEIGHT = 900;
-	
+	private JButton backButton;
 	public void setSubjectList(ArrayList<CourseStats> array) {
 		SubjectList.addAll(array);
 	}
@@ -38,8 +39,28 @@ public class notesGUI extends JFrame {
 		SubjectList.addAll(array);
 		NotePanel.setBackground(Color.GRAY);
 		System.out.println(SubjectList.size());
+		backButton = new JButton("Back");
+		NotePanel.add(backButton);
 		
-		
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent back) {
+				
+				EventQueue.invokeLater(new Runnable() { //Go Back to MainFrame
+					public void run() {
+						try {
+							NoteFrame.setVisible(false);
+							MainFrame window = new MainFrame();
+							window.frmMainframe.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				//new mainFrame(); 
+				
+			}
+			
+		});
 			
 			
 			/* Frame Initialization */
@@ -2993,6 +3014,7 @@ public class notesGUI extends JFrame {
 				
 			}
 			NoteFrame.add(scroll);
+			
 	}
 
 }

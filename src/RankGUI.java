@@ -2,6 +2,9 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -48,35 +51,36 @@ public class RankGUI extends JFrame{
 		rankGuiPanel = new JPanel();
 		backButton = new JButton("Back");
 		rankGuiPanel.add(backButton);
+	
 		
-		slider1 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider1 = new JSlider(JSlider.HORIZONTAL,1,5,1);
 		slider1.addChangeListener(new SliderListener1());
 		
-		slider2 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider2 = new JSlider(JSlider.HORIZONTAL,1,5,1);
 		slider2.addChangeListener(new SliderListener2());
 		
-		slider3 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider3 = new JSlider(JSlider.HORIZONTAL,1,5,1);
 		slider3.addChangeListener(new SliderListener3());
 		
-		slider4 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider4 = new JSlider(JSlider.HORIZONTAL,1,5,1);
 		slider4.addChangeListener(new SliderListener4());
 		
-		slider5 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider5 = new JSlider(JSlider.HORIZONTAL,1,5,1);
 		slider5.addChangeListener(new SliderListener5());
 		
-		slider6 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider6 = new JSlider(JSlider.HORIZONTAL,1,5,1);
 		slider6.addChangeListener(new SliderListener6());
 		
-		slider7 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider7 = new JSlider(JSlider.HORIZONTAL,1,5,1);
 		slider7.addChangeListener(new SliderListener7());
 		
-		slider8 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider8 = new JSlider(JSlider.HORIZONTAL,1,5,1);
 		slider8.addChangeListener(new SliderListener8());
 		
-		slider9 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider9 = new JSlider(JSlider.HORIZONTAL,1,5,1);
 		slider9.addChangeListener(new SliderListener9());
 		
-		slider10 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider10 = new JSlider(JSlider.HORIZONTAL,1,5,1);
 		slider10.addChangeListener(new SliderListener10());
 
 		
@@ -200,7 +204,19 @@ public class RankGUI extends JFrame{
 		
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent back) {
-				System.out.println(ranks.length);
+				if(ranks[0] != null) {
+					File statsF = new File("didRank.txt");
+					try {
+						FileWriter fileWriter = new FileWriter(statsF);
+						PrintWriter writer = new PrintWriter(fileWriter);
+						writer.write("TRUE");
+						writer.close();
+						
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 				setVisible(false);
 				new MyProfileGUI(); 
 			}
@@ -337,12 +353,12 @@ public class RankGUI extends JFrame{
 	
 	public static ArrayList<Integer> getRanks() {
 		ArrayList<Integer> stats = new ArrayList<Integer>();
+		
 		for(int i = 0 ; i <courses.size(); i++) {
 			int st = ranks[i];
 			stats.add(st);
 		}
-		return stats;
-			
+		return stats;	
 	}
 
 	

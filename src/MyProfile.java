@@ -65,11 +65,12 @@ public class MyProfile {
 		return Courses;
 	}
 	
-	public ArrayList<Integer> getStats(){
+	public  ArrayList<Integer> getStats(){
 		for(int i = 0; i<FCourseStats.size(); i++) {
 			int stat = FCourseStats.get(i).getStat();
 			stats.add(stat);
 		}
+	
 		return stats;
 	}
 	
@@ -94,6 +95,17 @@ public class MyProfile {
 		input = filePath.toString();
 		path = new File(input);
 		path.delete();
+		
+		filePath = Paths.get("didRank.txt");
+		input = filePath.toString();
+		path = new File(input);
+		path.delete();
+		
+		filePath = Paths.get("Stats.txt");
+		input = filePath.toString();
+		path = new File(input);
+		path.delete();
+		
 		
 		String ending = "myUomNotes.txt";
 		ArrayList<String> courses;
