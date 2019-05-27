@@ -50,37 +50,49 @@ public class RankGUI extends JFrame{
 		courses = profilewindow.getCourses();
 		rankGuiPanel = new JPanel();
 		backButton = new JButton("Back");
+		backButton.setBounds(10, 6, 80, 30);
 		rankGuiPanel.add(backButton);
 	
 		
-		slider1 = new JSlider(JSlider.HORIZONTAL,1,5,1);
+		slider1 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider1.setBounds(108, 32, 200, 45);
 		slider1.addChangeListener(new SliderListener1());
 		
-		slider2 = new JSlider(JSlider.HORIZONTAL,1,5,1);
+		
+		slider2 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider2.setBounds(108, 119, 200, 45);
 		slider2.addChangeListener(new SliderListener2());
 		
-		slider3 = new JSlider(JSlider.HORIZONTAL,1,5,1);
+		slider3 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider3.setBounds(108, 206, 200, 45);
 		slider3.addChangeListener(new SliderListener3());
 		
-		slider4 = new JSlider(JSlider.HORIZONTAL,1,5,1);
+		slider4 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider4.setBounds(108, 289, 200, 45);
 		slider4.addChangeListener(new SliderListener4());
 		
-		slider5 = new JSlider(JSlider.HORIZONTAL,1,5,1);
+		slider5 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider5.setBounds(108, 376, 200, 45);
 		slider5.addChangeListener(new SliderListener5());
 		
-		slider6 = new JSlider(JSlider.HORIZONTAL,1,5,1);
+		slider6 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider6.setBounds(380, 32, 200, 45);
 		slider6.addChangeListener(new SliderListener6());
 		
-		slider7 = new JSlider(JSlider.HORIZONTAL,1,5,1);
+		slider7 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider7.setBounds(380, 119, 200, 45);
 		slider7.addChangeListener(new SliderListener7());
 		
-		slider8 = new JSlider(JSlider.HORIZONTAL,1,5,1);
+		slider8 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider8.setBounds(380, 206, 200, 45);
 		slider8.addChangeListener(new SliderListener8());
 		
-		slider9 = new JSlider(JSlider.HORIZONTAL,1,5,1);
+		slider9 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider9.setBounds(380, 289, 200, 45);
 		slider9.addChangeListener(new SliderListener9());
 		
-		slider10 = new JSlider(JSlider.HORIZONTAL,1,5,1);
+		slider10 = new JSlider(JSlider.HORIZONTAL,1,5,3);
+		slider10.setBounds(380, 376, 200, 45);
 		slider10.addChangeListener(new SliderListener10());
 
 		
@@ -135,15 +147,25 @@ public class RankGUI extends JFrame{
 		slider10.setPaintLabels(true);
 		
 		field1 = new JTextField ("");
+		field1.setBounds(165, 11, 88, 20);
 		field2 = new JTextField ("");
+		field2.setBounds(165, 95, 88, 20);
 		field3 = new JTextField ("");
+		field3.setBounds(165, 175, 88, 20);
 		field4 = new JTextField ("");
+		field4.setBounds(165, 262, 88, 20);
 		field5 = new JTextField ("");
+		field5.setBounds(165, 355, 88, 20);
 		field6 = new JTextField ("");
+		field6.setBounds(435, 11, 88, 20);
 		field7 = new JTextField ("");
+		field7.setBounds(435, 95, 88, 20);
 		field8 = new JTextField ("");
+		field8.setBounds(432, 175, 88, 20);
 		field9 = new JTextField ("");
+		field9.setBounds(437, 262, 88, 20);
 		field10 = new JTextField ("");
+		field10.setBounds(429, 355, 94, 20);
 		
 		field1.setEditable(false);
 		field2.setEditable(false);
@@ -155,50 +177,94 @@ public class RankGUI extends JFrame{
 		field8.setEditable(false);
 		field9.setEditable(false);
 		field10.setEditable(false);
+	
 		
 		
+
+		field1.setVisible(false);
+		slider1.setVisible(false);
+		
+		field2.setVisible(false);
+		slider2.setVisible(false);
+		
+		field3.setVisible(false);
+		slider3.setVisible(false);
+		
+		field4.setVisible(false);
+		slider4.setVisible(false);
+		
+		field5.setVisible(false);
+		slider5.setVisible(false);
+		
+		field6.setVisible(false);
+		slider6.setVisible(false);
+		
+		field7.setVisible(false);
+		slider7.setVisible(false);
+		
+		field8.setVisible(false);
+		slider8.setVisible(false);
+		
+		field9.setVisible(false);
+		slider9.setVisible(false);
+		
+		field10.setVisible(false);
+		slider10.setVisible(false);
+
+
 		
 		for (int i = 1; i <= courses.size(); i++) {
 			if(i == 1) {
+
+				field1.setVisible(true);
+				slider1.setVisible(true);
 				field1.setText(courses.get(i-1));
-				rankGuiPanel.add(field1);
-				rankGuiPanel.add(slider1);
+				
 			}else if(i == 2) {
+				field2.setVisible(true);
+				slider2.setVisible(true);
 				field2.setText(courses.get(i-1));
-				rankGuiPanel.add(field2);
-				rankGuiPanel.add(slider2);
+				
 			}else if(i == 3) {
+				field3.setVisible(true);
+				slider3.setVisible(true);
 				field3.setText(courses.get(i-1));
-				rankGuiPanel.add(field3);
-				rankGuiPanel.add(slider3);
+				
 			}else if(i == 4) {
+				field4.setVisible(true);
+				slider4.setVisible(true);
 				field4.setText(courses.get(i-1));
-				rankGuiPanel.add(field4);
-				rankGuiPanel.add(slider4);
+				
 			}else if(i == 5) {
+				field5.setVisible(true);
+				slider5.setVisible(true);
 				field5.setText(courses.get(i-1));
-				rankGuiPanel.add(field5);
-				rankGuiPanel.add(slider5);
+				
 			}else if(i == 6) {
+				field6.setVisible(true);
+				slider6.setVisible(true);
 				field6.setText(courses.get(i-1));
-				rankGuiPanel.add(field6);
-				rankGuiPanel.add(slider6);
+				
 			}else if(i == 7) {
+				field7.setVisible(true);
+				slider7.setVisible(true);
 				field7.setText(courses.get(i-1));
-				rankGuiPanel.add(field7);
-				rankGuiPanel.add(slider7);
+				
 			}else if(i == 8) {
+				field8.setVisible(true);
+				slider8.setVisible(true);
 				field8.setText(courses.get(i-1));
-				rankGuiPanel.add(field8);
-				rankGuiPanel.add(slider8);
+				
 			}else if(i == 9) {
+				field9.setVisible(true);
+				slider9.setVisible(true);
 				field9.setText(courses.get(i-1));
-				rankGuiPanel.add(field9);
-				rankGuiPanel.add(slider9);
+				
 			}else if(i == 10) {
+				field10.setVisible(true);
+				slider10.setVisible(true);
 				field10.setText(courses.get(i-1));
-				rankGuiPanel.add(field10);
-				rankGuiPanel.add(slider10);
+			
 			}
 		}
 		
@@ -224,8 +290,30 @@ public class RankGUI extends JFrame{
 		});
 		
 		this.setContentPane(rankGuiPanel);
+		rankGuiPanel.setLayout(null);
+		rankGuiPanel.add(backButton);
+		rankGuiPanel.add(field1);
+		rankGuiPanel.add(slider1);
+		rankGuiPanel.add(field6);
+		rankGuiPanel.add(slider6);
+		rankGuiPanel.add(field2);
+		rankGuiPanel.add(field7);
+		rankGuiPanel.add(slider2);
+		rankGuiPanel.add(slider7);
+		rankGuiPanel.add(field3);
+		rankGuiPanel.add(field8);
+		rankGuiPanel.add(slider3);
+		rankGuiPanel.add(slider8);
+		rankGuiPanel.add(field4);
+		rankGuiPanel.add(field9);
+		rankGuiPanel.add(slider4);
+		rankGuiPanel.add(slider9);
+		rankGuiPanel.add(field5);
+		rankGuiPanel.add(field10);
+		rankGuiPanel.add(slider5);
+		rankGuiPanel.add(slider10);
 		this.setVisible(true);
-		this.setSize(250,500);
+		this.setSize(644,471);
 		this.setTitle("Rank panel");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

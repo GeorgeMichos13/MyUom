@@ -5,6 +5,8 @@ import java.io.ObjectInputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MyProfile {
 	private ArrayList<CourseStats> FCourseStats = new ArrayList<CourseStats>();
@@ -57,11 +59,19 @@ public class MyProfile {
 	}
 	
 	public  ArrayList<String> getCourses(){
+		Set<String> set = new HashSet<String>();
+		boolean added;
 		for (int i = 0; i<FCourseStats.size(); i++) {
 			String course = FCourseStats.get(i).getName();
-			Courses.add(course);
+			added = set.add(FCourseStats.get(i).getName());
+			if(added)
+			{
+				Courses.add(course);
+			}
+			
 			
 		}
+
 		return Courses;
 	}
 	

@@ -4,9 +4,10 @@ import java.awt.EventQueue;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
-
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//XlsReader re = new XlsReader();	
@@ -15,9 +16,8 @@ public class Main {
 		//re.printCourses();
 		
 
-		
-		
-		
+		ArrayList<Course> FCourses = new ArrayList<Course>();
+			
 			GUI();
 		
 			//Panel Initiation

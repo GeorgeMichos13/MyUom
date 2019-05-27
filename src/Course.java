@@ -59,6 +59,13 @@ public class Course implements Serializable{
 	public String getSemester() {
 		return(semester);
 	}
+	public int getHour() {
+		return(hour);
+	}
+	public int getDay() {
+		return(dayΝ);
+	}
+	
 	
 
 }
