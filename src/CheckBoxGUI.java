@@ -629,18 +629,18 @@ public class CheckBoxGUI {
 			if(checkBox1.isSelected()) {
 			//	infotext.setText("tsekares to prwto koutaki");
 				
-				String str = null;
+				String str = "";
 				 try {
 					 
 			            // Read some text from the resource file to display in
 			            // the JTextArea.
-					 File file = new File("C:\\Users\\Savvas\\Documents\\MyUom\\Πληροφοριες μαθηματων\\2ο εξάμηνο\\ΔΙΑΚΡΙΤΑ ΜΑΘΗΜΑΤΙΚΑ info.txt"); 
+					 File file = new File("C:\\Users\\GEORGE MICHOS\\Documents\\MyUom\\ΔΙΑΚΡΙΤΑ ΜΑΘΗΜΑΤΙΚΑ info.txt"); 
 					  
 					  BufferedReader br = new BufferedReader(new FileReader(file)); 
 					  
-					  String st ;
+					  String st = "";
 					  while ((st = br.readLine()) != null) 
-					    str += st;
+					    str += st + "\n";
 					 
 			        } catch (IOException e) {
 			            e.printStackTrace();

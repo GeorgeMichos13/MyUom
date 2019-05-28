@@ -211,9 +211,8 @@ public class MainFrame {
 				}
 				else if(ev.getSource() == infobutton) {
 					
-					/*
-					 * Infos()
-					 */
+					MyProfile profilewindow = new MyProfile();
+					new InformationGUI(profilewindow.readCourses());
 				}
 				else if(ev.getSource() == profilebutton) {
 					

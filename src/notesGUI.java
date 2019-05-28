@@ -192,7 +192,7 @@ public class notesGUI extends JFrame {
 				
 				
 				
-				 File myfile1 = new File(SubjectList.get(0) + "myUomNotes.txt");
+				 File myfile1 = new File(SubjectList.get(0).getName() + "myUomNotes.txt");
 				 note1.readFromFile(myfile1, NoteArea1);
 				 MyJButton set1 = new MyJButton("Αποθηκευση",myfile1);
 				 
