@@ -8,8 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
@@ -624,8 +627,26 @@ public class CheckBoxGUI {
 		
 		public void setupSelectedBoxes(ActionEvent ae){  
 			if(checkBox1.isSelected()) {
-				infotext.setText("tsekares to prwto koutaki");
+			//	infotext.setText("tsekares to prwto koutaki");
+				
+				String str = null;
+				 try {
+					 
+			            // Read some text from the resource file to display in
+			            // the JTextArea.
+					 File file = new File("C:\\Users\\Savvas\\Documents\\MyUom\\Πληροφοριες μαθηματων\\2ο εξάμηνο\\ΔΙΑΚΡΙΤΑ ΜΑΘΗΜΑΤΙΚΑ info.txt"); 
+					  
+					  BufferedReader br = new BufferedReader(new FileReader(file)); 
+					  
+					  String st ;
+					  while ((st = br.readLine()) != null) 
+					    str += st;
+					 
+			        } catch (IOException e) {
+			            e.printStackTrace();
+			        }
 				     
+				 		infotext.setText(str);
 					if(ae.getSource()==addbutton) {
 						hashcourses.add(checkBox1.getText());
 						printAll(hashcourses, textcourses);

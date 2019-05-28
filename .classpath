@@ -6,6 +6,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="icons"/>
+	<classpathentry kind="src" path="maps"/>
 	<classpathentry kind="lib" path="jcommon-1.0.21.jar"/>
 	<classpathentry kind="lib" path="jfreechart-1.0.17.jar"/>
 	<classpathentry kind="lib" path="jgoodies-forms-1.8.0-sources.jar"/>
