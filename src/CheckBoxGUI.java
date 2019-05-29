@@ -642,6 +642,7 @@ public class CheckBoxGUI {
 					  while ((st = br.readLine()) != null) 
 					    str += st + "\n";
 					 
+					  br.close();
 			        } catch (IOException e) {
 			            e.printStackTrace();
 			        }

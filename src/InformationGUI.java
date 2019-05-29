@@ -484,6 +484,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				File myfile4 = new File(SubjectList.get(3).getName() + "info.txt");
+				System.out.println(myfile4);
 				info4.readFromFile(myfile4, InfoArea4);
 		
 				

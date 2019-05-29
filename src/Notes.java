@@ -59,12 +59,14 @@ public class Notes {
 			try {
 				if(!myFile.exists()) {
 					text.setText("");
+					System.out.println("The file does not exist");
 				}
 				else {
 					Scanner  NoteReader = new Scanner(myFile);
+					
 					while(NoteReader.hasNextLine()) {
 					String notes = NoteReader.nextLine();
-					text.setText(notes);
+					text.append(notes + " "+ "\n");
 					}
 					NoteReader.close();
 				}
