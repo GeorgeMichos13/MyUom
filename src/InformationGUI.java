@@ -22,7 +22,7 @@ public class InformationGUI extends JFrame {
 	private JFrame NoteFrame = new JFrame("Information");
 	private JPanel InfoPanel = new JPanel();
 
-	private ArrayList<CourseStats> SubjectList = new ArrayList<CourseStats>();
+	private ArrayList<String> SubjectList = new ArrayList<String>();
 	private JTextArea InfoArea = new JTextArea();
 	private JScrollPane scroll = new JScrollPane(InfoPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	private static final int WIDTH = 1200;
@@ -30,11 +30,11 @@ public class InformationGUI extends JFrame {
 	private static final int TextWIDTH = 700;
 	private static final int TextHEIGHT = 300;
 	private JButton backButton;
-	public void setSubjectList(ArrayList<CourseStats> array) {
+	public void setSubjectList(ArrayList<String> array) {
 		SubjectList.addAll(array);
 	}
 
-	public InformationGUI(ArrayList<CourseStats> array) {
+	public InformationGUI(ArrayList<String> array) {
 		
 		
 		
@@ -190,7 +190,7 @@ public class InformationGUI extends JFrame {
 			switch(num) {
 			case 1:
 				
-				String file = SubjectList.get(0).getName() + "info.txt";
+				String file = SubjectList.get(0) + "info.txt";
 				System.out.println(file);
 				Path path = Paths.get(file);
 				if(Files.exists(path))
@@ -220,7 +220,7 @@ public class InformationGUI extends JFrame {
 					
 					
 					
-				JLabel infoLabel1 = new JLabel(SubjectList.get(0).getName());
+				JLabel infoLabel1 = new JLabel(SubjectList.get(0));
 				infoLabel1.setSize(new Dimension(400, 30));
 				infoLabel1.setVisible(false);
 				infoLabel1.setOpaque(true);
@@ -242,7 +242,7 @@ public class InformationGUI extends JFrame {
 				break;
 			case 2:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "info.txt");
+				myfile1 = new File(SubjectList.get(0)+ "info.txt");
 				info1.readFromFile(myfile1, InfoArea1);
 				
 				 
@@ -259,7 +259,7 @@ public class InformationGUI extends JFrame {
 					});
 					
 					
-				File myfile2 = new File(SubjectList.get(1).getName() + "info.txt");
+				File myfile2 = new File(SubjectList.get(1) + "info.txt");
 				info2.readFromFile(myfile2, InfoArea2);
 			
 				
@@ -278,7 +278,7 @@ public class InformationGUI extends JFrame {
 			
 				
 					
-				infoLabel1 = new JLabel(SubjectList.get(0).getName());
+				infoLabel1 = new JLabel(SubjectList.get(0));
 				infoLabel1.setSize(new Dimension(400, 30));
 				infoLabel1.setVisible(false);
 				infoLabel1.setOpaque(true);
@@ -286,7 +286,7 @@ public class InformationGUI extends JFrame {
 				infoLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel infoLabel2 = new JLabel(SubjectList.get(1).getName());
+				JLabel infoLabel2 = new JLabel(SubjectList.get(1));
 				infoLabel2.setSize(new Dimension(400, 30));
 				infoLabel2.setVisible(false);
 				infoLabel2.setOpaque(true);
@@ -313,7 +313,7 @@ public class InformationGUI extends JFrame {
 				break;
 			case 3:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "info.txt");
+				myfile1 = new File(SubjectList.get(0) + "info.txt");
 				info1.readFromFile(myfile1, InfoArea1);
 			
 				 
@@ -335,7 +335,7 @@ public class InformationGUI extends JFrame {
 					
 					
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "info.txt");
+				myfile2 = new File(SubjectList.get(1) + "info.txt");
 				info2.readFromFile(myfile2, InfoArea2);
 				
 				
@@ -354,7 +354,7 @@ public class InformationGUI extends JFrame {
 			
 				
 				
-				File myfile3 = new File(SubjectList.get(2).getName() + "info.txt");
+				File myfile3 = new File(SubjectList.get(2) + "info.txt");
 				info3.readFromFile(myfile3, InfoArea3);
 			
 				
@@ -373,7 +373,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				infoLabel1 = new JLabel(SubjectList.get(0).getName());
+				infoLabel1 = new JLabel(SubjectList.get(0));
 				infoLabel1.setSize(new Dimension(400, 30));
 				infoLabel1.setVisible(false);
 				infoLabel1.setOpaque(true);
@@ -381,7 +381,7 @@ public class InformationGUI extends JFrame {
 				infoLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel2 = new JLabel(SubjectList.get(1).getName());
+				infoLabel2 = new JLabel(SubjectList.get(1));
 				infoLabel2.setSize(new Dimension(400, 30));
 				infoLabel2.setVisible(false);
 				infoLabel2.setOpaque(true);
@@ -389,7 +389,7 @@ public class InformationGUI extends JFrame {
 				infoLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel infoLabel3 = new JLabel(SubjectList.get(2).getName());
+				JLabel infoLabel3 = new JLabel(SubjectList.get(2));
 				infoLabel3.setSize(new Dimension(400, 30));
 				infoLabel3.setVisible(false);
 				infoLabel3.setOpaque(true);
@@ -427,7 +427,7 @@ public class InformationGUI extends JFrame {
 				break;
 			case 4:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "info.txt");
+				myfile1 = new File(SubjectList.get(0) + "info.txt");
 				info1.readFromFile(myfile1, InfoArea1);
 				
 				 
@@ -446,7 +446,7 @@ public class InformationGUI extends JFrame {
 					
 					
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "info.txt");
+				myfile2 = new File(SubjectList.get(1) + "info.txt");
 				info2.readFromFile(myfile2, InfoArea2);
 				
 				
@@ -465,7 +465,7 @@ public class InformationGUI extends JFrame {
 			
 				
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "info.txt");
+				myfile3 = new File(SubjectList.get(2) + "info.txt");
 				info3.readFromFile(myfile3, InfoArea3);
 				
 				
@@ -483,7 +483,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				File myfile4 = new File(SubjectList.get(3).getName() + "info.txt");
+				File myfile4 = new File(SubjectList.get(3) + "info.txt");
 				System.out.println(myfile4);
 				info4.readFromFile(myfile4, InfoArea4);
 		
@@ -503,7 +503,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				infoLabel1 = new JLabel(SubjectList.get(0).getName());
+				infoLabel1 = new JLabel(SubjectList.get(0));
 				infoLabel1.setSize(new Dimension(400, 30));
 				infoLabel1.setVisible(false);
 				infoLabel1.setOpaque(true);
@@ -511,7 +511,7 @@ public class InformationGUI extends JFrame {
 				infoLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel2 = new JLabel(SubjectList.get(1).getName());
+				infoLabel2 = new JLabel(SubjectList.get(1));
 				infoLabel2.setSize(new Dimension(400, 30));
 				infoLabel2.setVisible(false);
 				infoLabel2.setOpaque(true);
@@ -519,7 +519,7 @@ public class InformationGUI extends JFrame {
 				infoLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel3 = new JLabel(SubjectList.get(2).getName());
+				infoLabel3 = new JLabel(SubjectList.get(2));
 				infoLabel3.setSize(new Dimension(400, 30));
 				infoLabel3.setVisible(false);
 				infoLabel3.setOpaque(true);
@@ -527,7 +527,7 @@ public class InformationGUI extends JFrame {
 				infoLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel infoLabel4 = new JLabel(SubjectList.get(3).getName());
+				JLabel infoLabel4 = new JLabel(SubjectList.get(3));
 				infoLabel4.setSize(new Dimension(400, 30));
 				infoLabel4.setVisible(false);
 				infoLabel4.setOpaque(true);
@@ -570,7 +570,7 @@ public class InformationGUI extends JFrame {
 				break;
 			case 5:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "info.txt");
+				myfile1 = new File(SubjectList.get(0) + "info.txt");
 				info1.readFromFile(myfile1, InfoArea1);
 			
 				 
@@ -589,7 +589,7 @@ public class InformationGUI extends JFrame {
 					
 					
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "info.txt");
+				myfile2 = new File(SubjectList.get(1) + "info.txt");
 				info2.readFromFile(myfile2, InfoArea2);
 		
 				
@@ -608,7 +608,7 @@ public class InformationGUI extends JFrame {
 			
 				
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "info.txt");
+				myfile3 = new File(SubjectList.get(2) + "info.txt");
 				info3.readFromFile(myfile3, InfoArea3);
 				
 				
@@ -626,7 +626,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				myfile4 = new File(SubjectList.get(3).getName() + "info.txt");
+				myfile4 = new File(SubjectList.get(3) + "info.txt");
 				info4.readFromFile(myfile4, InfoArea4);
 				
 				
@@ -643,7 +643,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				File myfile5 = new File(SubjectList.get(4).getName() + "info.txt");
+				File myfile5 = new File(SubjectList.get(4) + "info.txt");
 				info5.readFromFile(myfile5, InfoArea5);
 			
 				
@@ -663,7 +663,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				infoLabel1 = new JLabel(SubjectList.get(0).getName());
+				infoLabel1 = new JLabel(SubjectList.get(0));
 				infoLabel1.setSize(new Dimension(400, 30));
 				infoLabel1.setVisible(false);
 				infoLabel1.setOpaque(true);
@@ -671,7 +671,7 @@ public class InformationGUI extends JFrame {
 				infoLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel2 = new JLabel(SubjectList.get(1).getName());
+				infoLabel2 = new JLabel(SubjectList.get(1));
 				infoLabel2.setSize(new Dimension(400, 30));
 				infoLabel2.setVisible(false);
 				infoLabel2.setOpaque(true);
@@ -679,7 +679,7 @@ public class InformationGUI extends JFrame {
 				infoLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel3 = new JLabel(SubjectList.get(2).getName());
+				infoLabel3 = new JLabel(SubjectList.get(2));
 				infoLabel3.setSize(new Dimension(400, 30));
 				infoLabel3.setVisible(false);
 				infoLabel3.setOpaque(true);
@@ -687,7 +687,7 @@ public class InformationGUI extends JFrame {
 				infoLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel4 = new JLabel(SubjectList.get(3).getName());
+				infoLabel4 = new JLabel(SubjectList.get(3));
 				infoLabel4.setSize(new Dimension(400, 30));
 				infoLabel4.setVisible(false);
 				infoLabel4.setOpaque(true);
@@ -695,7 +695,7 @@ public class InformationGUI extends JFrame {
 				infoLabel4.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel4.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel infoLabel5 = new JLabel(SubjectList.get(4).getName());
+				JLabel infoLabel5 = new JLabel(SubjectList.get(4));
 				infoLabel5.setSize(new Dimension(400, 30));
 				infoLabel5.setVisible(false);
 				infoLabel5.setOpaque(true);
@@ -745,7 +745,7 @@ public class InformationGUI extends JFrame {
 				break;
 				
 			case 6:
-				myfile1 = new File(SubjectList.get(0).getName() + "info.txt");
+				myfile1 = new File(SubjectList.get(0) + "info.txt");
 				info1.readFromFile(myfile1, InfoArea1);
 			
 				 
@@ -764,7 +764,7 @@ public class InformationGUI extends JFrame {
 					
 					
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "info.txt");
+				myfile2 = new File(SubjectList.get(1) + "info.txt");
 				info2.readFromFile(myfile2, InfoArea2);
 		
 				
@@ -783,7 +783,7 @@ public class InformationGUI extends JFrame {
 			
 				
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "info.txt");
+				myfile3 = new File(SubjectList.get(2) + "info.txt");
 				info3.readFromFile(myfile3, InfoArea3);
 				
 				
@@ -801,7 +801,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				myfile4 = new File(SubjectList.get(3).getName() + "info.txt");
+				myfile4 = new File(SubjectList.get(3) + "info.txt");
 				info4.readFromFile(myfile4, InfoArea4);
 				
 				
@@ -818,7 +818,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				myfile5 = new File(SubjectList.get(4).getName() + "info.txt");
+				myfile5 = new File(SubjectList.get(4) + "info.txt");
 				info5.readFromFile(myfile5, InfoArea5);
 			
 				
@@ -836,7 +836,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				File myfile6 = new File(SubjectList.get(5).getName() + "info.txt");
+				File myfile6 = new File(SubjectList.get(5) + "info.txt");
 				info6.readFromFile(myfile6, InfoArea6);
 				
 				JButton exams6 = new JButton("Δείτε τα παλία θέματα.");
@@ -853,7 +853,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				infoLabel1 = new JLabel(SubjectList.get(0).getName());
+				infoLabel1 = new JLabel(SubjectList.get(0));
 				infoLabel1.setSize(new Dimension(400, 30));
 				infoLabel1.setVisible(false);
 				infoLabel1.setOpaque(true);
@@ -861,7 +861,7 @@ public class InformationGUI extends JFrame {
 				infoLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel2 = new JLabel(SubjectList.get(1).getName());
+				infoLabel2 = new JLabel(SubjectList.get(1));
 				infoLabel2.setSize(new Dimension(400, 30));
 				infoLabel2.setVisible(false);
 				infoLabel2.setOpaque(true);
@@ -869,7 +869,7 @@ public class InformationGUI extends JFrame {
 				infoLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel3 = new JLabel(SubjectList.get(2).getName());
+				infoLabel3 = new JLabel(SubjectList.get(2));
 				infoLabel3.setSize(new Dimension(400, 30));
 				infoLabel3.setVisible(false);
 				infoLabel3.setOpaque(true);
@@ -877,7 +877,7 @@ public class InformationGUI extends JFrame {
 				infoLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel4 = new JLabel(SubjectList.get(3).getName());
+				infoLabel4 = new JLabel(SubjectList.get(3));
 				infoLabel4.setSize(new Dimension(400, 30));
 				infoLabel4.setVisible(false);
 				infoLabel4.setOpaque(true);
@@ -885,7 +885,7 @@ public class InformationGUI extends JFrame {
 				infoLabel4.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel4.setVerticalTextPosition(JLabel.CENTER);
 				
-				 infoLabel5 = new JLabel(SubjectList.get(4).getName());
+				 infoLabel5 = new JLabel(SubjectList.get(4));
 				infoLabel5.setSize(new Dimension(400, 30));
 				infoLabel5.setVisible(false);
 				infoLabel5.setOpaque(true);
@@ -893,7 +893,7 @@ public class InformationGUI extends JFrame {
 				infoLabel5.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel5.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel infoLabel6 = new JLabel(SubjectList.get(5).getName());
+				JLabel infoLabel6 = new JLabel(SubjectList.get(5));
 				infoLabel6.setSize(new Dimension(400, 30));
 				infoLabel6.setVisible(false);
 				infoLabel6.setOpaque(true);
@@ -953,7 +953,7 @@ public class InformationGUI extends JFrame {
 				 break;
 				 
 			case 7:
-				myfile1 = new File(SubjectList.get(0).getName() + "info.txt");
+				myfile1 = new File(SubjectList.get(0) + "info.txt");
 				info1.readFromFile(myfile1, InfoArea1);
 			
 				 
@@ -972,7 +972,7 @@ public class InformationGUI extends JFrame {
 					
 					
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "info.txt");
+				myfile2 = new File(SubjectList.get(1) + "info.txt");
 				info2.readFromFile(myfile2, InfoArea2);
 		
 				
@@ -991,7 +991,7 @@ public class InformationGUI extends JFrame {
 			
 				
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "info.txt");
+				myfile3 = new File(SubjectList.get(2) + "info.txt");
 				info3.readFromFile(myfile3, InfoArea3);
 				
 				
@@ -1009,7 +1009,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				myfile4 = new File(SubjectList.get(3).getName() + "info.txt");
+				myfile4 = new File(SubjectList.get(3) + "info.txt");
 				info4.readFromFile(myfile4, InfoArea4);
 				
 				
@@ -1026,7 +1026,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				myfile5 = new File(SubjectList.get(4).getName() + "info.txt");
+				myfile5 = new File(SubjectList.get(4) + "info.txt");
 				info5.readFromFile(myfile5, InfoArea5);
 			
 				
@@ -1044,7 +1044,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				myfile6 = new File(SubjectList.get(5).getName() + "info.txt");
+				myfile6 = new File(SubjectList.get(5) + "info.txt");
 				info6.readFromFile(myfile6, InfoArea6);
 				
 				exams6 = new JButton("Δείτε τα παλία θέματα.");
@@ -1060,7 +1060,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				File myfile7 = new File(SubjectList.get(6).getName() + "info.txt");
+				File myfile7 = new File(SubjectList.get(6) + "info.txt");
 				info7.readFromFile(myfile7, InfoArea7);
 				
 				
@@ -1078,7 +1078,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				infoLabel1 = new JLabel(SubjectList.get(0).getName());
+				infoLabel1 = new JLabel(SubjectList.get(0));
 				infoLabel1.setSize(new Dimension(400, 30));
 				infoLabel1.setVisible(false);
 				infoLabel1.setOpaque(true);
@@ -1086,7 +1086,7 @@ public class InformationGUI extends JFrame {
 				infoLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel2 = new JLabel(SubjectList.get(1).getName());
+				infoLabel2 = new JLabel(SubjectList.get(1));
 				infoLabel2.setSize(new Dimension(400, 30));
 				infoLabel2.setVisible(false);
 				infoLabel2.setOpaque(true);
@@ -1094,7 +1094,7 @@ public class InformationGUI extends JFrame {
 				infoLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel3 = new JLabel(SubjectList.get(2).getName());
+				infoLabel3 = new JLabel(SubjectList.get(2));
 				infoLabel3.setSize(new Dimension(400, 30));
 				infoLabel3.setVisible(false);
 				infoLabel3.setOpaque(true);
@@ -1102,7 +1102,7 @@ public class InformationGUI extends JFrame {
 				infoLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel4 = new JLabel(SubjectList.get(3).getName());
+				infoLabel4 = new JLabel(SubjectList.get(3));
 				infoLabel4.setSize(new Dimension(400, 30));
 				infoLabel4.setVisible(false);
 				infoLabel4.setOpaque(true);
@@ -1110,7 +1110,7 @@ public class InformationGUI extends JFrame {
 				infoLabel4.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel4.setVerticalTextPosition(JLabel.CENTER);
 				
-				 infoLabel5 = new JLabel(SubjectList.get(4).getName());
+				 infoLabel5 = new JLabel(SubjectList.get(4));
 				infoLabel5.setSize(new Dimension(400, 30));
 				infoLabel5.setVisible(false);
 				infoLabel5.setOpaque(true);
@@ -1118,7 +1118,7 @@ public class InformationGUI extends JFrame {
 				infoLabel5.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel5.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel6 = new JLabel(SubjectList.get(5).getName());
+				infoLabel6 = new JLabel(SubjectList.get(5));
 				infoLabel6.setSize(new Dimension(400, 30));
 				infoLabel6.setVisible(false);
 				infoLabel6.setOpaque(true);
@@ -1126,7 +1126,7 @@ public class InformationGUI extends JFrame {
 				infoLabel6.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel6.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel infoLabel7 = new JLabel(SubjectList.get(6).getName());
+				JLabel infoLabel7 = new JLabel(SubjectList.get(6));
 				infoLabel7.setSize(new Dimension(400, 30));
 				infoLabel7.setVisible(false);
 				infoLabel7.setOpaque(true);
@@ -1192,7 +1192,7 @@ public class InformationGUI extends JFrame {
 				break;
 				
 			case 8:
-				myfile1 = new File(SubjectList.get(0).getName() + "info.txt");
+				myfile1 = new File(SubjectList.get(0) + "info.txt");
 				info1.readFromFile(myfile1, InfoArea1);
 			
 				 
@@ -1211,7 +1211,7 @@ public class InformationGUI extends JFrame {
 					
 					
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "info.txt");
+				myfile2 = new File(SubjectList.get(1) + "info.txt");
 				info2.readFromFile(myfile2, InfoArea2);
 		
 				
@@ -1230,7 +1230,7 @@ public class InformationGUI extends JFrame {
 			
 				
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "info.txt");
+				myfile3 = new File(SubjectList.get(2) + "info.txt");
 				info3.readFromFile(myfile3, InfoArea3);
 				
 				
@@ -1248,7 +1248,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				myfile4 = new File(SubjectList.get(3).getName() + "info.txt");
+				myfile4 = new File(SubjectList.get(3) + "info.txt");
 				info4.readFromFile(myfile4, InfoArea4);
 				
 				
@@ -1265,7 +1265,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				myfile5 = new File(SubjectList.get(4).getName() + "info.txt");
+				myfile5 = new File(SubjectList.get(4) + "info.txt");
 				info5.readFromFile(myfile5, InfoArea5);
 			
 				
@@ -1283,7 +1283,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				myfile6 = new File(SubjectList.get(5).getName() + "info.txt");
+				myfile6 = new File(SubjectList.get(5) + "info.txt");
 				info6.readFromFile(myfile6, InfoArea6);
 				
 				exams6 = new JButton("Δείτε τα παλία θέματα.");
@@ -1299,7 +1299,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				myfile7 = new File(SubjectList.get(6).getName() + "info.txt");
+				myfile7 = new File(SubjectList.get(6) + "info.txt");
 				info7.readFromFile(myfile7, InfoArea7);
 				
 				
@@ -1316,7 +1316,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				File myfile8 = new File(SubjectList.get(7).getName() + "info.txt");
+				File myfile8 = new File(SubjectList.get(7) + "info.txt");
 				info8.readFromFile(myfile8, InfoArea8);
 				
 				
@@ -1334,7 +1334,7 @@ public class InformationGUI extends JFrame {
 				
 			
 				
-				infoLabel1 = new JLabel(SubjectList.get(0).getName());
+				infoLabel1 = new JLabel(SubjectList.get(0));
 				infoLabel1.setSize(new Dimension(400, 30));
 				infoLabel1.setVisible(false);
 				infoLabel1.setOpaque(true);
@@ -1342,7 +1342,7 @@ public class InformationGUI extends JFrame {
 				infoLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel2 = new JLabel(SubjectList.get(1).getName());
+				infoLabel2 = new JLabel(SubjectList.get(1));
 				infoLabel2.setSize(new Dimension(400, 30));
 				infoLabel2.setVisible(false);
 				infoLabel2.setOpaque(true);
@@ -1350,7 +1350,7 @@ public class InformationGUI extends JFrame {
 				infoLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel3 = new JLabel(SubjectList.get(2).getName());
+				infoLabel3 = new JLabel(SubjectList.get(2));
 				infoLabel3.setSize(new Dimension(400, 30));
 				infoLabel3.setVisible(false);
 				infoLabel3.setOpaque(true);
@@ -1358,7 +1358,7 @@ public class InformationGUI extends JFrame {
 				infoLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel4 = new JLabel(SubjectList.get(3).getName());
+				infoLabel4 = new JLabel(SubjectList.get(3));
 				infoLabel4.setSize(new Dimension(400, 30));
 				infoLabel4.setVisible(false);
 				infoLabel4.setOpaque(true);
@@ -1366,7 +1366,7 @@ public class InformationGUI extends JFrame {
 				infoLabel4.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel4.setVerticalTextPosition(JLabel.CENTER);
 				
-				 infoLabel5 = new JLabel(SubjectList.get(4).getName());
+				 infoLabel5 = new JLabel(SubjectList.get(4));
 				infoLabel5.setSize(new Dimension(400, 30));
 				infoLabel5.setVisible(false);
 				infoLabel5.setOpaque(true);
@@ -1374,7 +1374,7 @@ public class InformationGUI extends JFrame {
 				infoLabel5.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel5.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel6 = new JLabel(SubjectList.get(5).getName());
+				infoLabel6 = new JLabel(SubjectList.get(5));
 				infoLabel6.setSize(new Dimension(400, 30));
 				infoLabel6.setVisible(false);
 				infoLabel6.setOpaque(true);
@@ -1382,7 +1382,7 @@ public class InformationGUI extends JFrame {
 				infoLabel6.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel6.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel7 = new JLabel(SubjectList.get(6).getName());
+				infoLabel7 = new JLabel(SubjectList.get(6));
 				infoLabel7.setSize(new Dimension(400, 30));
 				infoLabel7.setVisible(false);
 				infoLabel7.setOpaque(true);
@@ -1390,7 +1390,7 @@ public class InformationGUI extends JFrame {
 				infoLabel7.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel7.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel infoLabel8 = new JLabel(SubjectList.get(7).getName());
+				JLabel infoLabel8 = new JLabel(SubjectList.get(7));
 				infoLabel8.setSize(new Dimension(400, 30));
 				infoLabel8.setVisible(false);
 				infoLabel8.setOpaque(true);
@@ -1399,7 +1399,7 @@ public class InformationGUI extends JFrame {
 				infoLabel8.setVerticalTextPosition(JLabel.CENTER);
 				
 				InfoPanel.add(infoLabel1);
-				InfoPanel.add(scroll1);
+				InfoPanel.add(InfoArea1);
 				InfoPanel.add(exams1);
 				
 				InfoPanel.add(infoLabel2);
@@ -1465,7 +1465,7 @@ public class InformationGUI extends JFrame {
 				break;
 				
 			case 9:
-				myfile1 = new File(SubjectList.get(0).getName() + "info.txt");
+				myfile1 = new File(SubjectList.get(0) + "info.txt");
 				info1.readFromFile(myfile1, InfoArea1);
 			
 				 
@@ -1484,7 +1484,7 @@ public class InformationGUI extends JFrame {
 					
 					
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "info.txt");
+				myfile2 = new File(SubjectList.get(1) + "info.txt");
 				info2.readFromFile(myfile2, InfoArea2);
 		
 				
@@ -1503,7 +1503,7 @@ public class InformationGUI extends JFrame {
 			
 				
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "info.txt");
+				myfile3 = new File(SubjectList.get(2) + "info.txt");
 				info3.readFromFile(myfile3, InfoArea3);
 				
 				
@@ -1521,7 +1521,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				myfile4 = new File(SubjectList.get(3).getName() + "info.txt");
+				myfile4 = new File(SubjectList.get(3) + "info.txt");
 				info4.readFromFile(myfile4, InfoArea4);
 				
 				
@@ -1538,7 +1538,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				myfile5 = new File(SubjectList.get(4).getName() + "info.txt");
+				myfile5 = new File(SubjectList.get(4) + "info.txt");
 				info5.readFromFile(myfile5, InfoArea5);
 			
 				
@@ -1556,7 +1556,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				myfile6 = new File(SubjectList.get(5).getName() + "info.txt");
+				myfile6 = new File(SubjectList.get(5) + "info.txt");
 				info6.readFromFile(myfile6, InfoArea6);
 				
 				exams6 = new JButton("Δείτε τα παλία θέματα.");
@@ -1572,7 +1572,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				myfile7 = new File(SubjectList.get(6).getName() + "info.txt");
+				myfile7 = new File(SubjectList.get(6) + "info.txt");
 				info7.readFromFile(myfile7, InfoArea7);
 				
 				
@@ -1589,7 +1589,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				myfile8 = new File(SubjectList.get(7).getName() + "info.txt");
+				myfile8 = new File(SubjectList.get(7) + "info.txt");
 				info8.readFromFile(myfile8, InfoArea8);
 				
 				
@@ -1606,7 +1606,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				File myfile9 = new File(SubjectList.get(8).getName() + "info.txt");
+				File myfile9 = new File(SubjectList.get(8) + "info.txt");
 				info9.readFromFile(myfile9, InfoArea9);
 				
 				
@@ -1626,7 +1626,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				infoLabel1 = new JLabel(SubjectList.get(0).getName());
+				infoLabel1 = new JLabel(SubjectList.get(0));
 				infoLabel1.setSize(new Dimension(400, 30));
 				infoLabel1.setVisible(false);
 				infoLabel1.setOpaque(true);
@@ -1634,7 +1634,7 @@ public class InformationGUI extends JFrame {
 				infoLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel2 = new JLabel(SubjectList.get(1).getName());
+				infoLabel2 = new JLabel(SubjectList.get(1));
 				infoLabel2.setSize(new Dimension(400, 30));
 				infoLabel2.setVisible(false);
 				infoLabel2.setOpaque(true);
@@ -1642,7 +1642,7 @@ public class InformationGUI extends JFrame {
 				infoLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel3 = new JLabel(SubjectList.get(2).getName());
+				infoLabel3 = new JLabel(SubjectList.get(2));
 				infoLabel3.setSize(new Dimension(400, 30));
 				infoLabel3.setVisible(false);
 				infoLabel3.setOpaque(true);
@@ -1650,7 +1650,7 @@ public class InformationGUI extends JFrame {
 				infoLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel4 = new JLabel(SubjectList.get(3).getName());
+				infoLabel4 = new JLabel(SubjectList.get(3));
 				infoLabel4.setSize(new Dimension(400, 30));
 				infoLabel4.setVisible(false);
 				infoLabel4.setOpaque(true);
@@ -1658,7 +1658,7 @@ public class InformationGUI extends JFrame {
 				infoLabel4.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel4.setVerticalTextPosition(JLabel.CENTER);
 				
-				 infoLabel5 = new JLabel(SubjectList.get(4).getName());
+				 infoLabel5 = new JLabel(SubjectList.get(4));
 				infoLabel5.setSize(new Dimension(400, 30));
 				infoLabel5.setVisible(false);
 				infoLabel5.setOpaque(true);
@@ -1666,7 +1666,7 @@ public class InformationGUI extends JFrame {
 				infoLabel5.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel5.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel6 = new JLabel(SubjectList.get(5).getName());
+				infoLabel6 = new JLabel(SubjectList.get(5));
 				infoLabel6.setSize(new Dimension(400, 30));
 				infoLabel6.setVisible(false);
 				infoLabel6.setOpaque(true);
@@ -1674,7 +1674,7 @@ public class InformationGUI extends JFrame {
 				infoLabel6.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel6.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel7 = new JLabel(SubjectList.get(6).getName());
+				infoLabel7 = new JLabel(SubjectList.get(6));
 				infoLabel7.setSize(new Dimension(400, 30));
 				infoLabel7.setVisible(false);
 				infoLabel7.setOpaque(true);
@@ -1682,7 +1682,7 @@ public class InformationGUI extends JFrame {
 				infoLabel7.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel7.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel8 = new JLabel(SubjectList.get(7).getName());
+				infoLabel8 = new JLabel(SubjectList.get(7));
 				infoLabel8.setSize(new Dimension(400, 30));
 				infoLabel8.setVisible(false);
 				infoLabel8.setOpaque(true);
@@ -1690,7 +1690,7 @@ public class InformationGUI extends JFrame {
 				infoLabel8.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel8.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel infoLabel9 = new JLabel(SubjectList.get(8).getName());
+				JLabel infoLabel9 = new JLabel(SubjectList.get(8));
 				infoLabel9.setSize(new Dimension(400, 30));
 				infoLabel9.setVisible(false);
 				infoLabel9.setOpaque(true);
@@ -1774,7 +1774,7 @@ public class InformationGUI extends JFrame {
 				
 			case 10:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "info.txt");
+				myfile1 = new File(SubjectList.get(0) + "info.txt");
 				info1.readFromFile(myfile1, InfoArea1);
 			
 				 
@@ -1793,7 +1793,7 @@ public class InformationGUI extends JFrame {
 					
 					
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "info.txt");
+				myfile2 = new File(SubjectList.get(1) + "info.txt");
 				info2.readFromFile(myfile2, InfoArea2);
 		
 				
@@ -1812,7 +1812,7 @@ public class InformationGUI extends JFrame {
 			
 				
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "info.txt");
+				myfile3 = new File(SubjectList.get(2) + "info.txt");
 				info3.readFromFile(myfile3, InfoArea3);
 				
 				
@@ -1830,7 +1830,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				myfile4 = new File(SubjectList.get(3).getName() + "info.txt");
+				myfile4 = new File(SubjectList.get(3) + "info.txt");
 				info4.readFromFile(myfile4, InfoArea4);
 				
 				
@@ -1847,7 +1847,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				myfile5 = new File(SubjectList.get(4).getName() + "info.txt");
+				myfile5 = new File(SubjectList.get(4) + "info.txt");
 				info5.readFromFile(myfile5, InfoArea5);
 			
 				
@@ -1865,7 +1865,7 @@ public class InformationGUI extends JFrame {
 				
 				
 				
-				myfile6 = new File(SubjectList.get(5).getName() + "info.txt");
+				myfile6 = new File(SubjectList.get(5) + "info.txt");
 				info6.readFromFile(myfile6, InfoArea6);
 				
 				exams6 = new JButton("Δείτε τα παλία θέματα.");
@@ -1881,7 +1881,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				myfile7 = new File(SubjectList.get(6).getName() + "info.txt");
+				myfile7 = new File(SubjectList.get(6) + "info.txt");
 				info7.readFromFile(myfile7, InfoArea7);
 				
 				
@@ -1898,7 +1898,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				myfile8 = new File(SubjectList.get(7).getName() + "info.txt");
+				myfile8 = new File(SubjectList.get(7) + "info.txt");
 				info8.readFromFile(myfile8, InfoArea8);
 				
 				
@@ -1915,7 +1915,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				myfile9 = new File(SubjectList.get(8).getName() + "info.txt");
+				myfile9 = new File(SubjectList.get(8) + "info.txt");
 				info9.readFromFile(myfile9, InfoArea9);
 				
 				
@@ -1932,7 +1932,7 @@ public class InformationGUI extends JFrame {
 				});
 				
 				
-				File myfile10= new File(SubjectList.get(9).getName() + "info.txt");
+				File myfile10= new File(SubjectList.get(9) + "info.txt");
 				info10.readFromFile(myfile10, InfoArea10);
 			
 				
@@ -1948,7 +1948,7 @@ public class InformationGUI extends JFrame {
 					}
 				});
 				
-				infoLabel1 = new JLabel(SubjectList.get(0).getName());
+				infoLabel1 = new JLabel(SubjectList.get(0));
 				infoLabel1.setSize(new Dimension(400, 30));
 				infoLabel1.setVisible(false);
 				infoLabel1.setOpaque(true);
@@ -1956,7 +1956,7 @@ public class InformationGUI extends JFrame {
 				infoLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel2 = new JLabel(SubjectList.get(1).getName());
+				infoLabel2 = new JLabel(SubjectList.get(1));
 				infoLabel2.setSize(new Dimension(400, 30));
 				infoLabel2.setVisible(false);
 				infoLabel2.setOpaque(true);
@@ -1964,7 +1964,7 @@ public class InformationGUI extends JFrame {
 				infoLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel3 = new JLabel(SubjectList.get(2).getName());
+				infoLabel3 = new JLabel(SubjectList.get(2));
 				infoLabel3.setSize(new Dimension(400, 30));
 				infoLabel3.setVisible(false);
 				infoLabel3.setOpaque(true);
@@ -1972,7 +1972,7 @@ public class InformationGUI extends JFrame {
 				infoLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel4 = new JLabel(SubjectList.get(3).getName());
+				infoLabel4 = new JLabel(SubjectList.get(3));
 				infoLabel4.setSize(new Dimension(400, 30));
 				infoLabel4.setVisible(false);
 				infoLabel4.setOpaque(true);
@@ -1980,7 +1980,7 @@ public class InformationGUI extends JFrame {
 				infoLabel4.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel4.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel5 = new JLabel(SubjectList.get(4).getName());
+				infoLabel5 = new JLabel(SubjectList.get(4));
 				infoLabel5.setSize(new Dimension(400, 30));
 				infoLabel5.setVisible(false);
 				infoLabel5.setOpaque(true);
@@ -1988,7 +1988,7 @@ public class InformationGUI extends JFrame {
 				infoLabel5.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel5.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel6 = new JLabel(SubjectList.get(5).getName());
+				infoLabel6 = new JLabel(SubjectList.get(5));
 				infoLabel6.setSize(new Dimension(400, 30));
 				infoLabel6.setVisible(false);
 				infoLabel6.setOpaque(true);
@@ -1996,7 +1996,7 @@ public class InformationGUI extends JFrame {
 				infoLabel6.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel6.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel7 = new JLabel(SubjectList.get(6).getName());
+				infoLabel7 = new JLabel(SubjectList.get(6));
 				infoLabel7.setSize(new Dimension(400, 30));
 				infoLabel7.setVisible(false);
 				infoLabel7.setOpaque(true);
@@ -2004,7 +2004,7 @@ public class InformationGUI extends JFrame {
 				infoLabel7.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel7.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel8 = new JLabel(SubjectList.get(7).getName());
+				infoLabel8 = new JLabel(SubjectList.get(7));
 				infoLabel8.setSize(new Dimension(400, 30));
 				infoLabel8.setVisible(false);
 				infoLabel8.setOpaque(true);
@@ -2012,7 +2012,7 @@ public class InformationGUI extends JFrame {
 				infoLabel8.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel8.setVerticalTextPosition(JLabel.CENTER);
 				
-				infoLabel9 = new JLabel(SubjectList.get(8).getName());
+				infoLabel9 = new JLabel(SubjectList.get(8));
 				infoLabel9.setSize(new Dimension(400, 30));
 				infoLabel9.setVisible(false);
 				infoLabel9.setOpaque(true);
@@ -2020,7 +2020,7 @@ public class InformationGUI extends JFrame {
 				infoLabel9.setHorizontalTextPosition(JLabel.CENTER);
 				infoLabel9.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel infoLabel10 = new JLabel(SubjectList.get(9).getName());
+				JLabel infoLabel10 = new JLabel(SubjectList.get(9));
 				infoLabel10.setSize(new Dimension(400, 30));
 				infoLabel10.setVisible(false);
 				infoLabel10.setOpaque(true);
@@ -2067,8 +2067,6 @@ public class InformationGUI extends JFrame {
 				
 				InfoPanel.add(infoLabel10);
 				InfoPanel.add(InfoArea10);
-				scroll1.setVisible(true);
-				NoteFrame.add(scroll1);
 				InfoPanel.add(exams10);
 				
 				

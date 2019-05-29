@@ -59,7 +59,7 @@ public class Notes {
 			try {
 				if(!myFile.exists()) {
 					text.setText("");
-					System.out.println("The file does not exist");
+					System.out.println("The file does not exist" + myFile);
 				}
 				else {
 					Scanner  NoteReader = new Scanner(myFile);

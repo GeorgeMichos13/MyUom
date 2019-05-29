@@ -1,13 +1,19 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
+import java.io.File;
 import java.util.ArrayList;
-import javax.swing.*;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class notesGUI extends JFrame {
 
@@ -23,17 +29,17 @@ public class notesGUI extends JFrame {
 	private JPanel ButtonPanel8 = new JPanel();
 	private JPanel ButtonPanel9 = new JPanel();
 	private JPanel ButtonPanel10 = new JPanel();
-	private ArrayList<CourseStats> SubjectList = new ArrayList<CourseStats>();
+	private ArrayList<String> SubjectList = new ArrayList<String>();
 	private JTextArea NoteArea = new JTextArea();
 	private JScrollPane scroll = new JScrollPane(NotePanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	private static final int WIDTH = 1200;
 	private static final int HEIGHT = 900;
 	private JButton backButton;
-	public void setSubjectList(ArrayList<CourseStats> array) {
+	public void setSubjectList(ArrayList<String> array) {
 		SubjectList.addAll(array);
 	}
 
-	public notesGUI(ArrayList<CourseStats> array) {
+	public notesGUI(ArrayList<String> array) {
 
 		
 		SubjectList.addAll(array);
@@ -41,6 +47,7 @@ public class notesGUI extends JFrame {
 		System.out.println(SubjectList.size());
 		backButton = new JButton("Back");
 		NotePanel.add(backButton);
+		
 		
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent back) {
@@ -192,7 +199,7 @@ public class notesGUI extends JFrame {
 				
 				
 				
-				 File myfile1 = new File(SubjectList.get(0).getName() + "myUomNotes.txt");
+				 File myfile1 = new File(SubjectList.get(0) + "myUomNotes.txt");
 				 note1.readFromFile(myfile1, NoteArea1);
 				 MyJButton set1 = new MyJButton("Αποθηκευση",myfile1);
 				 
@@ -228,7 +235,7 @@ public class notesGUI extends JFrame {
 						}
 					});
 					
-				JLabel NoteLabel1 = new JLabel(SubjectList.get(0).getName());
+				JLabel NoteLabel1 = new JLabel(SubjectList.get(0));
 				NoteLabel1.setSize(new Dimension(400, 30));
 				NoteLabel1.setVisible(false);
 				NoteLabel1.setOpaque(true);
@@ -250,7 +257,7 @@ public class notesGUI extends JFrame {
 				break;
 			case 2:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "myUomNotes.txt");
+				myfile1 = new File(SubjectList.get(0) + "myUomNotes.txt");
 				note1.readFromFile(myfile1, NoteArea1);
 				set1 = new MyJButton("Αποθηκευση",myfile1);
 				 
@@ -286,7 +293,7 @@ public class notesGUI extends JFrame {
 						}
 					});
 					
-				File myfile2 = new File(SubjectList.get(1).getName() + "myUomNotes.txt");
+				File myfile2 = new File(SubjectList.get(1) + "myUomNotes.txt");
 				note2.readFromFile(myfile2, NoteArea2);
 				MyJButton set2 = new MyJButton("Αποθηκευση",myfile2);
 				
@@ -321,7 +328,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 					
-				NoteLabel1 = new JLabel(SubjectList.get(0).getName());
+				NoteLabel1 = new JLabel(SubjectList.get(0));
 				NoteLabel1.setSize(new Dimension(400, 30));
 				NoteLabel1.setVisible(false);
 				NoteLabel1.setOpaque(true);
@@ -329,7 +336,7 @@ public class notesGUI extends JFrame {
 				NoteLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel NoteLabel2 = new JLabel(SubjectList.get(1).getName());
+				JLabel NoteLabel2 = new JLabel(SubjectList.get(1));
 				NoteLabel2.setSize(new Dimension(400, 30));
 				NoteLabel2.setVisible(false);
 				NoteLabel2.setOpaque(true);
@@ -356,7 +363,7 @@ public class notesGUI extends JFrame {
 				break;
 			case 3:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "myUomNotes.txt");
+				myfile1 = new File(SubjectList.get(0) + "myUomNotes.txt");
 				note1.readFromFile(myfile1, NoteArea1);
 				set1 = new MyJButton("Αποθηκευση",myfile1);
 				 
@@ -392,7 +399,7 @@ public class notesGUI extends JFrame {
 						}
 					});
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "myUomNotes.txt");
+				myfile2 = new File(SubjectList.get(1) + "myUomNotes.txt");
 				note2.readFromFile(myfile2, NoteArea2);
 				set2 = new MyJButton("Αποθηκευση",myfile2);
 				
@@ -427,7 +434,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				File myfile3 = new File(SubjectList.get(2).getName() + "myUomNotes.txt");
+				File myfile3 = new File(SubjectList.get(2) + "myUomNotes.txt");
 				note3.readFromFile(myfile3, NoteArea3);
 				MyJButton set3 = new MyJButton("Αποθηκευση",myfile3);
 				
@@ -462,7 +469,7 @@ public class notesGUI extends JFrame {
 				});
 				
 				
-				NoteLabel1 = new JLabel(SubjectList.get(0).getName());
+				NoteLabel1 = new JLabel(SubjectList.get(0));
 				NoteLabel1.setSize(new Dimension(400, 30));
 				NoteLabel1.setVisible(false);
 				NoteLabel1.setOpaque(true);
@@ -470,7 +477,7 @@ public class notesGUI extends JFrame {
 				NoteLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel2 = new JLabel(SubjectList.get(1).getName());
+				NoteLabel2 = new JLabel(SubjectList.get(1));
 				NoteLabel2.setSize(new Dimension(400, 30));
 				NoteLabel2.setVisible(false);
 				NoteLabel2.setOpaque(true);
@@ -478,7 +485,7 @@ public class notesGUI extends JFrame {
 				NoteLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel NoteLabel3 = new JLabel(SubjectList.get(2).getName());
+				JLabel NoteLabel3 = new JLabel(SubjectList.get(2));
 				NoteLabel3.setSize(new Dimension(400, 30));
 				NoteLabel3.setVisible(false);
 				NoteLabel3.setOpaque(true);
@@ -516,7 +523,7 @@ public class notesGUI extends JFrame {
 				break;
 			case 4:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "myUomNotes.txt");
+				myfile1 = new File(SubjectList.get(0) + "myUomNotes.txt");
 				note1.readFromFile(myfile1, NoteArea1);
 				set1 = new MyJButton("Αποθηκευση",myfile1);
 				 
@@ -552,7 +559,7 @@ public class notesGUI extends JFrame {
 						}
 					});
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "myUomNotes.txt");
+				myfile2 = new File(SubjectList.get(1) + "myUomNotes.txt");
 				note2.readFromFile(myfile2, NoteArea2);
 				set2 = new MyJButton("Αποθηκευση",myfile2);
 				
@@ -587,7 +594,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "myUomNotes.txt");
+				myfile3 = new File(SubjectList.get(2) + "myUomNotes.txt");
 				note3.readFromFile(myfile3, NoteArea3);
 				set3 = new MyJButton("Αποθηκευση",myfile3);
 				
@@ -621,7 +628,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				File myfile4 = new File(SubjectList.get(3).getName() + "myUomNotes.txt");
+				File myfile4 = new File(SubjectList.get(3) + "myUomNotes.txt");
 				note4.readFromFile(myfile4, NoteArea4);
 				MyJButton set4 = new MyJButton("Αποθηκευση",myfile4);
 				
@@ -656,7 +663,7 @@ public class notesGUI extends JFrame {
 				
 				
 				
-				NoteLabel1 = new JLabel(SubjectList.get(0).getName());
+				NoteLabel1 = new JLabel(SubjectList.get(0));
 				NoteLabel1.setSize(new Dimension(400, 30));
 				NoteLabel1.setVisible(false);
 				NoteLabel1.setOpaque(true);
@@ -664,7 +671,7 @@ public class notesGUI extends JFrame {
 				NoteLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel2 = new JLabel(SubjectList.get(1).getName());
+				NoteLabel2 = new JLabel(SubjectList.get(1));
 				NoteLabel2.setSize(new Dimension(400, 30));
 				NoteLabel2.setVisible(false);
 				NoteLabel2.setOpaque(true);
@@ -672,7 +679,7 @@ public class notesGUI extends JFrame {
 				NoteLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel3 = new JLabel(SubjectList.get(2).getName());
+				NoteLabel3 = new JLabel(SubjectList.get(2));
 				NoteLabel3.setSize(new Dimension(400, 30));
 				NoteLabel3.setVisible(false);
 				NoteLabel3.setOpaque(true);
@@ -680,7 +687,7 @@ public class notesGUI extends JFrame {
 				NoteLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel NoteLabel4 = new JLabel(SubjectList.get(3).getName());
+				JLabel NoteLabel4 = new JLabel(SubjectList.get(3));
 				NoteLabel4.setSize(new Dimension(400, 30));
 				NoteLabel4.setVisible(false);
 				NoteLabel4.setOpaque(true);
@@ -723,7 +730,7 @@ public class notesGUI extends JFrame {
 				break;
 			case 5:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "myUomNotes.txt");
+				myfile1 = new File(SubjectList.get(0) + "myUomNotes.txt");
 				note1.readFromFile(myfile1, NoteArea1);
 				set1 = new MyJButton("Αποθηκευση",myfile1);
 				 
@@ -759,7 +766,7 @@ public class notesGUI extends JFrame {
 						}
 					});
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "myUomNotes.txt");
+				myfile2 = new File(SubjectList.get(1) + "myUomNotes.txt");
 				note2.readFromFile(myfile2, NoteArea2);
 				set2 = new MyJButton("Αποθηκευση",myfile2);
 				
@@ -794,7 +801,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "myUomNotes.txt");
+				myfile3 = new File(SubjectList.get(2) + "myUomNotes.txt");
 				note3.readFromFile(myfile3, NoteArea3);
 				set3 = new MyJButton("Αποθηκευση",myfile3);
 				
@@ -828,7 +835,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile4 = new File(SubjectList.get(3).getName() + "myUomNotes.txt");
+				myfile4 = new File(SubjectList.get(3) + "myUomNotes.txt");
 				note4.readFromFile(myfile4, NoteArea4);
 				set4 = new MyJButton("Αποθηκευση",myfile4);
 				
@@ -861,7 +868,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				File myfile5 = new File(SubjectList.get(4).getName() + "myUomNotes.txt");
+				File myfile5 = new File(SubjectList.get(4) + "myUomNotes.txt");
 				note5.readFromFile(myfile5, NoteArea5);
 				MyJButton set5 = new MyJButton("Αποθηκευση",myfile5);
 				
@@ -897,7 +904,7 @@ public class notesGUI extends JFrame {
 				
 				
 				
-				NoteLabel1 = new JLabel(SubjectList.get(0).getName());
+				NoteLabel1 = new JLabel(SubjectList.get(0));
 				NoteLabel1.setSize(new Dimension(400, 30));
 				NoteLabel1.setVisible(false);
 				NoteLabel1.setOpaque(true);
@@ -905,7 +912,7 @@ public class notesGUI extends JFrame {
 				NoteLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel2 = new JLabel(SubjectList.get(1).getName());
+				NoteLabel2 = new JLabel(SubjectList.get(1));
 				NoteLabel2.setSize(new Dimension(400, 30));
 				NoteLabel2.setVisible(false);
 				NoteLabel2.setOpaque(true);
@@ -913,7 +920,7 @@ public class notesGUI extends JFrame {
 				NoteLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel3 = new JLabel(SubjectList.get(2).getName());
+				NoteLabel3 = new JLabel(SubjectList.get(2));
 				NoteLabel3.setSize(new Dimension(400, 30));
 				NoteLabel3.setVisible(false);
 				NoteLabel3.setOpaque(true);
@@ -921,7 +928,7 @@ public class notesGUI extends JFrame {
 				NoteLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel4 = new JLabel(SubjectList.get(3).getName());
+				NoteLabel4 = new JLabel(SubjectList.get(3));
 				NoteLabel4.setSize(new Dimension(400, 30));
 				NoteLabel4.setVisible(false);
 				NoteLabel4.setOpaque(true);
@@ -929,7 +936,7 @@ public class notesGUI extends JFrame {
 				NoteLabel4.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel4.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel NoteLabel5 = new JLabel(SubjectList.get(4).getName());
+				JLabel NoteLabel5 = new JLabel(SubjectList.get(4));
 				NoteLabel5.setSize(new Dimension(400, 30));
 				NoteLabel5.setVisible(false);
 				NoteLabel5.setOpaque(true);
@@ -980,7 +987,7 @@ public class notesGUI extends JFrame {
 				
 			case 6:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "myUomNotes.txt");
+				myfile1 = new File(SubjectList.get(0) + "myUomNotes.txt");
 				note1.readFromFile(myfile1, NoteArea1);
 				set1 = new MyJButton("Αποθηκευση",myfile1);
 				 
@@ -1016,7 +1023,7 @@ public class notesGUI extends JFrame {
 						}
 					});
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "myUomNotes.txt");
+				myfile2 = new File(SubjectList.get(1) + "myUomNotes.txt");
 				note2.readFromFile(myfile2, NoteArea2);
 				set2 = new MyJButton("Αποθηκευση",myfile2);
 				
@@ -1051,7 +1058,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "myUomNotes.txt");
+				myfile3 = new File(SubjectList.get(2) + "myUomNotes.txt");
 				note3.readFromFile(myfile3, NoteArea3);
 				set3 = new MyJButton("Αποθηκευση",myfile3);
 				
@@ -1085,7 +1092,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile4 = new File(SubjectList.get(3).getName() + "myUomNotes.txt");
+				myfile4 = new File(SubjectList.get(3) + "myUomNotes.txt");
 				note4.readFromFile(myfile4, NoteArea4);
 				set4 = new MyJButton("Αποθηκευση",myfile4);
 				
@@ -1118,7 +1125,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile5 = new File(SubjectList.get(4).getName() + "myUomNotes.txt");
+				myfile5 = new File(SubjectList.get(4) + "myUomNotes.txt");
 				note5.readFromFile(myfile5, NoteArea5);
 				set5 = new MyJButton("Αποθηκευση",myfile5);
 				
@@ -1152,7 +1159,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				File myfile6 = new File(SubjectList.get(5).getName() + "myUomNotes.txt");
+				File myfile6 = new File(SubjectList.get(5) + "myUomNotes.txt");
 				note6.readFromFile(myfile6, NoteArea6);
 				MyJButton set6 = new MyJButton("Αποθηκευση",myfile6);
 				JButton write6 = new JButton("Σημειωσε");
@@ -1186,7 +1193,7 @@ public class notesGUI extends JFrame {
 				});
 				
 				
-				NoteLabel1 = new JLabel(SubjectList.get(0).getName());
+				NoteLabel1 = new JLabel(SubjectList.get(0));
 				NoteLabel1.setSize(new Dimension(400, 30));
 				NoteLabel1.setVisible(false);
 				NoteLabel1.setOpaque(true);
@@ -1194,7 +1201,7 @@ public class notesGUI extends JFrame {
 				NoteLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel2 = new JLabel(SubjectList.get(1).getName());
+				NoteLabel2 = new JLabel(SubjectList.get(1));
 				NoteLabel2.setSize(new Dimension(400, 30));
 				NoteLabel2.setVisible(false);
 				NoteLabel2.setOpaque(true);
@@ -1202,7 +1209,7 @@ public class notesGUI extends JFrame {
 				NoteLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel3 = new JLabel(SubjectList.get(2).getName());
+				NoteLabel3 = new JLabel(SubjectList.get(2));
 				NoteLabel3.setSize(new Dimension(400, 30));
 				NoteLabel3.setVisible(false);
 				NoteLabel3.setOpaque(true);
@@ -1210,7 +1217,7 @@ public class notesGUI extends JFrame {
 				NoteLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel4 = new JLabel(SubjectList.get(3).getName());
+				NoteLabel4 = new JLabel(SubjectList.get(3));
 				NoteLabel4.setSize(new Dimension(400, 30));
 				NoteLabel4.setVisible(false);
 				NoteLabel4.setOpaque(true);
@@ -1218,7 +1225,7 @@ public class notesGUI extends JFrame {
 				NoteLabel4.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel4.setVerticalTextPosition(JLabel.CENTER);
 				
-				 NoteLabel5 = new JLabel(SubjectList.get(4).getName());
+				 NoteLabel5 = new JLabel(SubjectList.get(4));
 				NoteLabel5.setSize(new Dimension(400, 30));
 				NoteLabel5.setVisible(false);
 				NoteLabel5.setOpaque(true);
@@ -1226,7 +1233,7 @@ public class notesGUI extends JFrame {
 				NoteLabel5.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel5.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel NoteLabel6 = new JLabel(SubjectList.get(5).getName());
+				JLabel NoteLabel6 = new JLabel(SubjectList.get(5));
 				NoteLabel6.setSize(new Dimension(400, 30));
 				NoteLabel6.setVisible(false);
 				NoteLabel6.setOpaque(true);
@@ -1287,7 +1294,7 @@ public class notesGUI extends JFrame {
 				 
 			case 7:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "myUomNotes.txt");
+				myfile1 = new File(SubjectList.get(0) + "myUomNotes.txt");
 				note1.readFromFile(myfile1, NoteArea1);
 				set1 = new MyJButton("Αποθηκευση",myfile1);
 				 
@@ -1323,7 +1330,7 @@ public class notesGUI extends JFrame {
 						}
 					});
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "myUomNotes.txt");
+				myfile2 = new File(SubjectList.get(1) + "myUomNotes.txt");
 				note2.readFromFile(myfile2, NoteArea2);
 				set2 = new MyJButton("Αποθηκευση",myfile2);
 				
@@ -1358,7 +1365,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "myUomNotes.txt");
+				myfile3 = new File(SubjectList.get(2) + "myUomNotes.txt");
 				note3.readFromFile(myfile3, NoteArea3);
 				set3 = new MyJButton("Αποθηκευση",myfile3);
 				
@@ -1392,7 +1399,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile4 = new File(SubjectList.get(3).getName() + "myUomNotes.txt");
+				myfile4 = new File(SubjectList.get(3) + "myUomNotes.txt");
 				note4.readFromFile(myfile4, NoteArea4);
 				set4 = new MyJButton("Αποθηκευση",myfile4);
 				
@@ -1425,7 +1432,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile5 = new File(SubjectList.get(4).getName() + "myUomNotes.txt");
+				myfile5 = new File(SubjectList.get(4) + "myUomNotes.txt");
 				note5.readFromFile(myfile5, NoteArea5);
 				set5 = new MyJButton("Αποθηκευση",myfile5);
 				
@@ -1459,7 +1466,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile6 = new File(SubjectList.get(5).getName() + "myUomNotes.txt");
+				myfile6 = new File(SubjectList.get(5) + "myUomNotes.txt");
 				note6.readFromFile(myfile6, NoteArea6);
 				set6 = new MyJButton("Αποθηκευση",myfile6);
 				write6 = new JButton("Σημειωσε");
@@ -1492,7 +1499,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				File myfile7 = new File(SubjectList.get(6).getName() + "myUomNotes.txt");
+				File myfile7 = new File(SubjectList.get(6) + "myUomNotes.txt");
 				note7.readFromFile(myfile7, NoteArea7);
 				MyJButton set7 = new MyJButton("Αποθηκευση",myfile7);
 				
@@ -1527,7 +1534,7 @@ public class notesGUI extends JFrame {
 				});
 				
 				
-				NoteLabel1 = new JLabel(SubjectList.get(0).getName());
+				NoteLabel1 = new JLabel(SubjectList.get(0));
 				NoteLabel1.setSize(new Dimension(400, 30));
 				NoteLabel1.setVisible(false);
 				NoteLabel1.setOpaque(true);
@@ -1535,7 +1542,7 @@ public class notesGUI extends JFrame {
 				NoteLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel2 = new JLabel(SubjectList.get(1).getName());
+				NoteLabel2 = new JLabel(SubjectList.get(1));
 				NoteLabel2.setSize(new Dimension(400, 30));
 				NoteLabel2.setVisible(false);
 				NoteLabel2.setOpaque(true);
@@ -1543,7 +1550,7 @@ public class notesGUI extends JFrame {
 				NoteLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel3 = new JLabel(SubjectList.get(2).getName());
+				NoteLabel3 = new JLabel(SubjectList.get(2));
 				NoteLabel3.setSize(new Dimension(400, 30));
 				NoteLabel3.setVisible(false);
 				NoteLabel3.setOpaque(true);
@@ -1551,7 +1558,7 @@ public class notesGUI extends JFrame {
 				NoteLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel4 = new JLabel(SubjectList.get(3).getName());
+				NoteLabel4 = new JLabel(SubjectList.get(3));
 				NoteLabel4.setSize(new Dimension(400, 30));
 				NoteLabel4.setVisible(false);
 				NoteLabel4.setOpaque(true);
@@ -1559,7 +1566,7 @@ public class notesGUI extends JFrame {
 				NoteLabel4.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel4.setVerticalTextPosition(JLabel.CENTER);
 				
-				 NoteLabel5 = new JLabel(SubjectList.get(4).getName());
+				 NoteLabel5 = new JLabel(SubjectList.get(4));
 				NoteLabel5.setSize(new Dimension(400, 30));
 				NoteLabel5.setVisible(false);
 				NoteLabel5.setOpaque(true);
@@ -1567,7 +1574,7 @@ public class notesGUI extends JFrame {
 				NoteLabel5.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel5.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel6 = new JLabel(SubjectList.get(5).getName());
+				NoteLabel6 = new JLabel(SubjectList.get(5));
 				NoteLabel6.setSize(new Dimension(400, 30));
 				NoteLabel6.setVisible(false);
 				NoteLabel6.setOpaque(true);
@@ -1575,7 +1582,7 @@ public class notesGUI extends JFrame {
 				NoteLabel6.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel6.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel NoteLabel7 = new JLabel(SubjectList.get(6).getName());
+				JLabel NoteLabel7 = new JLabel(SubjectList.get(6));
 				NoteLabel7.setSize(new Dimension(400, 30));
 				NoteLabel7.setVisible(false);
 				NoteLabel7.setOpaque(true);
@@ -1642,7 +1649,7 @@ public class notesGUI extends JFrame {
 				
 			case 8:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "myUomNotes.txt");
+				myfile1 = new File(SubjectList.get(0) + "myUomNotes.txt");
 				note1.readFromFile(myfile1, NoteArea1);
 				set1 = new MyJButton("Αποθηκευση",myfile1);
 				 
@@ -1678,7 +1685,7 @@ public class notesGUI extends JFrame {
 						}
 					});
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "myUomNotes.txt");
+				myfile2 = new File(SubjectList.get(1) + "myUomNotes.txt");
 				note2.readFromFile(myfile2, NoteArea2);
 				set2 = new MyJButton("Αποθηκευση",myfile2);
 				
@@ -1713,7 +1720,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "myUomNotes.txt");
+				myfile3 = new File(SubjectList.get(2) + "myUomNotes.txt");
 				note3.readFromFile(myfile3, NoteArea3);
 				set3 = new MyJButton("Αποθηκευση",myfile3);
 				
@@ -1747,7 +1754,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile4 = new File(SubjectList.get(3).getName() + "myUomNotes.txt");
+				myfile4 = new File(SubjectList.get(3) + "myUomNotes.txt");
 				note4.readFromFile(myfile4, NoteArea4);
 				set4 = new MyJButton("Αποθηκευση",myfile4);
 				
@@ -1780,7 +1787,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile5 = new File(SubjectList.get(4).getName() + "myUomNotes.txt");
+				myfile5 = new File(SubjectList.get(4) + "myUomNotes.txt");
 				note5.readFromFile(myfile5, NoteArea5);
 				set5 = new MyJButton("Αποθηκευση",myfile5);
 				
@@ -1814,7 +1821,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile6 = new File(SubjectList.get(5).getName() + "myUomNotes.txt");
+				myfile6 = new File(SubjectList.get(5) + "myUomNotes.txt");
 				note6.readFromFile(myfile6, NoteArea6);
 				set6 = new MyJButton("Αποθηκευση",myfile6);
 				write6 = new JButton("Σημειωσε");
@@ -1847,7 +1854,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile7 = new File(SubjectList.get(6).getName() + "myUomNotes.txt");
+				myfile7 = new File(SubjectList.get(6) + "myUomNotes.txt");
 				note7.readFromFile(myfile7, NoteArea7);
 				set7 = new MyJButton("Αποθηκευση",myfile7);
 				
@@ -1881,7 +1888,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				File myfile8 = new File(SubjectList.get(7).getName() + "myUomNotes.txt");
+				File myfile8 = new File(SubjectList.get(7) + "myUomNotes.txt");
 				note8.readFromFile(myfile8, NoteArea8);
 				MyJButton set8 = new MyJButton("Αποθηκευση",myfile8);
 				
@@ -1917,7 +1924,7 @@ public class notesGUI extends JFrame {
 				});
 				
 				
-				NoteLabel1 = new JLabel(SubjectList.get(0).getName());
+				NoteLabel1 = new JLabel(SubjectList.get(0));
 				NoteLabel1.setSize(new Dimension(400, 30));
 				NoteLabel1.setVisible(false);
 				NoteLabel1.setOpaque(true);
@@ -1925,7 +1932,7 @@ public class notesGUI extends JFrame {
 				NoteLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel2 = new JLabel(SubjectList.get(1).getName());
+				NoteLabel2 = new JLabel(SubjectList.get(1));
 				NoteLabel2.setSize(new Dimension(400, 30));
 				NoteLabel2.setVisible(false);
 				NoteLabel2.setOpaque(true);
@@ -1933,7 +1940,7 @@ public class notesGUI extends JFrame {
 				NoteLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel3 = new JLabel(SubjectList.get(2).getName());
+				NoteLabel3 = new JLabel(SubjectList.get(2));
 				NoteLabel3.setSize(new Dimension(400, 30));
 				NoteLabel3.setVisible(false);
 				NoteLabel3.setOpaque(true);
@@ -1941,7 +1948,7 @@ public class notesGUI extends JFrame {
 				NoteLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel4 = new JLabel(SubjectList.get(3).getName());
+				NoteLabel4 = new JLabel(SubjectList.get(3));
 				NoteLabel4.setSize(new Dimension(400, 30));
 				NoteLabel4.setVisible(false);
 				NoteLabel4.setOpaque(true);
@@ -1949,7 +1956,7 @@ public class notesGUI extends JFrame {
 				NoteLabel4.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel4.setVerticalTextPosition(JLabel.CENTER);
 				
-				 NoteLabel5 = new JLabel(SubjectList.get(4).getName());
+				 NoteLabel5 = new JLabel(SubjectList.get(4));
 				NoteLabel5.setSize(new Dimension(400, 30));
 				NoteLabel5.setVisible(false);
 				NoteLabel5.setOpaque(true);
@@ -1957,7 +1964,7 @@ public class notesGUI extends JFrame {
 				NoteLabel5.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel5.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel6 = new JLabel(SubjectList.get(5).getName());
+				NoteLabel6 = new JLabel(SubjectList.get(5));
 				NoteLabel6.setSize(new Dimension(400, 30));
 				NoteLabel6.setVisible(false);
 				NoteLabel6.setOpaque(true);
@@ -1965,7 +1972,7 @@ public class notesGUI extends JFrame {
 				NoteLabel6.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel6.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel7 = new JLabel(SubjectList.get(6).getName());
+				NoteLabel7 = new JLabel(SubjectList.get(6));
 				NoteLabel7.setSize(new Dimension(400, 30));
 				NoteLabel7.setVisible(false);
 				NoteLabel7.setOpaque(true);
@@ -1973,7 +1980,7 @@ public class notesGUI extends JFrame {
 				NoteLabel7.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel7.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel NoteLabel8 = new JLabel(SubjectList.get(7).getName());
+				JLabel NoteLabel8 = new JLabel(SubjectList.get(7));
 				NoteLabel8.setSize(new Dimension(400, 30));
 				NoteLabel8.setVisible(false);
 				NoteLabel8.setOpaque(true);
@@ -1982,7 +1989,7 @@ public class notesGUI extends JFrame {
 				NoteLabel8.setVerticalTextPosition(JLabel.CENTER);
 				
 				NotePanel.add(NoteLabel1);
-				NotePanel.add(scroll1);
+				NotePanel.add(NoteArea1);
 				NotePanel.add(ButtonPanel1);
 				
 				NotePanel.add(NoteLabel2);
@@ -2049,7 +2056,7 @@ public class notesGUI extends JFrame {
 				
 			case 9:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "myUomNotes.txt");
+				myfile1 = new File(SubjectList.get(0) + "myUomNotes.txt");
 				note1.readFromFile(myfile1, NoteArea1);
 				set1 = new MyJButton("Αποθηκευση",myfile1);
 				 
@@ -2085,7 +2092,7 @@ public class notesGUI extends JFrame {
 						}
 					});
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "myUomNotes.txt");
+				myfile2 = new File(SubjectList.get(1) + "myUomNotes.txt");
 				note2.readFromFile(myfile2, NoteArea2);
 				set2 = new MyJButton("Αποθηκευση",myfile2);
 				
@@ -2120,7 +2127,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "myUomNotes.txt");
+				myfile3 = new File(SubjectList.get(2) + "myUomNotes.txt");
 				note3.readFromFile(myfile3, NoteArea3);
 				set3 = new MyJButton("Αποθηκευση",myfile3);
 				
@@ -2154,7 +2161,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile4 = new File(SubjectList.get(3).getName() + "myUomNotes.txt");
+				myfile4 = new File(SubjectList.get(3) + "myUomNotes.txt");
 				note4.readFromFile(myfile4, NoteArea4);
 				set4 = new MyJButton("Αποθηκευση",myfile4);
 				
@@ -2187,7 +2194,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile5 = new File(SubjectList.get(4).getName() + "myUomNotes.txt");
+				myfile5 = new File(SubjectList.get(4) + "myUomNotes.txt");
 				note5.readFromFile(myfile5, NoteArea5);
 				set5 = new MyJButton("Αποθηκευση",myfile5);
 				
@@ -2221,7 +2228,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile6 = new File(SubjectList.get(5).getName() + "myUomNotes.txt");
+				myfile6 = new File(SubjectList.get(5) + "myUomNotes.txt");
 				note6.readFromFile(myfile6, NoteArea6);
 				set6 = new MyJButton("Αποθηκευση",myfile6);
 				write6 = new JButton("Σημειωσε");
@@ -2254,7 +2261,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile7 = new File(SubjectList.get(6).getName() + "myUomNotes.txt");
+				myfile7 = new File(SubjectList.get(6) + "myUomNotes.txt");
 				note7.readFromFile(myfile7, NoteArea7);
 				set7 = new MyJButton("Αποθηκευση",myfile7);
 				
@@ -2288,7 +2295,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile8 = new File(SubjectList.get(7).getName() + "myUomNotes.txt");
+				myfile8 = new File(SubjectList.get(7) + "myUomNotes.txt");
 				note8.readFromFile(myfile8, NoteArea8);
 				set8 = new MyJButton("Αποθηκευση",myfile8);
 				
@@ -2323,7 +2330,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				File myfile9 = new File(SubjectList.get(8).getName() + "myUomNotes.txt");
+				File myfile9 = new File(SubjectList.get(8) + "myUomNotes.txt");
 				note9.readFromFile(myfile9, NoteArea9);
 				MyJButton set9 = new MyJButton("Αποθηκευση",myfile9);
 				
@@ -2359,7 +2366,7 @@ public class notesGUI extends JFrame {
 				
 				
 				
-				NoteLabel1 = new JLabel(SubjectList.get(0).getName());
+				NoteLabel1 = new JLabel(SubjectList.get(0));
 				NoteLabel1.setSize(new Dimension(400, 30));
 				NoteLabel1.setVisible(false);
 				NoteLabel1.setOpaque(true);
@@ -2367,7 +2374,7 @@ public class notesGUI extends JFrame {
 				NoteLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel2 = new JLabel(SubjectList.get(1).getName());
+				NoteLabel2 = new JLabel(SubjectList.get(1));
 				NoteLabel2.setSize(new Dimension(400, 30));
 				NoteLabel2.setVisible(false);
 				NoteLabel2.setOpaque(true);
@@ -2375,7 +2382,7 @@ public class notesGUI extends JFrame {
 				NoteLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel3 = new JLabel(SubjectList.get(2).getName());
+				NoteLabel3 = new JLabel(SubjectList.get(2));
 				NoteLabel3.setSize(new Dimension(400, 30));
 				NoteLabel3.setVisible(false);
 				NoteLabel3.setOpaque(true);
@@ -2383,7 +2390,7 @@ public class notesGUI extends JFrame {
 				NoteLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel4 = new JLabel(SubjectList.get(3).getName());
+				NoteLabel4 = new JLabel(SubjectList.get(3));
 				NoteLabel4.setSize(new Dimension(400, 30));
 				NoteLabel4.setVisible(false);
 				NoteLabel4.setOpaque(true);
@@ -2391,7 +2398,7 @@ public class notesGUI extends JFrame {
 				NoteLabel4.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel4.setVerticalTextPosition(JLabel.CENTER);
 				
-				 NoteLabel5 = new JLabel(SubjectList.get(4).getName());
+				 NoteLabel5 = new JLabel(SubjectList.get(4));
 				NoteLabel5.setSize(new Dimension(400, 30));
 				NoteLabel5.setVisible(false);
 				NoteLabel5.setOpaque(true);
@@ -2399,7 +2406,7 @@ public class notesGUI extends JFrame {
 				NoteLabel5.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel5.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel6 = new JLabel(SubjectList.get(5).getName());
+				NoteLabel6 = new JLabel(SubjectList.get(5));
 				NoteLabel6.setSize(new Dimension(400, 30));
 				NoteLabel6.setVisible(false);
 				NoteLabel6.setOpaque(true);
@@ -2407,7 +2414,7 @@ public class notesGUI extends JFrame {
 				NoteLabel6.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel6.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel7 = new JLabel(SubjectList.get(6).getName());
+				NoteLabel7 = new JLabel(SubjectList.get(6));
 				NoteLabel7.setSize(new Dimension(400, 30));
 				NoteLabel7.setVisible(false);
 				NoteLabel7.setOpaque(true);
@@ -2415,7 +2422,7 @@ public class notesGUI extends JFrame {
 				NoteLabel7.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel7.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel8 = new JLabel(SubjectList.get(7).getName());
+				NoteLabel8 = new JLabel(SubjectList.get(7));
 				NoteLabel8.setSize(new Dimension(400, 30));
 				NoteLabel8.setVisible(false);
 				NoteLabel8.setOpaque(true);
@@ -2423,7 +2430,7 @@ public class notesGUI extends JFrame {
 				NoteLabel8.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel8.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel NoteLabel9 = new JLabel(SubjectList.get(8).getName());
+				JLabel NoteLabel9 = new JLabel(SubjectList.get(8));
 				NoteLabel9.setSize(new Dimension(400, 30));
 				NoteLabel9.setVisible(false);
 				NoteLabel9.setOpaque(true);
@@ -2507,7 +2514,7 @@ public class notesGUI extends JFrame {
 				
 			case 10:
 				
-				myfile1 = new File(SubjectList.get(0).getName() + "myUomNotes.txt");
+				myfile1 = new File(SubjectList.get(0) + "myUomNotes.txt");
 				note1.readFromFile(myfile1, NoteArea1);
 				set1 = new MyJButton("Αποθηκευση",myfile1);
 				 
@@ -2543,7 +2550,7 @@ public class notesGUI extends JFrame {
 						}
 					});
 					
-				myfile2 = new File(SubjectList.get(1).getName() + "myUomNotes.txt");
+				myfile2 = new File(SubjectList.get(1) + "myUomNotes.txt");
 				note2.readFromFile(myfile2, NoteArea2);
 				set2 = new MyJButton("Αποθηκευση",myfile2);
 				
@@ -2578,7 +2585,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile3 = new File(SubjectList.get(2).getName() + "myUomNotes.txt");
+				myfile3 = new File(SubjectList.get(2) + "myUomNotes.txt");
 				note3.readFromFile(myfile3, NoteArea3);
 				set3 = new MyJButton("Αποθηκευση",myfile3);
 				
@@ -2612,7 +2619,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile4 = new File(SubjectList.get(3).getName() + "myUomNotes.txt");
+				myfile4 = new File(SubjectList.get(3) + "myUomNotes.txt");
 				note4.readFromFile(myfile4, NoteArea4);
 				set4 = new MyJButton("Αποθηκευση",myfile4);
 				
@@ -2645,7 +2652,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile5 = new File(SubjectList.get(4).getName() + "myUomNotes.txt");
+				myfile5 = new File(SubjectList.get(4) + "myUomNotes.txt");
 				note5.readFromFile(myfile5, NoteArea5);
 				set5 = new MyJButton("Αποθηκευση",myfile5);
 				
@@ -2679,7 +2686,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile6 = new File(SubjectList.get(5).getName() + "myUomNotes.txt");
+				myfile6 = new File(SubjectList.get(5) + "myUomNotes.txt");
 				note6.readFromFile(myfile6, NoteArea6);
 				set6 = new MyJButton("Αποθηκευση",myfile6);
 				write6 = new JButton("Σημειωσε");
@@ -2712,7 +2719,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile7 = new File(SubjectList.get(6).getName() + "myUomNotes.txt");
+				myfile7 = new File(SubjectList.get(6) + "myUomNotes.txt");
 				note7.readFromFile(myfile7, NoteArea7);
 				set7 = new MyJButton("Αποθηκευση",myfile7);
 				
@@ -2746,7 +2753,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile8 = new File(SubjectList.get(7).getName() + "myUomNotes.txt");
+				myfile8 = new File(SubjectList.get(7) + "myUomNotes.txt");
 				note8.readFromFile(myfile8, NoteArea8);
 				set8 = new MyJButton("Αποθηκευση",myfile8);
 				
@@ -2781,7 +2788,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				myfile9 = new File(SubjectList.get(8).getName() + "myUomNotes.txt");
+				myfile9 = new File(SubjectList.get(8) + "myUomNotes.txt");
 				note9.readFromFile(myfile9, NoteArea9);
 				set9 = new MyJButton("Αποθηκευση",myfile9);
 				
@@ -2815,7 +2822,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				File myfile10= new File(SubjectList.get(9).getName() + "myUomNotes.txt");
+				File myfile10= new File(SubjectList.get(9) + "myUomNotes.txt");
 				note10.readFromFile(myfile10, NoteArea10);
 				MyJButton set10 = new MyJButton("Αποθηκευση",myfile10);
 				
@@ -2847,7 +2854,7 @@ public class notesGUI extends JFrame {
 					}
 				});
 				
-				NoteLabel1 = new JLabel(SubjectList.get(0).getName());
+				NoteLabel1 = new JLabel(SubjectList.get(0));
 				NoteLabel1.setSize(new Dimension(400, 30));
 				NoteLabel1.setVisible(false);
 				NoteLabel1.setOpaque(true);
@@ -2855,7 +2862,7 @@ public class notesGUI extends JFrame {
 				NoteLabel1.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel1.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel2 = new JLabel(SubjectList.get(1).getName());
+				NoteLabel2 = new JLabel(SubjectList.get(1));
 				NoteLabel2.setSize(new Dimension(400, 30));
 				NoteLabel2.setVisible(false);
 				NoteLabel2.setOpaque(true);
@@ -2863,7 +2870,7 @@ public class notesGUI extends JFrame {
 				NoteLabel2.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel2.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel3 = new JLabel(SubjectList.get(2).getName());
+				NoteLabel3 = new JLabel(SubjectList.get(2));
 				NoteLabel3.setSize(new Dimension(400, 30));
 				NoteLabel3.setVisible(false);
 				NoteLabel3.setOpaque(true);
@@ -2871,7 +2878,7 @@ public class notesGUI extends JFrame {
 				NoteLabel3.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel3.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel4 = new JLabel(SubjectList.get(3).getName());
+				NoteLabel4 = new JLabel(SubjectList.get(3));
 				NoteLabel4.setSize(new Dimension(400, 30));
 				NoteLabel4.setVisible(false);
 				NoteLabel4.setOpaque(true);
@@ -2879,7 +2886,7 @@ public class notesGUI extends JFrame {
 				NoteLabel4.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel4.setVerticalTextPosition(JLabel.CENTER);
 				
-				 NoteLabel5 = new JLabel(SubjectList.get(4).getName());
+				 NoteLabel5 = new JLabel(SubjectList.get(4));
 				NoteLabel5.setSize(new Dimension(400, 30));
 				NoteLabel5.setVisible(false);
 				NoteLabel5.setOpaque(true);
@@ -2887,7 +2894,7 @@ public class notesGUI extends JFrame {
 				NoteLabel5.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel5.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel6 = new JLabel(SubjectList.get(5).getName());
+				NoteLabel6 = new JLabel(SubjectList.get(5));
 				NoteLabel6.setSize(new Dimension(400, 30));
 				NoteLabel6.setVisible(false);
 				NoteLabel6.setOpaque(true);
@@ -2895,7 +2902,7 @@ public class notesGUI extends JFrame {
 				NoteLabel6.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel6.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel7 = new JLabel(SubjectList.get(6).getName());
+				NoteLabel7 = new JLabel(SubjectList.get(6));
 				NoteLabel7.setSize(new Dimension(400, 30));
 				NoteLabel7.setVisible(false);
 				NoteLabel7.setOpaque(true);
@@ -2903,7 +2910,7 @@ public class notesGUI extends JFrame {
 				NoteLabel7.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel7.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel8 = new JLabel(SubjectList.get(7).getName());
+				NoteLabel8 = new JLabel(SubjectList.get(7));
 				NoteLabel8.setSize(new Dimension(400, 30));
 				NoteLabel8.setVisible(false);
 				NoteLabel8.setOpaque(true);
@@ -2911,7 +2918,7 @@ public class notesGUI extends JFrame {
 				NoteLabel8.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel8.setVerticalTextPosition(JLabel.CENTER);
 				
-				NoteLabel9 = new JLabel(SubjectList.get(8).getName());
+				NoteLabel9 = new JLabel(SubjectList.get(8));
 				NoteLabel9.setSize(new Dimension(400, 30));
 				NoteLabel9.setVisible(false);
 				NoteLabel9.setOpaque(true);
@@ -2919,7 +2926,7 @@ public class notesGUI extends JFrame {
 				NoteLabel9.setHorizontalTextPosition(JLabel.CENTER);
 				NoteLabel9.setVerticalTextPosition(JLabel.CENTER);
 				
-				JLabel NoteLabel10 = new JLabel(SubjectList.get(9).getName());
+				JLabel NoteLabel10 = new JLabel(SubjectList.get(9));
 				NoteLabel10.setSize(new Dimension(400, 30));
 				NoteLabel10.setVisible(false);
 				NoteLabel10.setOpaque(true);
@@ -2966,8 +2973,6 @@ public class notesGUI extends JFrame {
 				
 				NotePanel.add(NoteLabel10);
 				NotePanel.add(NoteArea10);
-				scroll1.setVisible(true);
-				NoteFrame.add(scroll1);
 				NotePanel.add(ButtonPanel10);
 				
 				

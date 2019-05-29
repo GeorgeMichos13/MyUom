@@ -206,13 +206,13 @@ public class MainFrame {
 					frmMainframe.setVisible(false);
 					
 					MyProfile profilewindow = new MyProfile();
-					notesGUI s1 = new notesGUI(profilewindow.readCourses()) ;
+					notesGUI s1 = new notesGUI(profilewindow.getCourses()) ;
 					
 				}
 				else if(ev.getSource() == infobutton) {
-					
+					frmMainframe.setVisible(false);
 					MyProfile profilewindow = new MyProfile();
-					new InformationGUI(profilewindow.readCourses());
+					new InformationGUI(profilewindow.getCourses());
 				}
 				else if(ev.getSource() == profilebutton) {
 					
