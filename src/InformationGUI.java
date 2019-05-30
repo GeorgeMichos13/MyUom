@@ -19,7 +19,7 @@ import javax.swing.JTextArea;
 
 public class InformationGUI extends JFrame {
 
-	private JFrame NoteFrame = new JFrame("Information");
+	public JFrame NoteFrame = new JFrame("Information");
 	private JPanel InfoPanel = new JPanel();
 
 	private ArrayList<String> SubjectList = new ArrayList<String>();
@@ -213,7 +213,8 @@ public class InformationGUI extends JFrame {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							//Exams code 
+							new ThemataGUI(SubjectList.get(0));
+							NoteFrame.setVisible(false);
 							
 						}
 					});
@@ -254,7 +255,8 @@ public class InformationGUI extends JFrame {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							//Exams code
+							new ThemataGUI(SubjectList.get(0));
+							NoteFrame.setVisible(false);
 						}
 					});
 					
@@ -271,7 +273,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(1));
+						NoteFrame.setVisible(false);
 					}
 					
 				});
@@ -326,7 +329,8 @@ public class InformationGUI extends JFrame {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							//Exams code
+							new ThemataGUI(SubjectList.get(0));
+							NoteFrame.setVisible(false);
 						}
 					});
 					
@@ -348,7 +352,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(1));
+						NoteFrame.setVisible(false);
 					}
 				});
 			
@@ -366,7 +371,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(2));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -440,7 +446,8 @@ public class InformationGUI extends JFrame {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							//Exams code
+							new ThemataGUI(SubjectList.get(0));
+							NoteFrame.setVisible(false);
 						}
 					});
 					
@@ -459,7 +466,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(1));
+						NoteFrame.setVisible(false);
 					}
 				});
 			
@@ -477,7 +485,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(2));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -496,7 +505,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(3));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -583,7 +593,8 @@ public class InformationGUI extends JFrame {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							//Exams code
+							new ThemataGUI(SubjectList.get(0));
+							NoteFrame.setVisible(false);
 						}
 					});
 					
@@ -602,7 +613,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(1));
+						NoteFrame.setVisible(false);
 					}
 				});
 			
@@ -620,7 +632,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(2));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -638,7 +651,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(3));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -655,7 +669,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						InfoArea5.setEditable(true);
+						new ThemataGUI(SubjectList.get(4));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -758,7 +773,8 @@ public class InformationGUI extends JFrame {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							//Exams code
+							new ThemataGUI(SubjectList.get(0));
+							NoteFrame.setVisible(false);
 						}
 					});
 					
@@ -777,7 +793,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(1));
+						NoteFrame.setVisible(false);
 					}
 				});
 			
@@ -795,7 +812,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(2));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -813,7 +831,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(3));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -830,7 +849,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						InfoArea5.setEditable(true);
+						new ThemataGUI(SubjectList.get(4));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -847,7 +867,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(5));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -966,7 +987,8 @@ public class InformationGUI extends JFrame {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							//Exams code
+							new ThemataGUI(SubjectList.get(0));
+							NoteFrame.setVisible(false);
 						}
 					});
 					
@@ -985,7 +1007,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(1));
+						NoteFrame.setVisible(false);
 					}
 				});
 			
@@ -1003,7 +1026,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(2));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1021,7 +1045,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(3));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1038,7 +1063,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						InfoArea5.setEditable(true);
+						new ThemataGUI(SubjectList.get(4));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1055,7 +1081,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(5));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1072,7 +1099,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(6));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1205,7 +1233,8 @@ public class InformationGUI extends JFrame {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							//Exams code
+							new ThemataGUI(SubjectList.get(0));
+							NoteFrame.setVisible(false);
 						}
 					});
 					
@@ -1224,7 +1253,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(1));
+						NoteFrame.setVisible(false);
 					}
 				});
 			
@@ -1242,7 +1272,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(2));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1260,7 +1291,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(3));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1277,7 +1309,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						InfoArea5.setEditable(true);
+						new ThemataGUI(SubjectList.get(4));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1294,7 +1327,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(5));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1311,7 +1345,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(6));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1328,7 +1363,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(7));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1478,7 +1514,8 @@ public class InformationGUI extends JFrame {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							//Exams code
+							new ThemataGUI(SubjectList.get(0));
+							NoteFrame.setVisible(false);
 						}
 					});
 					
@@ -1497,7 +1534,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(1));
+						NoteFrame.setVisible(false);
 					}
 				});
 			
@@ -1515,7 +1553,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(2));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1533,7 +1572,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(3));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1550,7 +1590,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						InfoArea5.setEditable(true);
+						new ThemataGUI(SubjectList.get(4));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1567,7 +1608,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(5));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1584,7 +1626,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(6));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1601,7 +1644,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(7));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1618,7 +1662,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(8));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1787,7 +1832,8 @@ public class InformationGUI extends JFrame {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							//Exams code
+							new ThemataGUI(SubjectList.get(0));
+							NoteFrame.setVisible(false);
 						}
 					});
 					
@@ -1806,7 +1852,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(1));
+						NoteFrame.setVisible(false);
 					}
 				});
 			
@@ -1824,7 +1871,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(2));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1842,7 +1890,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(3));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1859,7 +1908,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						InfoArea5.setEditable(true);
+						new ThemataGUI(SubjectList.get(4));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1876,7 +1926,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(5));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1893,7 +1944,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(6));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1910,7 +1962,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(7));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1927,7 +1980,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(8));
+						NoteFrame.setVisible(false);
 					}
 				});
 				
@@ -1944,7 +1998,8 @@ public class InformationGUI extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//Exams code
+						new ThemataGUI(SubjectList.get(9));
+						NoteFrame.setVisible(false);
 					}
 				});
 				

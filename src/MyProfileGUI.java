@@ -107,6 +107,7 @@ public class MyProfileGUI extends JFrame{
 			persp = persp + courses.get(i) + "\n";
 		}
 		selectedLessonsArea.setText(persp);
+		selectedLessonsArea.setEditable(false);
 		
 		
 		backButton.addActionListener(new ActionListener() {

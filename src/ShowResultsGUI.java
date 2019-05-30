@@ -43,13 +43,14 @@ public class ShowResultsGUI extends JFrame {
 		
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		
-		for(int i=0 ; i < courses.size(); i++) {
-			dataset.addValue(newStats.get(i), "Classes", courses.get(i));
+		
+		for(int i=0 ; i < newStats.size(); i++) {
+			dataset.addValue(newStats.get(i),courses.get(i),courses.get(i));
 		}
 		
 		
 		
-		JFreeChart chart = ChartFactory.createBarChart3D("Courses Difficulty", "Courses", "Difficulty", dataset, PlotOrientation.VERTICAL, false, true, false);
+		JFreeChart chart = ChartFactory.createBarChart3D("Courses Difficulty", "Courses", "Difficulty", dataset, PlotOrientation.VERTICAL, true, true, true);
 		
 		ChartPanel chartPanel = new ChartPanel(chart);
 		
@@ -77,14 +78,16 @@ public class ShowResultsGUI extends JFrame {
 		ArrayList<Integer> selectedRanks;
 	
 		MyProfile profilewindow = new MyProfile();
-		ArrayList<Integer> oldStats = profilewindow.getStats();
+		
 		
 		Path path = Paths.get("didRank.txt");
-		Path path1 = Paths.get("Stats.txt");
+		Path path1 = Paths.get("newStats.txt");
 		String input = path1.toString();
 		File file = new File(input);
+		
 		if(Files.exists(path) && !Files.exists(path1)) {
 			selectedRanks = RankGUI.getRanks();	
+			ArrayList<Integer> oldStats = profilewindow.getStats();
 			FileWriter fileWriter;
 			try {
 				fileWriter = new FileWriter(file);
@@ -103,15 +106,17 @@ public class ShowResultsGUI extends JFrame {
 			}
 			
 		}
-		else if (Files.exists(path1))
+		else if (Files.exists(path1) && Files.exists(path))
 			getStatistics();
 		else 
 			newStats = profilewindow.getStats();
+		
 		}
 	
 	
+	
 	public void getStatistics() {
-		Path path = Paths.get("Stats.txt");
+		Path path = Paths.get("newStats.txt");
 		String input = path.toString();
 		File file = new File(input);
 		
@@ -132,10 +137,13 @@ public class ShowResultsGUI extends JFrame {
 			    newStats.add(s);
 			    
 			  }
+			br.close();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+		  
 		
 	}
 

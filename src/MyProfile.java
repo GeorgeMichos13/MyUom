@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -76,7 +77,10 @@ public class MyProfile {
 	}
 	
 	public  ArrayList<Integer> getStats(){
-		for(int i = 0; i<FCourseStats.size(); i++) {
+	
+		ArrayList<String> courses = getCourses();
+		System.out.println(courses.size());
+		for(int i = 0; i<courses.size(); i++) {
 			int stat = FCourseStats.get(i).getStat();
 			stats.add(stat);
 		}
@@ -89,6 +93,11 @@ public class MyProfile {
 		Path filePath = Paths.get("Course.ser");
 		String input = filePath.toString();
 		File path = new File(input);
+		path.delete();
+		
+		filePath = Paths.get("newStats.txt");
+		input = filePath.toString();
+		path = new File(input);
 		path.delete();
 			
 		filePath = Paths.get("username.txt");
@@ -111,10 +120,8 @@ public class MyProfile {
 		path = new File(input);
 		path.delete();
 		
-		filePath = Paths.get("Stats.txt");
-		input = filePath.toString();
-		path = new File(input);
-		path.delete();
+		
+		
 		
 		
 		String ending = "myUomNotes.txt";
