@@ -11,12 +11,16 @@ import java.awt.event.ItemListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -52,9 +56,9 @@ public class CheckBoxGUI {
 	/**
 	 * Launch occurs in class Main
 	 */
-	   private HashSet<String> hashcourses = new HashSet<String>();
-	   private ArrayList<String> arrcourses = new ArrayList<String>();
-	   private ArrayList<JCheckBox> arcboxes = new ArrayList<JCheckBox>();
+	   private HashSet<String> hashcourses = new HashSet<String>();  //contains distinct courses
+	   private ArrayList<String> arrcourses = new ArrayList<String>(); //contains selected courses
+	   private ArrayList<JCheckBox> arcboxes = new ArrayList<JCheckBox>(); //contains all checkboxes
 		
 	   public JFrame getFrmInitScreen() {
 		return frmInitScreen;
@@ -77,17 +81,15 @@ public class CheckBoxGUI {
 	}
 
 	
-	@SuppressWarnings("unchecked")
+	
 	public CheckBoxGUI() {
 		XlsReader re = new XlsReader();
-		re.read();
-		//re.printCourses();
-		//re.printCoursesStats();
-
+		re.read(); //read variables from Excel 
 		
 		frmInitScreen = new JFrame();
 		frmInitScreen.setTitle("Select Courses");
 		frmInitScreen.getContentPane().setBackground(Color.LIGHT_GRAY);
+		frmInitScreen.setSize(1024, 504);
 		
 		
 		 
@@ -106,30 +108,29 @@ public class CheckBoxGUI {
 					
 					
 					
-					JComboBox comboBoxS = new JComboBox();
+					JComboBox<String> comboBoxS = new JComboBox<String>();   //semester combobox
 					comboBoxS.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 					comboBoxS.setToolTipText("-Επιλέξτε Εξάμηνο-");
 					comboBoxS.setFont(new Font("Arial", Font.BOLD, 11));
-					comboBoxS.setModel(new DefaultComboBoxModel(new String[] {"Εξάμηνο 2ο", "Εξάμηνο 4ο", "Εξάμηνο 6ο ", "Εξάμηνο 8ο"}));
-					
-					
-					JComboBox comboBoxD = new JComboBox();
+					comboBoxS.setModel(new DefaultComboBoxModel<String>(new String[] {"Εξάμηνο 2ο", "Εξάμηνο 4ο", "Εξάμηνο 6ο ", "Εξάμηνο 8ο"}));
+										
+					JComboBox<String> comboBoxD = new JComboBox<String>();   //direction combobox
 					comboBoxD.setFont(new Font("Arial", Font.BOLD, 11));
 					comboBoxD.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-					comboBoxD.setModel(new DefaultComboBoxModel(new String[] {"ΔΙΟΙΚΗΣΗ ΤΕΧΝΟΛΟΓΙΑΣ", "ΕΦΑΡΜΟΣΜΕΝΗ ΠΛΗΡΟΦΟΡΙΚΗ"}));
+					comboBoxD.setModel(new DefaultComboBoxModel<String>(new String[] {"ΔΙΟΙΚΗΣΗ ΤΕΧΝΟΛΟΓΙΑΣ", "ΕΦΑΡΜΟΣΜΕΝΗ ΠΛΗΡΟΦΟΡΙΚΗ"}));
 					comboBoxD.setMaximumRowCount(2);
 					comboBoxD.setToolTipText("-Επιλέξτε Κατεύθυνση-\r\n");
 					
 					
 	
+			/*
+			 * set up checkboxes		
+			 */
 					
-					
-					
-						
+							
 						JCheckBox checkBox1 = new JCheckBox(re.getCoursesStats().get(0).getName());
 						checkBox1.setVerticalAlignment(SwingConstants.TOP);
-						checkBox1.setToolTipText("Mέρα, Ώρα, Αίθουσα");
-						arcboxes.add(checkBox1);
+						arcboxes.add(checkBox1);  
 						
 						
 						JCheckBox checkBox2 = new JCheckBox(re.getCoursesStats().get(1).getName());
@@ -218,7 +219,7 @@ public class CheckBoxGUI {
 						arcboxes.add(checkBox21);
 						
 						
-						GroupLayout gl_panel = new GroupLayout(panel);
+						GroupLayout gl_panel = new GroupLayout(panel); //graphics stuff
 						gl_panel.setHorizontalGroup(
 							gl_panel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel.createSequentialGroup()
@@ -229,7 +230,7 @@ public class CheckBoxGUI {
 									.addComponent(checkBox2, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_panel.createSequentialGroup()
 									.addGap(10)
-									.addComponent(checkBox3, GroupLayout.PREFERRED_SIZE, 350, GroupLayout.PREFERRED_SIZE))
+									.addComponent(checkBox3, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_panel.createSequentialGroup()
 									.addGap(10)
 									.addComponent(checkBox4, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE))
@@ -346,7 +347,9 @@ public class CheckBoxGUI {
 						JScrollPane infoscrollpane = new JScrollPane();
 						
 						JScrollPane scrollPane = new JScrollPane();
-						
+			/* 
+			 * set up buttons			
+			 */
 						JButton addbutton = new JButton("Προσθήκη");
 						addbutton.setFont(new Font("Tahoma", Font.PLAIN, 13));
 						
@@ -355,7 +358,9 @@ public class CheckBoxGUI {
 						
 						JButton nextframebutton;
 						nextframebutton = new JButton("Υποβολή");
-						GroupLayout groupLayout = new GroupLayout(frmInitScreen.getContentPane());
+						
+						
+						GroupLayout groupLayout = new GroupLayout(frmInitScreen.getContentPane());  //more graphics
 						groupLayout.setHorizontalGroup(
 							groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
@@ -392,6 +397,10 @@ public class CheckBoxGUI {
 										.addComponent(nextframebutton))
 									.addGap(26))
 						);
+				
+						/*
+						 * set up information fields
+						 */
 						
 						JLabel label_1 = new JLabel("Επιλεγμένα Μαθήματα");
 						label_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -409,14 +418,14 @@ public class CheckBoxGUI {
 						JTextArea infotext = new JTextArea();
 						infotext.setFont(new Font("Monospaced", Font.PLAIN, 13));
 						label.setLabelFor(infotext);
-						infotext.setText("kasadjkjdsasd");
+						infotext.setText("Κάντε κλικ σε ένα μάθημα για να εμφανίσετε τις πληροφορίες του");
 						infoscrollpane.setViewportView(infotext);
 						frmInitScreen.getContentPane().setLayout(groupLayout);
 						
 							
 							
 						
-						for(int i=7; i<arcboxes.size();i++) {
+						for(int i=7; i<arcboxes.size();i++) {  //hide checkboxes that are empty 
 							arcboxes.get(i-1).hide();
 						}
 						
@@ -425,66 +434,62 @@ public class CheckBoxGUI {
 
 									
 		
-		frmInitScreen.setBounds(100, 100, 697, 440);
+		
 		frmInitScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 		
 		
 	
-	class ItemHandler implements ItemListener {
+	class ItemHandler implements ItemListener {  
 			
 		
 	
 		
 			@Override
-			public void itemStateChanged(ItemEvent event) {
+			public void itemStateChanged(ItemEvent event) {   //fire up actions when comboboxes state is changed
 					 
 					
-					if(comboBoxD.getSelectedIndex()==0) {
-							Dioikisi(Semester(comboBoxS.getSelectedIndex()));
+					if(comboBoxD.getSelectedIndex()==0) { 
+							Dioikisi(Semester(comboBoxS.getSelectedIndex())); 
 					}
 					
 					else if(comboBoxD.getSelectedIndex()==1){
 						Efarmosmeni(Semester(comboBoxS.getSelectedIndex()));
 					}
 						
+						comboBoxD.setEnabled(false);    //prevent user to select courses with different directions
 			}
 			
 		
 			
-			public int Semester(int sem_index) {
-				int x=2;
+			private int Semester(int sem_index) {  //convert semester index to real number
+				int x=0;
 				
 				if(sem_index==0) 
 				{
 					x=2;
-					
 				}
 				else if(sem_index==1)
 				{	x=4;
-				
 				}
 				else if(sem_index==2)
 				{
-					x=6;
-					
+					x=6;	
 				}
 				else if(sem_index==3)
 				{
 					x=8;
-					
 				}
 				
 				return x;
 				
 			}
 			
-			//int efi=0;
 			
 			
-			public void Efarmosmeni(int S){
-				int cbi=0;
+			private void Efarmosmeni(int S){  // receives semester number, sets up the needed names for the current semester for ΚΕΠ direction
+				;
 				if(S==2) { //IDIA MATHIMATA EFARM KAI DIOIKHSH STO 2o EKSAMINO
 					
 					setCheckBoxes(0,5);
@@ -510,10 +515,10 @@ public class CheckBoxGUI {
 				
 			}
 
-			public void Dioikisi(int S) {
+			private void Dioikisi(int S) { // receives semester number, sets up the needed names for the current semester for ΚΔΤ direction
 				
 				
-					if(S==2) { //STO 2o EKSAMINO TA MATHIMATA EINAI IDIA ALLA THA EINAI TA IDIA KAI STIS DYO KATEYTHINSEIS 
+					if(S==2) {
 						
 						setCheckBoxes(0,5);
 					}
@@ -531,7 +536,7 @@ public class CheckBoxGUI {
 				
 			}
 			
-			public void setCheckBoxes(int start, int end) { //!lag
+			private void setCheckBoxes(int start, int end) { //Enable needed checkbox and hide others according to Semester and Direction
 				int checkboxcounter=0;
 				for(int cindex = start; cindex<=end;cindex++) {
 					arcboxes.get(checkboxcounter).show();
@@ -553,20 +558,20 @@ public class CheckBoxGUI {
 	
 	
 	
-	class ActionHandler implements ActionListener{
+  	class ActionHandler implements ActionListener{
 		
 	
 		
 		@Override
 		public void actionPerformed(ActionEvent ae) {
 			
-			if(ae.getSource()==nextframebutton) {
-				
-				if (arrcourses.size()>0 && arrcourses.size()<=10) {
-					re.setArrayString(arrcourses);
+			if(ae.getSource()==nextframebutton) { //when Υποβολή is clicked
+	
+				if (arrcourses.size()>0 && arrcourses.size()<=10) { //prevent faulty number of selected courses
+					re.setArrayString(arrcourses);   //transfer array to XlsReader
 					re.writeSelectedCourses();  
 
-					//ask for username
+					
 					String username = "";
 					
 					while(username.trim().length()==0) { //while username is only white spaces
@@ -584,7 +589,17 @@ public class CheckBoxGUI {
 					    System.out.println("username failed");
 					}
 					
-					EventQueue.invokeLater(new Runnable() {
+				
+					//Saves selected Direction from User and 
+					int dirindex = comboBoxD.getSelectedIndex();
+					String dirstr="";
+					if(dirindex ==0)
+						dirstr = "ΚΔΤ";
+					else if(dirindex ==1)
+						dirstr ="ΚΕΠ";
+				
+					
+					EventQueue.invokeLater(new Runnable() {  //Open MainFrame
 						public void run() {		
 							try {
 								MainFrame window = new MainFrame();
@@ -594,10 +609,7 @@ public class CheckBoxGUI {
 							}
 						}
 					});
-					frmInitScreen.setVisible(false);
-					
-					
-				
+					frmInitScreen.setVisible(false);	
 			
 				}
 				
@@ -612,268 +624,100 @@ public class CheckBoxGUI {
 			
 			
 			
-			setupSelectedBoxes(ae);
+			setupSelectedBoxes(ae);  
 			
 			
 			if(ae.getSource()==clearbutton)  //deletes all selected courses 
 			{
-				hashcourses.clear();
+				hashcourses.clear();  //flushes hashset
 				textcourses.setText(null);
 			}	
 			
 			
-			
 		}//actionPerformed
 		
-		public void setupSelectedBoxes(ActionEvent ae){  
-			if(checkBox1.isSelected()) {
-			//	infotext.setText("tsekares to prwto koutaki");
+		private void setupSelectedBoxes(ActionEvent ae){  
+			
+			for(JCheckBox selectedcb :arcboxes) { //scan all checkboxes that are selected
 				
-				String str = "";
-				 try {
-					 
-			            // Read some text from the resource file to display in
-			            // the JTextArea.
-					 File file = new File("C:\\Users\\GEORGE MICHOS\\Documents\\MyUom\\ΔΙΑΚΡΙΤΑ ΜΑΘΗΜΑΤΙΚΑ info.txt"); 
-					  
-					  BufferedReader br = new BufferedReader(new FileReader(file)); 
-					  
-					  String st = "";
-					  while ((st = br.readLine()) != null) 
-					    str += st + "\n";
-					 
-					  br.close();
-			        } catch (IOException e) {
-			            e.printStackTrace();
-			        }
-				     
-				 		infotext.setText(str);
-					if(ae.getSource()==addbutton) {
-						hashcourses.add(checkBox1.getText());
-						printAll(hashcourses, textcourses);
-						
-						
+				if(selectedcb.isSelected()) {
+					
+					
+					if (ae.getSource()==selectedcb) { //show current selected course's info 
+						readInfoFile(selectedcb.getText(), infotext);
 					}
-			}	
-			
-			if(checkBox2.isSelected()) {
-				infotext.setText("tsekares to deutero koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox2.getText());
-					printAll(hashcourses, textcourses);
 					
+					if(ae.getSource()==addbutton) { //add all selected courses to the Selected Panel
+						hashcourses.add(selectedcb.getText());
+						printAll(hashcourses, textcourses);
+					}
 				}
 			}
-			
-			if(checkBox3.isSelected()) {
-				infotext.setText("tsekares to trito koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox3.getText());
-					printAll(hashcourses, textcourses);
-					
-				}
-			}
-			
-			if(checkBox4.isSelected()) {
-				infotext.setText("tsekares to tetarto koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox4.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox5.isSelected()) {
-				infotext.setText("tsekares to 5 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox5.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox6.isSelected()) {
-				infotext.setText("tsekares to 6 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox6.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox7.isSelected()) {
-				infotext.setText("tsekares to 7 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox7.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox8.isSelected()) {
-				infotext.setText("tsekares to 8 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox8.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox9.isSelected()) {
-				infotext.setText("tsekares to 9 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox9.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
+		}//setupselectedboxes
 		
-			if(checkBox10.isSelected()) {
-				infotext.setText("tsekares to 10 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox10.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox11.isSelected()) {
-				infotext.setText("tsekares to 11 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox11.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox12.isSelected()) {
-				infotext.setText("tsekares to 12 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox12.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox13.isSelected()) {
-				infotext.setText("tsekares to 13 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox13.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox14.isSelected()) {
-				infotext.setText("tsekares to 14 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox14.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox15.isSelected()) {
-				infotext.setText("tsekares to 15 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox15.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox16.isSelected()) {
-				infotext.setText("tsekares to 16 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox16.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox17.isSelected()) {
-				infotext.setText("tsekares to 17 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox17.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox18.isSelected()) {
-				infotext.setText("tsekares to 18 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox18.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox19.isSelected()) {
-				infotext.setText("tsekares to 19 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox19.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox20.isSelected()) {
-				infotext.setText("tsekares to 20 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox20.getText());
-					printAll(hashcourses, textcourses);
-				}
-			}
-			
-			if(checkBox21.isSelected()) {
-				infotext.setText("tsekares to 21 koutaki");
-			     
-				if(ae.getSource()==addbutton) {
-					hashcourses.add(checkBox21.getText());
-					printAll(hashcourses, textcourses);
-				}
-						
-			}
-			
-		}
 		
-		public void printAll(HashSet<String> courses, JTextArea textcourses) {
+		private void printAll(HashSet<String> courses, JTextArea textcourses) { //print selected courses
 			
-			String hashS = "";
-			int i=0;
-			Iterator it= courses.iterator();
+		
+			
+			Iterator<String> it= courses.iterator();
 			
 			
-			arrcourses.clear();
+			arrcourses.clear();  //flush previously selected courses
 			while(it.hasNext()) {
-				String arcS = ((String) it.next()+"\n");
+				String arcS = ((String) it.next()+"\n");    
 				arrcourses.add(arcS);
-				hashS = hashS + arcS;
+				
 				
 			}
 			
 			Collections.sort(arrcourses);
-
-		   
-		    
 		 
 		   textcourses.setText(toString2(arrcourses));  
 		}
 		
 		
-		public String toString2(ArrayList<String> arrcourses) {
+		public String toString2(ArrayList<String> arrcourses) { //line up nicely selected courses and return an entire String that contains them all
 
-			String strOutput ="";  //Prints constructor name + left bracket
-			for(int i = 0; i < arrcourses.size(); i++){     //myArr = ArrayList instance variable
+			String strOutput =""; 
+			for(int i = 0; i < arrcourses.size(); i++){ 
 				strOutput += arrcourses.get(i) ;
 				}
-			
-			//strOutput = strOutput + "/n";
+		
 			return strOutput; 
+			
+		}
+		
+		
+		private void readInfoFile(String course, JTextArea field) { //Uses Courses name to find the necessery text file containing all course's information
+			String fileName = course + "info.txt";
+			Path path = Paths.get(fileName);
+			
+			BufferedReader reader = null;
+			String line = "";
+			String them = "";
+			if(Files.exists(path)) {
+				String input = path.toString();
+				File file = new File(input);
+				try {
+					reader = new BufferedReader(new FileReader(file));
+					try {
+						while((line = reader.readLine()) != null) {
+							them += line + "\n";
+						}
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				field.setText(them);
+			}
+			else {
+				field.setText("Δεν βρέθηκαν πληροφορίες");
+			}
 			
 		}
 		
@@ -883,7 +727,9 @@ public class CheckBoxGUI {
 	} //actionListener
 	
 	
-	
+	/*
+	 * add all action listeners
+	 */
 		ActionListener checkboxListener = new ActionHandler();
 		ActionListener addbuttonListener = new ActionHandler();
 		ActionListener clearbuttonListener = new ActionHandler();
@@ -910,8 +756,8 @@ public class CheckBoxGUI {
 		
 		
 	
-	}
-}
+	}//constructor
+} //CheckBoGUI class
 
 	
 

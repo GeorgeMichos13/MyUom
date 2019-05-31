@@ -14,6 +14,7 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.SwingConstants;
 
 public class RankGUI extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -52,47 +53,49 @@ public class RankGUI extends JFrame{
 		backButton = new JButton("Back");
 		backButton.setBounds(10, 6, 80, 30);
 		rankGuiPanel.add(backButton);
+		rankGuiPanel.setSize(896, 504);
+		
 	
 		
 		slider1 = new JSlider(JSlider.HORIZONTAL,1,5,3);
-		slider1.setBounds(108, 32, 200, 45);
+		slider1.setBounds(179, 32, 200, 45);
 		slider1.addChangeListener(new SliderListener1());
 		
 		
 		slider2 = new JSlider(JSlider.HORIZONTAL,1,5,3);
-		slider2.setBounds(108, 119, 200, 45);
+		slider2.setBounds(179, 119, 200, 45);
 		slider2.addChangeListener(new SliderListener2());
 		
 		slider3 = new JSlider(JSlider.HORIZONTAL,1,5,3);
-		slider3.setBounds(108, 206, 200, 45);
+		slider3.setBounds(179, 206, 200, 45);
 		slider3.addChangeListener(new SliderListener3());
 		
 		slider4 = new JSlider(JSlider.HORIZONTAL,1,5,3);
-		slider4.setBounds(108, 289, 200, 45);
+		slider4.setBounds(179, 289, 200, 45);
 		slider4.addChangeListener(new SliderListener4());
 		
 		slider5 = new JSlider(JSlider.HORIZONTAL,1,5,3);
-		slider5.setBounds(108, 376, 200, 45);
+		slider5.setBounds(179, 376, 200, 45);
 		slider5.addChangeListener(new SliderListener5());
 		
 		slider6 = new JSlider(JSlider.HORIZONTAL,1,5,3);
-		slider6.setBounds(380, 32, 200, 45);
+		slider6.setBounds(531, 32, 200, 45);
 		slider6.addChangeListener(new SliderListener6());
 		
 		slider7 = new JSlider(JSlider.HORIZONTAL,1,5,3);
-		slider7.setBounds(380, 119, 200, 45);
+		slider7.setBounds(531, 119, 200, 45);
 		slider7.addChangeListener(new SliderListener7());
 		
 		slider8 = new JSlider(JSlider.HORIZONTAL,1,5,3);
-		slider8.setBounds(380, 206, 200, 45);
+		slider8.setBounds(531, 206, 200, 45);
 		slider8.addChangeListener(new SliderListener8());
 		
 		slider9 = new JSlider(JSlider.HORIZONTAL,1,5,3);
-		slider9.setBounds(380, 289, 200, 45);
+		slider9.setBounds(531, 289, 200, 45);
 		slider9.addChangeListener(new SliderListener9());
 		
 		slider10 = new JSlider(JSlider.HORIZONTAL,1,5,3);
-		slider10.setBounds(380, 376, 200, 45);
+		slider10.setBounds(531, 376, 200, 45);
 		slider10.addChangeListener(new SliderListener10());
 
 		
@@ -147,25 +150,35 @@ public class RankGUI extends JFrame{
 		slider10.setPaintLabels(true);
 		
 		field1 = new JTextField ("");
-		field1.setBounds(165, 11, 88, 20);
+		field1.setHorizontalAlignment(SwingConstants.CENTER);
+		field1.setBounds(128, 11, 300, 20);
 		field2 = new JTextField ("");
-		field2.setBounds(165, 95, 88, 20);
+		field2.setHorizontalAlignment(SwingConstants.CENTER);
+		field2.setBounds(128, 95, 300, 20);
 		field3 = new JTextField ("");
-		field3.setBounds(165, 175, 88, 20);
+		field3.setHorizontalAlignment(SwingConstants.CENTER);
+		field3.setBounds(128, 175, 300, 20);
 		field4 = new JTextField ("");
-		field4.setBounds(165, 262, 88, 20);
+		field4.setHorizontalAlignment(SwingConstants.CENTER);
+		field4.setBounds(128, 262, 300, 20);
 		field5 = new JTextField ("");
-		field5.setBounds(165, 355, 88, 20);
+		field5.setHorizontalAlignment(SwingConstants.CENTER);
+		field5.setBounds(128, 345, 300, 20);
 		field6 = new JTextField ("");
-		field6.setBounds(435, 11, 88, 20);
+		field6.setHorizontalAlignment(SwingConstants.CENTER);
+		field6.setBounds(478, 11, 300, 20);
 		field7 = new JTextField ("");
-		field7.setBounds(435, 95, 88, 20);
+		field7.setHorizontalAlignment(SwingConstants.CENTER);
+		field7.setBounds(478, 95, 300, 20);
 		field8 = new JTextField ("");
-		field8.setBounds(432, 175, 88, 20);
+		field8.setHorizontalAlignment(SwingConstants.CENTER);
+		field8.setBounds(478, 175, 300, 20);
 		field9 = new JTextField ("");
-		field9.setBounds(437, 262, 88, 20);
+		field9.setHorizontalAlignment(SwingConstants.CENTER);
+		field9.setBounds(478, 262, 300, 20);
 		field10 = new JTextField ("");
-		field10.setBounds(429, 355, 94, 20);
+		field10.setHorizontalAlignment(SwingConstants.CENTER);
+		field10.setBounds(478, 345, 300, 20);
 		
 		field1.setEditable(false);
 		field2.setEditable(false);
@@ -313,7 +326,7 @@ public class RankGUI extends JFrame{
 		rankGuiPanel.add(slider5);
 		rankGuiPanel.add(slider10);
 		this.setVisible(true);
-		this.setSize(644,471);
+		this.setSize(847,471);
 		this.setTitle("Rank panel");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

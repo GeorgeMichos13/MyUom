@@ -41,7 +41,7 @@ public class MainFrame {
 		panel.setBackground(SystemColor.activeCaption);
 		
 		
-		GroupLayout groupLayout = new GroupLayout(frmMainframe.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(frmMainframe.getContentPane());  //set up panel position
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
@@ -50,12 +50,16 @@ public class MainFrame {
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
 		);
+	
+		/*
+		 * create and set up all buttons
+		 */
 		
 		JButton programbutton = new JButton("Πρόγραμμα");
 		programbutton.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		programbutton.setFont(new Font("Tahoma", Font.BOLD, 15));
-		Image program_img = new ImageIcon(this.getClass().getResource("/schedule.png")).getImage();
-		programbutton.setIcon(new ImageIcon(program_img));
+		Image program_img = new ImageIcon(this.getClass().getResource("/schedule.png")).getImage();  //get necessary image
+		programbutton.setIcon(new ImageIcon(program_img));  
 		
 		JButton mapsbutton = new JButton("Χάρτες");
 		mapsbutton.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -89,7 +93,7 @@ public class MainFrame {
 		Image timer_img = new ImageIcon(this.getClass().getResource("/timer.png")).getImage();
 		timerbutton.setIcon(new ImageIcon(timer_img));
 		
-		GroupLayout gl_panel = new GroupLayout(panel);
+		GroupLayout gl_panel = new GroupLayout(panel);  //set properly buttons, even for resize
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
@@ -129,7 +133,7 @@ public class MainFrame {
 		frmMainframe.setLocationRelativeTo(null);
 		frmMainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		frmMainframe.addComponentListener(new ComponentListener() {
+		frmMainframe.addComponentListener(new ComponentListener() {  //used for auto text-resizing
 
             @Override
             public void componentHidden(ComponentEvent arg0) {
@@ -160,20 +164,20 @@ public class MainFrame {
 		
 		class ActionHandler implements ActionListener{
 			@Override
-			public void actionPerformed(ActionEvent ev) {
+			public void actionPerformed(ActionEvent ev) {  //fire up actions when buttons are selected
 				
 				
-				if(ev.getSource() == programbutton){ //Schedule 
+				if(ev.getSource() == programbutton){ 
 					
 					frmMainframe.setVisible(false);
-					EventQueue.invokeLater(new Runnable() {
+					EventQueue.invokeLater(new Runnable() { //Open CreateSchedule window
 						public void run() {		
 							try {
 								CreateSchedule schedulewindow = new CreateSchedule();
 								schedulewindow.schedulefrm.setVisible(true);
 							} catch (Exception e) {
 								e.printStackTrace();
-								System.out.println("den anoikse");
+								System.out.println("CreateSchedule didn't ran");
 							}
 						}
 					});
@@ -182,17 +186,17 @@ public class MainFrame {
 				
 				
 				
-				else if (ev.getSource() == timerbutton) {
+				else if (ev.getSource() == timerbutton) { 
 					frmMainframe.setVisible(false);
 					JFrame frame = new JFrame();
 					Timer gui = new Timer(frame);
 				}
-				else if(ev.getSource() == mapsbutton){
+				else if(ev.getSource() == mapsbutton){ 
 					
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {
 							try {
-								frmMainframe.setVisible(false);
+								
 								
 								MapsGUI mapsframe = new MapsGUI();
 								mapsframe.setVisible(true);
@@ -202,7 +206,7 @@ public class MainFrame {
 						}
 					});
 				}
-				else if(ev.getSource() == notesbutton) {
+				else if(ev.getSource() == notesbutton) { 
 					frmMainframe.setVisible(false);
 					
 					MyProfile profilewindow = new MyProfile();
@@ -211,7 +215,7 @@ public class MainFrame {
 				}
 				else if(ev.getSource() == infobutton) {
 					frmMainframe.setVisible(false);
-					MyProfile profilewindow = new MyProfile();
+					MyProfile profilewindow = new MyProfile();  
 					new InformationGUI(profilewindow.getCourses());
 				}
 				else if(ev.getSource() == profilebutton) {
@@ -237,6 +241,10 @@ public class MainFrame {
 			}//actionPerformed
 			
 		}//ActionListener
+		
+		/*
+		 * add action listeners
+		 */
 		
 		ActionListener programbuttonlistener = new ActionHandler();
 		ActionListener mapsbuttonlistener = new ActionHandler();
