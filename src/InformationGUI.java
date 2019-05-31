@@ -40,7 +40,6 @@ public class InformationGUI extends JFrame {
 		
 		SubjectList.addAll(array);
 		InfoPanel.setBackground(Color.GRAY);
-		System.out.println(SubjectList.size());
 		backButton = new JButton("Back");
 		InfoPanel.add(backButton);
 		
@@ -168,7 +167,6 @@ public class InformationGUI extends JFrame {
 			
 			 int num = SubjectList.size();
 			
-			System.out.println(new File(".").getAbsoluteFile());
 			
 			Notes info1  = new Notes(InfoArea1);
 			Notes info2  = new Notes(InfoArea2);

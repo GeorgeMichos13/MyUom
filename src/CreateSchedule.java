@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.AbstractButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -24,8 +25,8 @@ public class CreateSchedule {
 	
 	
 	private ArrayList<JCheckBox> arrcboxes = new ArrayList<JCheckBox>(); //Array with all the checkboxes
-	
-
+	private ArrayList<Course> FCourses = new ArrayList<Course>();
+	private ArrayList<Course> FFCourses = new ArrayList<Course>();
 	/**
 	 * Launch occurs in class MainFrame
 	 */
@@ -33,9 +34,9 @@ public class CreateSchedule {
 
 	
 	//@SuppressWarnings("unchecked")
-	public CreateSchedule() {
+	public CreateSchedule(ArrayList<Course> array) {
 		
-
+		this.FCourses.addAll(array);
 
 		
 		schedulefrm = new JFrame();
@@ -46,7 +47,7 @@ public class CreateSchedule {
 		
 		 
 		  
-		   
+				JButton nextframebutton = new JButton();
 							
 							
 				
@@ -56,14 +57,12 @@ public class CreateSchedule {
 				
 					
 					JLayeredPane panel = new JLayeredPane();
+					
 					scrollpane.setViewportView(panel);
+					scrollpane.add(nextframebutton);
 					
 					
-	
 					
-				
-					
-						
 						JCheckBox checkBox1 = new JCheckBox("Mathima 1.1");
 						checkBox1.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox1);
@@ -193,12 +192,42 @@ public class CreateSchedule {
 						checkBox18.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox30);
 						
-						
-						
-						
-						
-						
-						
+						int k=0;
+						int l=0;
+						int j=0;
+						int lasthour;
+						boolean flag = false;
+						for(int i=0;i<FCourses.size()-1;i++)
+						{
+
+							if(FCourses.get(i).getName().equals(FCourses.get(i+1).getName())==false || (FCourses.get(i+1).getHour() - FCourses.get(i).getHour() !=1) || FCourses.get(i).getClasss().equals(FCourses.get(i+1).getClasss())==false)
+							{
+								l = i;
+								lasthour = FCourses.get(l).getHour()+1 ;
+								arrcboxes.get(j).setText(FCourses.get(i).getName() + "  |  " + FCourses.get(i).getClasss() + "  |  "+ FCourses.get(i).getDayS() +"  |  " +FCourses.get(k).getHour() + ":00 - " + lasthour + ":00  |"  );
+								j++;
+								k = i+1;
+							}
+							
+						}
+						l = FCourses.size() -1;
+						int i = FCourses.size() -1;
+						while(!flag && FCourses.isEmpty()==false)
+						{
+							lasthour = FCourses.get(l).getHour()+1 ;
+							if(FCourses.get(i).getName().equals(FCourses.get(i-1).getName())==false || (FCourses.get(i).getHour() - FCourses.get(i-1).getHour() !=1) || FCourses.get(i).getClasss().equals(FCourses.get(i-1).getClasss())==false)
+							{
+								flag = true;
+								arrcboxes.get(j).setText(FCourses.get(i).getName()+ "  |  " + FCourses.get(i).getClasss() + "  |  "+ FCourses.get(i).getDayS() +"  |  " +FCourses.get(i).getHour() + ":00 - " + lasthour + ":00  |" );
+								j++;
+							}
+							i--;
+						}
+						for(i=j;i<arrcboxes.size();i++)
+						{
+							arrcboxes.get(i).setVisible(false);
+						}
+											
 						GroupLayout gl_panel = new GroupLayout(panel);
 						gl_panel.setHorizontalGroup(
 							gl_panel.createParallelGroup(Alignment.LEADING)
@@ -213,7 +242,7 @@ public class CreateSchedule {
 										.addComponent(checkBox6, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 										.addComponent(checkBox7, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 										.addComponent(checkBox8, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox9, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE))
+										.addComponent(checkBox9, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 										.addComponent(checkBox10, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 										.addComponent(checkBox11, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 										.addComponent(checkBox12, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
@@ -224,7 +253,7 @@ public class CreateSchedule {
 										.addComponent(checkBox17, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 										.addComponent(checkBox18, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 										.addComponent(checkBox19, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox20, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE))
+										.addComponent(checkBox20, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 										.addComponent(checkBox21, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 										.addComponent(checkBox22, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 										.addComponent(checkBox23, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)
@@ -235,7 +264,7 @@ public class CreateSchedule {
 										.addComponent(checkBox28, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 										.addComponent(checkBox29, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 										.addComponent(checkBox30, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-						);
+						)));
 						gl_panel.setVerticalGroup(
 							gl_panel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel.createSequentialGroup()
@@ -277,7 +306,7 @@ public class CreateSchedule {
 									.addComponent(checkBox18, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 									.addGap(3)
 									.addComponent(checkBox19, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addComponent(checkBox20, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+									.addComponent(checkBox20, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 									.addComponent(checkBox20, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 									.addGap(3)
 									.addComponent(checkBox21, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
@@ -298,7 +327,7 @@ public class CreateSchedule {
 									.addGap(3)
 									.addComponent(checkBox29, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 									.addComponent(checkBox30, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-						);
+						));
 						panel.setLayout(gl_panel);
 						schedulefrm.getContentPane().add(scrollpane);
 						
@@ -322,10 +351,155 @@ public class CreateSchedule {
 		
 		@Override
 		public void actionPerformed(ActionEvent ae) {
-		/*	
+			
+			ArrayList<Course> selectedCourses = new ArrayList<Course>();
+
+					String selectedCourse = ((JCheckBox) ae.getSource()).getText().substring(0,((JCheckBox) ae.getSource()).getText().indexOf("|")-2);
+					System.out.println(selectedCourse);
+					String temp =  ((JCheckBox) ae.getSource()).getText().substring(((JCheckBox) ae.getSource()).getText().indexOf("|")+3);
+					String selectedClass = temp.substring(0,temp.indexOf("|")-2);
+					JCheckBox selectedBox = ((JCheckBox) ae.getSource());
+					selectedBox.isEnabled();
+					int selectedIndex=0;
+					
+					
+					for(int i = 0;i<arrcboxes.size();i++)
+					{
+						if(arrcboxes.get(i).isSelected() && arrcboxes.get(i).isVisible())
+						{
+							selectedIndex = i;
+						}
+					}
+
+					for(int k = 0;k<FCourses.size();k++)
+					{
+						if(FCourses.get(k).getName().equals(selectedCourse) && FCourses.get(k).getClasss().equals(selectedClass)) {
+							selectedCourses.add(FCourses.get(k));
+
+						}
+						
+					}
+					if(selectedBox.isSelected())
+					{
+								for(int j=0;j<arrcboxes.size();j++)
+								{	
+									if(arrcboxes.get(j).isVisible()  )
+									{	
+										for(int k =0 ;k<selectedCourses.size();k++)
+										{																			
+											for(int l = 0;l<FCourses.size();l++)
+											{										
+												boolean identicalCourse = selectedCourses.get(k).equals(FCourses.get(l));
+												boolean differentClass = selectedCourses.get(k).getName().equals(FCourses.get(l).getName()) && selectedCourses.get(k).getClasss().equals(FCourses.get(l).getClasss())==false;
+												//System.out.println(identicalCourse +""+ samedaytime);
+												//System.out.println(selectedCourses.get(k).toString() + FCourses.get(l).toString());
+												String courseToDelete = FCourses.get(l).getName();
+												String classToDelete = FCourses.get(l).getClasss();
+												boolean samedaytime = selectedCourses.get(k).getDayS().equals(FCourses.get(l).getDayS()) && selectedCourses.get(k).getHour() == FCourses.get(l).getHour();
+												String cbText = arrcboxes.get(j).getText().substring(0,arrcboxes.get(j).getText().indexOf("|")-2);
+												String temp2 = arrcboxes.get(j).getText().substring(arrcboxes.get(j).getText().indexOf("|")+3);
+												String cbClass = temp2.substring(0,temp2.indexOf("|")-2);
+												if(cbText.equals(courseToDelete) && cbClass.equals(classToDelete) && (identicalCourse ==false) && samedaytime)
+												{
+													System.out.println(FCourses.get(l).getName() + "" +FCourses.get(l).getHour() + "" +FCourses.get(l).getDayS());
+													System.out.println(samedaytime +""+ j + " " + k + " " + l);
+													System.out.println(courseToDelete + cbText);
+													//arrcboxes.get(j).setSelected(true);
+													arrcboxes.get(j).setEnabled(false);
+												
+												}
+												if(cbText.equals(courseToDelete) && identicalCourse ==false && differentClass && j!=selectedIndex)
+												{
+													System.out.println(courseToDelete + cbText);
+													arrcboxes.get(j).setSelected(true);
+													arrcboxes.get(j).setEnabled(false);								
+												}
+												samedaytime = false;
+										
+											}		
+										}
+									}
+								}
+					}
+					if(selectedBox.isSelected()==false)
+					{
+								for(int j=0;j<arrcboxes.size();j++)
+								{	
+									if(arrcboxes.get(j).isVisible()  )
+									{	
+										for(int k =0 ;k<selectedCourses.size();k++)
+										{																			
+											for(int l = 0;l<FCourses.size();l++)
+											{										
+												boolean identicalCourse = selectedCourses.get(k).equals(FCourses.get(l));
+												boolean differentClass = selectedCourses.get(k).getName().equals(FCourses.get(l).getName()) && selectedCourses.get(k).getClasss().equals(FCourses.get(l).getClasss())==false;
+												//System.out.println(identicalCourse +""+ samedaytime);
+												//System.out.println(selectedCourses.get(k).toString() + FCourses.get(l).toString());
+												String courseToDelete = FCourses.get(l).getName();
+												String classToDelete = FCourses.get(l).getClasss();
+												boolean samedaytime = selectedCourses.get(k).getDayS().equals(FCourses.get(l).getDayS()) && selectedCourses.get(k).getHour() == FCourses.get(l).getHour();
+												String cbText = arrcboxes.get(j).getText().substring(0,arrcboxes.get(j).getText().indexOf("|")-2);
+												String temp2 = arrcboxes.get(j).getText().substring(arrcboxes.get(j).getText().indexOf("|")+3);
+												String cbClass = temp2.substring(0,temp2.indexOf("|")-2);
+												if(cbText.equals(courseToDelete) && cbClass.equals(classToDelete) && (identicalCourse ==false) && samedaytime && arrcboxes.get(j).isSelected())
+												{
+													//arrcboxes.get(j).setSelected(true);
+													arrcboxes.get(j).setEnabled(true);
+												}
+												if(cbText.equals(courseToDelete)  && identicalCourse ==false && differentClass)
+												{
+													arrcboxes.get(j).setEnabled(true);	
+													arrcboxes.get(j).setSelected(false);								
+												}
+												samedaytime = false;
+											}		
+										}
+									}
+								}
+					}
+									
+							/*if(!identicalCourse && differentClass)
+							{
+								for(int j=0;j<arrcboxes.size();j++)
+								{
+									if(arrcboxes.get(j).isVisible())
+									{									
+										String courseToCompare = arrcboxes.get(j).getText().substring(0,arrcboxes.get(j).getText().indexOf("|")-2);
+										if(selectedCourse.equals(courseToCompare))
+										{
+											arrcboxes.get(j).setSelected(true);
+											arrcboxes.get(j).setEnabled(false);
+										}
+									}
+									
+								}
+							}*/
+							
+					
+				
+			
+				
+			
 			if(ae.getSource()==nextframebutton) {  
 				
-					
+				
+				for(int i=0;i<arrcboxes.size();i++)
+				{
+					if(arrcboxes.get(i).isSelected() && arrcboxes.get(i).isEnabled())
+					{
+						String cbText = arrcboxes.get(i).getText().substring(0,arrcboxes.get(i).getText().indexOf("|")-2);
+						String temp2 = arrcboxes.get(i).getText().substring(arrcboxes.get(i).getText().indexOf("|")+3);
+						String cbClass = temp2.substring(0,temp2.indexOf("|")-2);
+						for(int j=0;j<FCourses.size();j++)
+						{
+							if(cbText.equals(FCourses.get(j).getName()) && cbClass.equals(FCourses.get(j).getClasss()))
+							{
+								FFCourses.add(FCourses.get(j));
+							}
+						}
+					}
+				}
+				XlsWriter writer = new XlsWriter(FFCourses)	;
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {		
 							try {
@@ -339,7 +513,7 @@ public class CreateSchedule {
 					schedulefrm.setVisible(false);
 			}
 			
-			*/
+			
 			
 		}//actionPerformed
 		
@@ -351,7 +525,7 @@ public class CreateSchedule {
 		ActionListener nextframebuttonListener = new ActionHandler();
 		ActionListener checkboxListener = new ActionHandler();
 		
-		for(int i=0;i<arrcboxes.size();i++)
+		for( i=0;i<arrcboxes.size();i++)
 			arrcboxes.get(i).addActionListener(checkboxListener);
 		
 		//nextframebutton.addActionListener(nextframebuttonListener);

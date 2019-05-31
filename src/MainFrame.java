@@ -173,7 +173,9 @@ public class MainFrame {
 					EventQueue.invokeLater(new Runnable() { //Open CreateSchedule window
 						public void run() {		
 							try {
-								CreateSchedule schedulewindow = new CreateSchedule();
+								MyProfile profilewindow = new MyProfile();
+								
+								CreateSchedule schedulewindow = new CreateSchedule(profilewindow.getFCourses());
 								schedulewindow.schedulefrm.setVisible(true);
 							} catch (Exception e) {
 								e.printStackTrace();

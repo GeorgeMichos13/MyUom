@@ -65,7 +65,13 @@ public class Course implements Serializable{
 	public int getDay() {
 		return(dayΝ);
 	}
+
+	public String getDirection() {
+		return direction;
+	}
 	
-	
+	public String getDayS() {
+		return(day);
+	}
 
 }

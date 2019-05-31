@@ -524,14 +524,14 @@ public class CheckBoxGUI {
 					}
 					else if(S==4) {
 						
-						setCheckBoxes(39,44);
+						setCheckBoxes(41,46);
 					}
 					else if(S==6) {
-						setCheckBoxes(45,50);
+						setCheckBoxes(47,52);
 					}
 					else if(S==8) {
 
-						setCheckBoxes(51,61);
+						setCheckBoxes(53,63);
 					}
 				
 			}
@@ -568,7 +568,14 @@ public class CheckBoxGUI {
 			if(ae.getSource()==nextframebutton) { //when Υποβολή is clicked
 	
 				if (arrcourses.size()>0 && arrcourses.size()<=10) { //prevent faulty number of selected courses
+					int dirindex = comboBoxD.getSelectedIndex();
+					String dirstr="";
+					if(dirindex ==0)
+						dirstr = "ΚΔΤ";
+					else if(dirindex ==1)
+						dirstr ="ΚΕΠ";
 					re.setArrayString(arrcourses);   //transfer array to XlsReader
+					re.setSelectedDirection(dirstr);
 					re.writeSelectedCourses();  
 
 					
@@ -591,12 +598,7 @@ public class CheckBoxGUI {
 					
 				
 					//Saves selected Direction from User and 
-					int dirindex = comboBoxD.getSelectedIndex();
-					String dirstr="";
-					if(dirindex ==0)
-						dirstr = "ΚΔΤ";
-					else if(dirindex ==1)
-						dirstr ="ΚΕΠ";
+				
 				
 					
 					EventQueue.invokeLater(new Runnable() {  //Open MainFrame

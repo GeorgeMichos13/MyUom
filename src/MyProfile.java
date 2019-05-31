@@ -76,6 +76,11 @@ public class MyProfile {
 		return Courses;
 	}
 	
+	public ArrayList<Course> getFCourses()
+	{
+		return FCourses;
+	}
+	
 	public  ArrayList<Integer> getStats(){
 	
 		ArrayList<String> courses = getCourses();
