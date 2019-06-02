@@ -100,6 +100,7 @@ public class CheckBoxGUI {
 				
 				JScrollPane BoxscrollPane = new JScrollPane();
 				BoxscrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+				BoxscrollPane.getVerticalScrollBar().setUnitIncrement(10);
 				
 					
 					JLayeredPane panel = new JLayeredPane();

@@ -49,6 +49,8 @@ public class notesGUI extends JFrame {
 		NotePanel.add(backButton);
 		
 		
+		scroll.getVerticalScrollBar().setUnitIncrement(10);
+		
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent back) {
 				

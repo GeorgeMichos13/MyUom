@@ -43,6 +43,8 @@ public class InformationGUI extends JFrame {
 		backButton = new JButton("Back");
 		InfoPanel.add(backButton);
 		
+		scroll.getVerticalScrollBar().setUnitIncrement(10);
+		
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent back) {
 				

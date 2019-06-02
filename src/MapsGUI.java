@@ -40,6 +40,7 @@ public class MapsGUI extends JFrame {
 			scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 			scrollPane.setSize(screenSize);
+			scrollPane.getVerticalScrollBar().setUnitIncrement(10);
 			
 			JPanel panel = new JPanel();
 			scrollPane.setViewportView(panel);
@@ -50,64 +51,64 @@ public class MapsGUI extends JFrame {
 			JLabel ml1 = new JLabel("");
 			Image map1 = new ImageIcon(this.getClass().getResource("/001.jpg")).getImage();
 			// set label icon as the Map image, scaled properly to prevent image distortion
-			ml1.setIcon(new ImageIcon(new ImageIcon(map1).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH))); 
+			ml1.setIcon(new ImageIcon(new ImageIcon(map1).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT))); 
 			
 			JLabel ml2 = new JLabel("");
 			Image map2 = new ImageIcon(this.getClass().getResource("/002.jpg")).getImage();
-			ml2.setIcon(new ImageIcon(new ImageIcon(map2).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml2.setIcon(new ImageIcon(new ImageIcon(map2).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			
 			JLabel ml3 = new JLabel("");
 			Image map3 = new ImageIcon(this.getClass().getResource("/003.jpg")).getImage();
-			ml3.setIcon(new ImageIcon(new ImageIcon(map3).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml3.setIcon(new ImageIcon(new ImageIcon(map3).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			JLabel ml4 = new JLabel("");
 			Image map4 = new ImageIcon(this.getClass().getResource("/004.jpg")).getImage();
-			ml4.setIcon(new ImageIcon(new ImageIcon(map4).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml4.setIcon(new ImageIcon(new ImageIcon(map4).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			JLabel ml5 = new JLabel("");
 			Image map5 = new ImageIcon(this.getClass().getResource("/005.jpg")).getImage();
-			ml5.setIcon(new ImageIcon(new ImageIcon(map5).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml5.setIcon(new ImageIcon(new ImageIcon(map5).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			JLabel ml6 = new JLabel("");
 			Image map6 = new ImageIcon(this.getClass().getResource("/006.jpg")).getImage();
-			ml6.setIcon(new ImageIcon(new ImageIcon(map6).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml6.setIcon(new ImageIcon(new ImageIcon(map6).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			JLabel ml7 = new JLabel("");
 			Image map7 = new ImageIcon(this.getClass().getResource("/007.jpg")).getImage();
-			ml7.setIcon(new ImageIcon(new ImageIcon(map7).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml7.setIcon(new ImageIcon(new ImageIcon(map7).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			JLabel ml8 = new JLabel("");
 			Image map8 = new ImageIcon(this.getClass().getResource("/008.jpg")).getImage();
-			ml8.setIcon(new ImageIcon(new ImageIcon(map8).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml8.setIcon(new ImageIcon(new ImageIcon(map8).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			JLabel ml9 = new JLabel("");
 			Image map9 = new ImageIcon(this.getClass().getResource("/009.jpg")).getImage();
-			ml9.setIcon(new ImageIcon(new ImageIcon(map9).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml9.setIcon(new ImageIcon(new ImageIcon(map9).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			JLabel ml10 = new JLabel("");
 			Image map10 = new ImageIcon(this.getClass().getResource("/010.jpg")).getImage();
-			ml10.setIcon(new ImageIcon(new ImageIcon(map10).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml10.setIcon(new ImageIcon(new ImageIcon(map10).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			JLabel ml11 = new JLabel("");
 			Image map11 = new ImageIcon(this.getClass().getResource("/011.jpg")).getImage();
-			ml11.setIcon(new ImageIcon(new ImageIcon(map11).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml11.setIcon(new ImageIcon(new ImageIcon(map11).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			JLabel ml12 = new JLabel("");
 			Image map12 = new ImageIcon(this.getClass().getResource("/012.jpg")).getImage();
-			ml12.setIcon(new ImageIcon(new ImageIcon(map12).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml12.setIcon(new ImageIcon(new ImageIcon(map12).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			JLabel ml13 = new JLabel("");
 			Image map13 = new ImageIcon(this.getClass().getResource("/013.jpg")).getImage();
-			ml13.setIcon(new ImageIcon(new ImageIcon(map13).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml13.setIcon(new ImageIcon(new ImageIcon(map13).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			JLabel ml14 = new JLabel("");
 			Image map14 = new ImageIcon(this.getClass().getResource("/014.jpg")).getImage();
-			ml14.setIcon(new ImageIcon(new ImageIcon(map14).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml14.setIcon(new ImageIcon(new ImageIcon(map14).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			JLabel ml15 = new JLabel("");
 			Image map15 = new ImageIcon(this.getClass().getResource("/015.jpg")).getImage();
-			ml5.setIcon(new ImageIcon(new ImageIcon(map15).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_SMOOTH)));
+			ml5.setIcon(new ImageIcon(new ImageIcon(map15).getImage().getScaledInstance((int) width, (int)height, Image.SCALE_DEFAULT)));
 			
 			
 			

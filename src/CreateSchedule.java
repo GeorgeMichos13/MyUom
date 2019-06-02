@@ -1,23 +1,23 @@
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.AbstractButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-import javax.swing.JPanel;
+import java.awt.Font;
 
 public class CreateSchedule {
 	
@@ -40,53 +40,55 @@ public class CreateSchedule {
 
 		
 		schedulefrm = new JFrame();
+		schedulefrm.setBackground(Color.WHITE);
 		schedulefrm.setTitle("Schedule");
-		schedulefrm.getContentPane().setBackground(Color.LIGHT_GRAY);
-				schedulefrm.getContentPane().setLayout(null);
+		schedulefrm.getContentPane().setBackground(SystemColor.control);
+				
 		
 		
-		 
-		  
-				JButton nextframebutton = new JButton();
+				JButton backbutton = new JButton("Πίσω");
+				JButton nextframebutton = new JButton("Εντάξει");
+				JButton addactbutton = new JButton("Προσθήκη Νέας Δραστηριότητας");
+				JButton clearbutton = new JButton("Καθαρισμός");
 							
 							
 				
 				JScrollPane scrollpane = new JScrollPane();
-				scrollpane.setBounds(0, 0, 680, 401);
 				scrollpane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+				scrollpane.getVerticalScrollBar().setUnitIncrement(16);
 				
 					
-					JLayeredPane panel = new JLayeredPane();
-					
-					scrollpane.setViewportView(panel);
-					scrollpane.add(nextframebutton);
-					
+				JLayeredPane panel = new JLayeredPane();
+				
+				scrollpane.setViewportView(panel);
 					
 					
-						JCheckBox checkBox1 = new JCheckBox("Mathima 1.1");
+					
+						JCheckBox checkBox1 = new JCheckBox("");
+						
 						checkBox1.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox1);
 						
 						
 						
-						JCheckBox checkBox2 = new JCheckBox("Mathima 1.2");
+						JCheckBox checkBox2 = new JCheckBox("");
 						checkBox2.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox2);
 						
-						JCheckBox checkBox3 = new JCheckBox("Mathima 2.1");
+						JCheckBox checkBox3 = new JCheckBox("");
 						checkBox3.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox3);
 						
-						JCheckBox checkBox4 = new JCheckBox("Mathima 2.2");
+						JCheckBox checkBox4 = new JCheckBox("");
 						checkBox4.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox4);
 					
 
-						JCheckBox checkBox5 = new JCheckBox("Mathima 3.1");
+						JCheckBox checkBox5 = new JCheckBox("");
 						checkBox5.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox5);
 						
-						JCheckBox checkBox6 = new JCheckBox("Mathima 3.2");
+						JCheckBox checkBox6 = new JCheckBox("");
 						checkBox6.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox6);
 						
@@ -192,6 +194,9 @@ public class CreateSchedule {
 						checkBox18.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox30);
 						
+						for(JCheckBox cb :arrcboxes)
+							cb.setFont(new Font("Tahoma", Font.PLAIN, 13));
+						
 						int k=0;
 						int l=0;
 						int j=0;
@@ -227,109 +232,163 @@ public class CreateSchedule {
 						{
 							arrcboxes.get(i).setVisible(false);
 						}
+						
+						
+						
+						
 											
+						
+						
 						GroupLayout gl_panel = new GroupLayout(panel);
 						gl_panel.setHorizontalGroup(
 							gl_panel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(10)
 									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-										.addComponent(checkBox1, GroupLayout.PREFERRED_SIZE, 667, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox2, GroupLayout.PREFERRED_SIZE, 667, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox3, GroupLayout.PREFERRED_SIZE, 667, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox4, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox5, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox6, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox7, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox8, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox9, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox10, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox11, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox12, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox13, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox14, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox15, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox16, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox17, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox18, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox19, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox20, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox21, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox22, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox23, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox24, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox25, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox26, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox27, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox28, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox29, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-										.addComponent(checkBox30, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-						)));
+										.addGroup(gl_panel.createSequentialGroup()
+											.addGap(10)
+											.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+												.addGroup(gl_panel.createSequentialGroup()
+													.addComponent(checkBox1, GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+													.addGap(3))
+												.addGroup(gl_panel.createSequentialGroup()
+													.addComponent(checkBox2, GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+													.addGap(3))
+												.addComponent(checkBox3, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox4, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox5, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox6, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox7, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox8, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox9, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox10, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox11, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox12, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox15, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox16, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox17, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox18, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox19, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox20, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox21, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox22, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox23, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox24, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox25, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox26, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox27, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox28, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox29, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox30, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox13, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox14, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)))
+										.addGroup(gl_panel.createSequentialGroup()
+											.addContainerGap()
+											.addComponent(backbutton, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
+									.addGap(41)
+									.addComponent(clearbutton)
+									.addGap(31))
+						);
 						gl_panel.setVerticalGroup(
 							gl_panel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(35)
-									.addComponent(checkBox1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox2, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox3, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox4, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox5, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox6, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox7, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox8, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox9, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox10, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox11, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox12, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox13, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox14, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(checkBox15, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox16, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox17, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox18, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox19, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addComponent(checkBox20, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addComponent(checkBox20, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox21, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox22, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox23, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox24, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox25, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox26, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox27, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox28, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addGap(3)
-									.addComponent(checkBox29, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-									.addComponent(checkBox30, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-						));
+									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_panel.createSequentialGroup()
+											.addGap(5)
+											.addComponent(backbutton)
+											.addPreferredGap(ComponentPlacement.UNRELATED)
+											.addComponent(checkBox1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox2, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox3, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox4, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox5, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox6, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox7, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox8, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox9, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox10, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox11, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox12, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox13, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox14, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox15, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox16, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox17, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox18, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox19, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox20, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox21, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox22, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox23, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox24, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox25, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox26, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox27, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox28, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox29, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addComponent(checkBox30, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_panel.createSequentialGroup()
+											.addContainerGap()
+											.addComponent(clearbutton, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)))
+									.addContainerGap(15, Short.MAX_VALUE))
+						);
 						panel.setLayout(gl_panel);
-						schedulefrm.getContentPane().add(scrollpane);
+						
+						
+						
+						
+						GroupLayout groupLayout = new GroupLayout(schedulefrm.getContentPane());
+						groupLayout.setHorizontalGroup(
+							groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(scrollpane, GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
+										.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+											.addContainerGap()
+											.addComponent(addactbutton)
+											.addPreferredGap(ComponentPlacement.RELATED, 543, Short.MAX_VALUE)
+											.addComponent(nextframebutton, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
+											.addGap(27)))
+									.addGap(0))
+						);
+						groupLayout.setVerticalGroup(
+							groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+									.addComponent(scrollpane, GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+									.addGap(18)
+									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+										.addComponent(nextframebutton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+										.addComponent(addactbutton, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
+									.addContainerGap())
+						);
+						schedulefrm.getContentPane().setLayout(groupLayout);
 						
 							
 							
@@ -344,8 +403,124 @@ public class CreateSchedule {
 		
 		
 		
+		
+		class ButtonHandler implements ActionListener{
+			@Override
+			public void actionPerformed(ActionEvent ev) {
+				
+				
+				
+				if(ev.getSource() == clearbutton) {
+					
+					//Uncheck All Boxes
+					System.out.println("eimai sthn grammh 413");
+					
+				}
+			
+				if(ev.getSource()==nextframebutton) {  
+					
+					
+					for(int i=0;i<arrcboxes.size();i++)
+					{
+						if(arrcboxes.get(i).isSelected() && arrcboxes.get(i).isEnabled())
+						{
+							String cbText = arrcboxes.get(i).getText().substring(0,arrcboxes.get(i).getText().indexOf("|")-2);
+							String temp2 = arrcboxes.get(i).getText().substring(arrcboxes.get(i).getText().indexOf("|")+3);
+							String cbClass = temp2.substring(0,temp2.indexOf("|")-2);
+							for(int j=0;j<FCourses.size();j++)
+							{
+								if(cbText.equals(FCourses.get(j).getName()) && cbClass.equals(FCourses.get(j).getClasss()))
+								{
+									FFCourses.add(FCourses.get(j));
+								}
+							}
+						}
+					}
+					XlsWriter writer = new XlsWriter(FFCourses)	;
+						EventQueue.invokeLater(new Runnable() {
+							public void run() {		
+								try {
+									MainFrame window = new MainFrame();
+									window.frmMainframe.setVisible(true);
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+							}
+						});
+						schedulefrm.setVisible(false);
+				}
+				
+				
+				if(ev.getSource() ==backbutton) {
+					EventQueue.invokeLater(new Runnable() {
+						public void run() {		
+							try {
+								MainFrame window = new MainFrame();
+								window.frmMainframe.setVisible(true);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					});
+					schedulefrm.setVisible(false);
+					
+				}	
+				
+			
+				if(ev.getSource() == addactbutton) {
+					
+					JTextField titlefield = new JTextField();
+					JTextField dayfield = new JTextField();
+					JTextField timefield = new JTextField();
+
+					Object[] act = {
+							"Τίτλος :", titlefield,
+							"Μέρα(1=Δευτέρα, 5=Παρασκευή) :", dayfield,
+							"Ώρα(8-21 :)", timefield
+							};
+					
+					int option = JOptionPane.showConfirmDialog(null, act, "Προσθέστε Δραστηριότητα", JOptionPane.OK_CANCEL_OPTION);
+					
+					
+
+						String title = titlefield.getText();
+						String day = dayfield.getText();
+						String time = timefield.getText();
+						
+						boolean emptyfields =(title.trim().equals("") || day.trim().equals("") || time.trim().equals(""));
+						boolean invalidDayNumber = false; // Elegxos gia na deis oti einai enas mono arithmos apo to 1-5
+						boolean invalidTime = false; //Elegxos gia lanthasmeni diarkeia drasthriothtas
+						
+						
+						while((emptyfields || invalidDayNumber || invalidTime) && option ==JOptionPane.OK_OPTION) {
+						
+							JOptionPane.showMessageDialog(null, "Συμπλήρωσε σωστά τα κενά");
+							option = JOptionPane.showConfirmDialog(null, act, "Προσθέστε Δραστηριότητα", JOptionPane.OK_CANCEL_OPTION);
+							title = titlefield.getText();
+							day = dayfield.getText();
+							time = timefield.getText();
+						}
+						
+						if(option ==JOptionPane.OK_OPTION) {
+							
+							
+							//save data
+							
+							
+						System.out.println("Saving Data...");
+						}
+						
+				
+					
+				}//addactivitiesbutton
+			}
+		}//ButtonHandler
 	
-	class ActionHandler implements ActionListener{
+		
+		
+		
+		
+		class ActionHandler implements ActionListener{
 		
 	
 		
@@ -354,11 +529,12 @@ public class CreateSchedule {
 			
 			ArrayList<Course> selectedCourses = new ArrayList<Course>();
 
-					String selectedCourse = ((JCheckBox) ae.getSource()).getText().substring(0,((JCheckBox) ae.getSource()).getText().indexOf("|")-2);
+				JCheckBox selectedBox = ((JCheckBox) ae.getSource());
+					String selectedCourse = selectedBox.getText().substring(0,selectedBox.getText().indexOf("|")-2);
 					System.out.println(selectedCourse);
-					String temp =  ((JCheckBox) ae.getSource()).getText().substring(((JCheckBox) ae.getSource()).getText().indexOf("|")+3);
+					String temp = selectedBox.getText().substring(selectedBox.getText().indexOf("|")+3);
 					String selectedClass = temp.substring(0,temp.indexOf("|")-2);
-					JCheckBox selectedBox = ((JCheckBox) ae.getSource());
+					
 					selectedBox.isEnabled();
 					int selectedIndex=0;
 					
@@ -480,56 +656,31 @@ public class CreateSchedule {
 			
 				
 			
-			if(ae.getSource()==nextframebutton) {  
-				
-				
-				for(int i=0;i<arrcboxes.size();i++)
-				{
-					if(arrcboxes.get(i).isSelected() && arrcboxes.get(i).isEnabled())
-					{
-						String cbText = arrcboxes.get(i).getText().substring(0,arrcboxes.get(i).getText().indexOf("|")-2);
-						String temp2 = arrcboxes.get(i).getText().substring(arrcboxes.get(i).getText().indexOf("|")+3);
-						String cbClass = temp2.substring(0,temp2.indexOf("|")-2);
-						for(int j=0;j<FCourses.size();j++)
-						{
-							if(cbText.equals(FCourses.get(j).getName()) && cbClass.equals(FCourses.get(j).getClasss()))
-							{
-								FFCourses.add(FCourses.get(j));
-							}
-						}
-					}
-				}
-				XlsWriter writer = new XlsWriter(FFCourses)	;
-					EventQueue.invokeLater(new Runnable() {
-						public void run() {		
-							try {
-								MainFrame window = new MainFrame();
-								window.frmMainframe.setVisible(true);
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-						}
-					});
-					schedulefrm.setVisible(false);
-			}
 			
+				
+	
+	
 			
 			
 		}//actionPerformed
 		
 
-	} //actionListener
+	} //ActionHanlder
 	
 	
 	
-		ActionListener nextframebuttonListener = new ActionHandler();
+		ActionListener nextframebuttonListener = new ButtonHandler();
 		ActionListener checkboxListener = new ActionHandler();
+		ActionListener backbuttonlistener = new ButtonHandler();
+		ActionListener addactbuttonlistener = new ButtonHandler();
+		ActionListener clearbuttonlistener = new ButtonHandler();
 		
 		for( i=0;i<arrcboxes.size();i++)
 			arrcboxes.get(i).addActionListener(checkboxListener);
 		
-		//nextframebutton.addActionListener(nextframebuttonListener);
-		
-	
+		backbutton.addActionListener(backbuttonlistener);
+		nextframebutton.addActionListener(nextframebuttonListener);
+		addactbutton.addActionListener(addactbuttonlistener);
+		clearbutton.addActionListener(clearbuttonlistener);
 	}
 }
