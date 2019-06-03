@@ -79,8 +79,9 @@ public class ThemataGUI extends JFrame{
 		//themataPanel.setBackground(Color.ORANGE);
 	}
 
-	
+	//Reading file and printing it into panel
 	private void readFile(String course, JTextArea field) {
+		//Getting path
 		String fileName = course + "themata.txt";
 		Path path = Paths.get(fileName);
 		System.out.println(path);
@@ -88,6 +89,7 @@ public class ThemataGUI extends JFrame{
 		BufferedReader reader = null;
 		String line = "";
 		String them = "";
+		//If file exists shows it
 		if(Files.exists(path)) {
 			String input = path.toString();
 			File file = new File(input);
@@ -108,6 +110,7 @@ public class ThemataGUI extends JFrame{
 			field.setText(them);
 		}
 		else {
+			//A very loving message from us.
 			field.setText("Δεν βρέθηκαν παλιά θέματα.\n\nΛυπούμαστε ταμάλα.\n\nΝα πας να διαβάσεις μονος σου τωρα.\n\n\n#MyUomTeam#SorryNotSorry");
 		}
 		

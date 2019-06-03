@@ -53,7 +53,7 @@ public class MyProfileGUI extends JFrame{
 		
 		myProfilePanel = new JPanel();
 		
-		
+		//Initialising field for username
 		nameArea = new JTextField();
 		nameArea.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		nameArea.setBackground(Color.WHITE);
@@ -61,11 +61,13 @@ public class MyProfileGUI extends JFrame{
 		nameArea.setFont(new Font("Monospaced", Font.BOLD, 19));
 		//nameArea.setComponentOrientation(Orientation);
 		
+		//Initialising field for selected lessons
 		selectedLessonsArea = new JTextArea(10,30);
 		selectedLessonsArea.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		selectedLessonsArea.setFont(new Font("Monospaced", Font.PLAIN, 18));
 		
 	
+		//Button GUI
 		backButton = new JButton("Back");
 		backButton.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -82,6 +84,8 @@ public class MyProfileGUI extends JFrame{
 		
 		nameArea.setEditable(false);
 		
+		//Getting username from file 
+		//and printing it to panel
 		Path namefile = Paths.get("username.txt");
 		String user = namefile.toString();
 		try {
@@ -99,9 +103,12 @@ public class MyProfileGUI extends JFrame{
 		}
 		
 		nameArea.setText(username);
+		
+		//Getting courses names and
+		//printing them to panel
 		MyProfile profilewindow = new MyProfile();
 		courses = profilewindow.getCourses();
-		
+	
 		String persp = "";
 		for(int i = 0 ; i < courses.size(); i++) {
 			persp = persp + courses.get(i) + "\n";
@@ -181,7 +188,8 @@ public class MyProfileGUI extends JFrame{
 		this.setContentPane(myProfilePanel);
 		
 		
-		
+		//GUI setting that I dont really understand
+		//co-worker did his work very well
 		GroupLayout gl_myProfilePanel = new GroupLayout(myProfilePanel);
 		gl_myProfilePanel.setHorizontalGroup(
 			gl_myProfilePanel.createParallelGroup(Alignment.LEADING)

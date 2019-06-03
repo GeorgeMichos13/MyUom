@@ -56,7 +56,7 @@ public class RankGUI extends JFrame{
 		rankGuiPanel.setSize(896, 504);
 		
 	
-		
+		//Initialising sliders
 		slider1 = new JSlider(JSlider.HORIZONTAL,1,5,3);
 		slider1.setBounds(179, 32, 200, 45);
 		slider1.addChangeListener(new SliderListener1());
@@ -149,6 +149,7 @@ public class RankGUI extends JFrame{
 		slider10.setPaintTicks(true);
 		slider10.setPaintLabels(true);
 		
+		//initialising field for course name
 		field1 = new JTextField ("");
 		field1.setHorizontalAlignment(SwingConstants.CENTER);
 		field1.setBounds(128, 11, 300, 20);
@@ -226,6 +227,8 @@ public class RankGUI extends JFrame{
 
 
 		
+		//Setting visible the right amount of
+		//sliders and fields needed
 		for (int i = 1; i <= courses.size(); i++) {
 			if(i == 1) {
 
@@ -331,6 +334,8 @@ public class RankGUI extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
+	//Creating SliderListener for each course
+	//And adding the rank to the appropiate index
 	class SliderListener1 implements ChangeListener {
 	    public void stateChanged(ChangeEvent e1) {
 	    	int rank = 0;
@@ -452,6 +457,7 @@ public class RankGUI extends JFrame{
 	    }
 	}
 	
+	//Getting the ranks from the user
 	public static ArrayList<Integer> getRanks() {
 		ArrayList<Integer> stats = new ArrayList<Integer>();
 		

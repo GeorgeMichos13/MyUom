@@ -43,13 +43,13 @@ public class ShowResultsGUI extends JFrame {
 		
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		
-		
+		//Adding data to set
 		for(int i=0 ; i < newStats.size(); i++) {
 			dataset.addValue(newStats.get(i),courses.get(i),courses.get(i));
 		}
 		
 		
-		
+		//Creating chart
 		JFreeChart chart = ChartFactory.createBarChart3D("Courses Difficulty", "Courses", "Difficulty", dataset, PlotOrientation.VERTICAL, true, true, true);
 		
 		ChartPanel chartPanel = new ChartPanel(chart);
@@ -73,7 +73,7 @@ public class ShowResultsGUI extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
-	
+	//Getting stats depending on case
 	public void alterStatistics() {
 		ArrayList<Integer> selectedRanks;
 	
@@ -85,6 +85,8 @@ public class ShowResultsGUI extends JFrame {
 		String input = path1.toString();
 		File file = new File(input);
 		
+		//Writing new stats and reading them
+		//Case:Users just ranked 
 		if(Files.exists(path) && !Files.exists(path1)) {
 			selectedRanks = RankGUI.getRanks();	
 			ArrayList<Integer> oldStats = profilewindow.getStats();
@@ -107,14 +109,19 @@ public class ShowResultsGUI extends JFrame {
 			
 		}
 		else if (Files.exists(path1) && Files.exists(path))
+			//Reading altered stats
+			//Case: User has ranked and exited programm
+			//Wants to see results again
 			getStatistics();
 		else 
+			//Stats before they have been ranked
+			//Case:Users hasnt ranked yet
 			newStats = profilewindow.getStats();
 		
 		}
 	
 	
-	
+	//Getting stats if the user has ranked
 	public void getStatistics() {
 		Path path = Paths.get("newStats.txt");
 		String input = path.toString();
