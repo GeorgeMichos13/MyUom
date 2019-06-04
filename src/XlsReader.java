@@ -51,13 +51,12 @@ public class XlsReader {
 	        Path xlPath = Paths.get("TimeTable.xls");
 	        String path = xlPath.toString();
 	        try {
-	            workbook = Workbook.getWorkbook(new File(path));
+	            workbook = Workbook.getWorkbook(new File(path)); // Ανοιγουμε το εξελ σε μεταβλητη τυπου workbook και παιρνουμε στην μεταβλητη numOfSheets τα φυλλα του
 	            numOfSheets = workbook.getNumberOfSheets();
-	            Cell cell2 = workbook.getSheet(1).getCell(2,13);
-	            for(k=0;k<numOfSheets;k++)
+	            for(k=0;k<numOfSheets;k++) // για καθε φυλλο
 	            {
 		            Sheet sheet = workbook.getSheet(k);  
-		            sheetName = sheet.getName();
+		            sheetName = sheet.getName(); // το ονομα του φυλλου περιεχει κατευθυνση και εξαμηνο οποτε κανουμε substring και τα αποκταμε
 		            cindex2 = sheetName.indexOf("'");
 		            sheetName2 = sheetName.substring(0, cindex2);
 		            cindex = sheetName.indexOf('-');
@@ -67,7 +66,7 @@ public class XlsReader {
 		            counter = 0;
 		            merged = false;
 		            do  {
-		            	if(sheet.getCell(j,3).getCellFormat().getAlignment().getDescription().equals("centre"))
+		            	if(sheet.getCell(j,3).getCellFormat().getAlignment().getDescription().equals("centre")) // ελεγχοι για να δουμε αν καποιο cell ειναι merged
 		            	{    		
 		            		day++;
 		            	}
@@ -77,22 +76,22 @@ public class XlsReader {
 	        			else
 	        			{
 	        				merged = false;
-	        			}
+	        			} // σε περιπτωση που ειναι merged πρεπει να καταλαβουμε μεχρι που ειναι merged για να κανουμε copy paste την πληροφορια του original cell
 	        			i=4;
 	        			do{				
 		            		Cell cell = sheet.getCell(j, i);		            		
 		            		cellstring = cell.toString();	
-		            		if(cellstring.contains("Label") || cellstring.contains("Mul") || cellstring.contains("Blank")) { 
+		            		if(cellstring.contains("Label") || cellstring.contains("Mul") || cellstring.contains("Blank")) {  //ελεγχος για το αν το cell ειναι original (περιεχει πληροφοριες και δεν ειναι merged)
 		            			
-		            			hour = i+4;
-		            			course = "";
-		            			classs = "κοινό";
-		            			classr = "";
+		            			hour = i+4; //ωρα
+		            			course = ""; // μαθημα
+		            			classs = "κοινό"; // κατευθυνση
+		            			classr = ""; // αιθουσα
 		            			if(cellstring.contains("Label"))
 		            			{
 		            				cellinfo = cell.getContents().trim().replaceAll(" +", " ");
 		            				cindex = cellinfo.indexOf('(');
-			            			course = cellinfo.substring(0, cindex);
+			            			course = cellinfo.substring(0, cindex); // αποθηκευουμε τα ονοματα των μαθηματων πριν την παρενθεση που ξεκιναει ο κωδικος. Σασ συνιστω να εχετε και το excel διπλα να καταλαβαινετε τι λεω
 			            			if(cellinfo.contains("Τμήμα ")) {
 				            			index2 = cellinfo.indexOf("Τμήμα ");
 				            			classs = cellinfo.substring(index2 + 6,index2 + 7);
@@ -107,9 +106,8 @@ public class XlsReader {
 			            			}
 			            			else if(cellinfo.contains("Τμήμα:")) {
 				            			index2 = cellinfo.indexOf("Τμήμα:");
-				            			classs = cellinfo.substring(index2 + 6,index2 + 7);
+				            			classs = cellinfo.substring(index2 + 6,index2 + 7); // το τμημα το γραφουν με τους εξης διαφορετικους τροπους οποτε επρεπε να γινει σωστα το subsrting
 			            			}		            			
-			          
 			            			if(cellinfo.contains("Αίθουσα ")) {
 				            			index2 = cellinfo.indexOf("Αίθουσα ");
 				            			classr = cellinfo.substring(index2);
@@ -130,18 +128,18 @@ public class XlsReader {
 				            			index2 = cellinfo.indexOf("Εργαστήριο ");
 				            			classr = cellinfo.substring(index2);
 				
-			            			}
+			            			} //το ιδιο και η αιθουσα
 			            			if(classr.contains("\n"))
 			            			{
 			            				index2 = classr.indexOf("\n");
 			            				classr = classr.substring(0,index2);
 			            			}
 			            			if(cellinfo.contains("Φροντιστήριο")==false)
-			            			{
+			            			{ //δεν μας ενδιαφερουν τα φροντιστηριακα
 			            				counter = 0;
 			            				if(hour!=22)
 			            				{
-			            					courses.add(new Course(course,day,hour,classr,classs,sheetName2,sheetName));
+			            					courses.add(new Course(course,day,hour,classr,classs,sheetName2,sheetName)); //αποκτησαμε ολες τις πληροφοριες και δημιουργουμε το course
 			            				}
 			            				
 			            				added = false;
@@ -157,15 +155,13 @@ public class XlsReader {
 			            				{
 			            					courseStats.add(new CourseStats(course,sheetName2,sheetName));	            					
 			            				}
-			            				prev=j;			            				
-			            			}			            				            			
+			            				prev=j;		//εδω περα χρησιμοποιω ενα hashset για να δω αν μπορει να εισαχθει το στοιχειο τυπου CourseStat που 
+			            				//θα ειναι distinct και με την added την προσθετω σε ταξινομημενο arrayList       				
+			            			}			            				         			
 		            			}
-		            				if(j==2 && i ==13 && k ==1 )		            					
-		            				{
-		            					System.out.println(cell2.getCellFormat().getWrap() + cell.getCellFormat().getAlignment().getDescription());
-		            				}
 		            					            						        		            		
-			            			if (cell.getCellFormat().getWrap() == false && cell.getCellFormat().getAlignment().getDescription().equals("general") && counter <2 && prev ==j) 
+			            			if (cell.getCellFormat().getWrap() == false && cell.getCellFormat().getAlignment().getDescription().equals("general") && counter <2 && prev ==j)  //ελεγχω αν ειναι merged αν εχει αλλαξει η μερα
+			            				//και εαν τυχαινει να ειναι merged αλλα να ξεπερασει το τριωρο το μαθημα. σε μερικες μερες εχουμε merge στηλων και ηταν δυσκολο να γινει ο διαχωρισμος
 			            			{
 			            				counter++;
 			            				course = courses.get(courses.size()-1).getName();	
@@ -193,12 +189,12 @@ public class XlsReader {
 			            				{
 			            					courseStats.add(new CourseStats(course,sheetName2,sheetName));	            					
 			            				}
-			            			}		            					            			
+			            			} //παρομοιοι ελεγχοι για τα original cells
 		            		}
 		            		if(sheet.getCell(1,i).getCellFormat().getWrap() == true && sheet.getCell(1,i).getContents().equals("")) {
 		            			break;
 		            		}
-		            		i++;
+		            		i++; //γραμμες
             				if(i>17)
             				{
             					break;
@@ -207,10 +203,10 @@ public class XlsReader {
 		            	if(sheet.getCell(j,3).getContents().equals("")==true && merged == false) {
 		            		break;
 		            	}
-		            	j++;
+		            	j++; //στηλες
 		            }while(true);		     
 	            }
-    	        Collections.sort(courseStats);
+    	        Collections.sort(courseStats); //sort
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        } catch (BiffException e) {
@@ -263,7 +259,7 @@ public class XlsReader {
 		}
 	    
 		public void writeSelectedCourses() {	
-			System.out.println(dirstr);
+			//serialize των επιλεγμενων μαθηματων απο την CheckboxGui
 			for(int i=0;i<courseStr.size();i++)
 			{
 				String temp = courseStr.get(i).replace("\n","");

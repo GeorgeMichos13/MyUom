@@ -1,18 +1,15 @@
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import jxl.Workbook;
-import jxl.write.*;
-import jxl.write.Number;
-
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
-
+import jxl.Workbook;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
 public class XlsWriter {
 	private ArrayList<Course> FCourses = new ArrayList<Course>();
-	
+	private ArrayList<Label> labels = new ArrayList<Label>();
 	
 	public XlsWriter(ArrayList<Course> array)
 	{
@@ -20,21 +17,16 @@ public class XlsWriter {
 	}
 	
 	public void writeToExcel()	
-	
 	{
         WritableWorkbook workbook = null;
-
         try {
 
         	workbook = Workbook.createWorkbook(new File("MyUOMSchedule.xls"));
-
-            // create an Excel sheet
+            //δημιουργια νεου excel
             WritableSheet excelSheet = workbook.createSheet("MySchedule", 0);
-
-            // add something into the Excel sheet
+            //δημιουργια φυλλου excel
             Label label = new Label(0, 0, "ΩΡΑ/ΜΕΡΑ");
-            excelSheet.addCell(label);
-            
+            excelSheet.addCell(label);        
             int i=8;
             int inext=i+1;
             Label hour = new Label(0, 1,""+ i +"-"+inext);
@@ -60,28 +52,27 @@ public class XlsWriter {
             excelSheet.addCell(day);
             
             day = new Label(5, 0, "ΠΑΡΑΣΚΕΥΗ");
-            excelSheet.addCell(day);
+            excelSheet.addCell(day);//προσθηκη μερων και ωρων με την μεθοδο addCell
             
             if(!FCourses.isEmpty())
             {
-            	Label course = new Label(FCourses.get(0).getDay(),FCourses.get(0).getHour()-7,FCourses.get(0).getName());
-                excelSheet.addCell(course);
+            	labels.add(new Label(FCourses.get(0).getDay(),FCourses.get(0).getHour()-7,FCourses.get(0).getName()));
+             
                 for(i=1;i<FCourses.size();i++)
                 {
-                	course = new Label(FCourses.get(0).getDay(),FCourses.get(0).getHour()-7,FCourses.get(0).getName());
-                	excelSheet.addCell(course);	
+                	labels.add(new Label(FCourses.get(i).getDay(),FCourses.get(i).getHour()-7,FCourses.get(i).getName()));
                 }
-            }
-                      
-            workbook.write();
-
-
+            }    
+            for(i=0;i<labels.size();i++)
+            {
+            	excelSheet.addCell(labels.get(i));
+            }//προσθηκη μαθηματων και δραστηριοτητων στο mySchedule                        
+            workbook.write();//γραψιμο στο excel
         } catch (IOException e) {
             e.printStackTrace();
         } catch (WriteException e) {
             e.printStackTrace();
         } finally {
-
             if (workbook != null) {
                 try {
                     workbook.close();
@@ -91,9 +82,6 @@ public class XlsWriter {
                     e.printStackTrace();
                 }
             }
-
-
         }
 	}
-
 }

@@ -26,12 +26,10 @@ public class CreateSchedule {
 	
 	private ArrayList<JCheckBox> arrcboxes = new ArrayList<JCheckBox>(); //Array with all the checkboxes
 	private ArrayList<Course> FCourses = new ArrayList<Course>();
-	private ArrayList<Course> FFCourses = new ArrayList<Course>();
 	/**
 	 * Launch occurs in class MainFrame
 	 */
-	 
-
+	private ArrayList<Course> selectedCourses = new ArrayList<Course>();
 	
 	//@SuppressWarnings("unchecked")
 	public CreateSchedule(ArrayList<Course> array) {
@@ -195,7 +193,7 @@ public class CreateSchedule {
 						arrcboxes.add(checkBox30);
 						
 						for(JCheckBox cb :arrcboxes)
-							cb.setFont(new Font("Tahoma", Font.PLAIN, 13));
+							cb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 						
 						int k=0;
 						int l=0;
@@ -205,11 +203,13 @@ public class CreateSchedule {
 						for(int i=0;i<FCourses.size()-1;i++)
 						{
 
-							if(FCourses.get(i).getName().equals(FCourses.get(i+1).getName())==false || (FCourses.get(i+1).getHour() - FCourses.get(i).getHour() !=1) || FCourses.get(i).getClasss().equals(FCourses.get(i+1).getClasss())==false)
-							{
-								l = i;
-								lasthour = FCourses.get(l).getHour()+1 ;
-								arrcboxes.get(j).setText(FCourses.get(i).getName() + "  |  " + FCourses.get(i).getClasss() + "  |  "+ FCourses.get(i).getDayS() +"  |  " +FCourses.get(k).getHour() + ":00 - " + lasthour + ":00  |"  );
+							if(FCourses.get(i).getName().equals(FCourses.get(i+1).getName())==false || (FCourses.get(i+1).getHour() - FCourses.get(i).getHour() !=1) 
+									|| FCourses.get(i).getClasss().equals(FCourses.get(i+1).getClasss())==false)
+							{//θετω αρχικη και τελικη ωρα μαθηματος για καθε τσεκμποξ,αν αλλαξει το ονομα η το τμημα θετω καινουρια αρχικη ωρα και μερα
+								l = i; //αρχικη ωρα
+								lasthour = FCourses.get(l).getHour()+1 ; //τελικη ωρα
+								arrcboxes.get(j).setText(FCourses.get(i).getName() + "  |  " + FCourses.get(i).getClasss() + "  |  "+ FCourses.get(i).getDayS() +"  |  " 
+								+FCourses.get(k).getHour() + ":00 - " + lasthour + ":00  |"  );//ονομασια τσεκμποξ
 								j++;
 								k = i+1;
 							}
@@ -218,11 +218,11 @@ public class CreateSchedule {
 						l = FCourses.size() -1;
 						int i = FCourses.size() -1;
 						while(!flag && FCourses.isEmpty()==false)
-						{
+						{//απο το τελος του πινακα FCourses για να ορισω το τελευταιο τσεκμποξ. Ουσιαστικα η ιδια μεθοδος με επανω αλλα αναποδα
 							lasthour = FCourses.get(l).getHour()+1 ;
 							if(FCourses.get(i).getName().equals(FCourses.get(i-1).getName())==false || (FCourses.get(i).getHour() - FCourses.get(i-1).getHour() !=1) || FCourses.get(i).getClasss().equals(FCourses.get(i-1).getClasss())==false)
 							{
-								flag = true;
+								flag = true;//μολις εισαχθει το τελευτεο τσεκμποξ
 								arrcboxes.get(j).setText(FCourses.get(i).getName()+ "  |  " + FCourses.get(i).getClasss() + "  |  "+ FCourses.get(i).getDayS() +"  |  " +FCourses.get(i).getHour() + ":00 - " + lasthour + ":00  |" );
 								j++;
 							}
@@ -231,14 +231,9 @@ public class CreateSchedule {
 						for(i=j;i<arrcboxes.size();i++)
 						{
 							arrcboxes.get(i).setVisible(false);
+							//τα υπολοιπα τσεκμποξες που ειναι αδεια κρυβονται
 						}
-						
-						
-						
-						
-											
-						
-						
+								
 						GroupLayout gl_panel = new GroupLayout(panel);
 						gl_panel.setHorizontalGroup(
 							gl_panel.createParallelGroup(Alignment.LEADING)
@@ -360,10 +355,7 @@ public class CreateSchedule {
 									.addContainerGap(15, Short.MAX_VALUE))
 						);
 						panel.setLayout(gl_panel);
-						
-						
-						
-						
+			
 						GroupLayout groupLayout = new GroupLayout(schedulefrm.getContentPane());
 						groupLayout.setHorizontalGroup(
 							groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -389,54 +381,29 @@ public class CreateSchedule {
 									.addContainerGap())
 						);
 						schedulefrm.getContentPane().setLayout(groupLayout);
-						
 							
-							
-						
-					
-						
-
-									
-		
 		schedulefrm.setSize(896, 504);
 		schedulefrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
-		
 		
 		class ButtonHandler implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent ev) {
-				
-				
-				
-				if(ev.getSource() == clearbutton) {
-					
+				if(ev.getSource() == clearbutton) {					
 					//Uncheck All Boxes
-					System.out.println("eimai sthn grammh 413");
-					
-				}
-			
-				if(ev.getSource()==nextframebutton) {  
-					
-					
+					selectedCourses.clear();
 					for(int i=0;i<arrcboxes.size();i++)
 					{
-						if(arrcboxes.get(i).isSelected() && arrcboxes.get(i).isEnabled())
+						if(arrcboxes.get(i).isSelected() || arrcboxes.get(i).isEnabled() == false)
 						{
-							String cbText = arrcboxes.get(i).getText().substring(0,arrcboxes.get(i).getText().indexOf("|")-2);
-							String temp2 = arrcboxes.get(i).getText().substring(arrcboxes.get(i).getText().indexOf("|")+3);
-							String cbClass = temp2.substring(0,temp2.indexOf("|")-2);
-							for(int j=0;j<FCourses.size();j++)
-							{
-								if(cbText.equals(FCourses.get(j).getName()) && cbClass.equals(FCourses.get(j).getClasss()))
-								{
-									FFCourses.add(FCourses.get(j));
-								}
-							}
+							arrcboxes.get(i).setSelected(false);
+							arrcboxes.get(i).setEnabled(true);
 						}
 					}
-					XlsWriter writer = new XlsWriter(FFCourses)	;
+		
+				}			
+				if(ev.getSource()==nextframebutton) {  					
+					XlsWriter writer = new XlsWriter(selectedCourses);
+					writer.writeToExcel();
 						EventQueue.invokeLater(new Runnable() {
 							public void run() {		
 								try {
@@ -449,8 +416,7 @@ public class CreateSchedule {
 						});
 						schedulefrm.setVisible(false);
 				}
-				
-				
+			
 				if(ev.getSource() ==backbutton) {
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {		
@@ -462,222 +428,162 @@ public class CreateSchedule {
 							}
 						}
 					});
-					schedulefrm.setVisible(false);
-					
-				}	
-				
-			
+					schedulefrm.setVisible(false);				
+				}			
 				if(ev.getSource() == addactbutton) {
 					
 					JTextField titlefield = new JTextField();
 					JTextField dayfield = new JTextField();
 					JTextField timefield = new JTextField();
+					JTextField durationfield = new JTextField();
 
 					Object[] act = {
 							"Τίτλος :", titlefield,
-							"Μέρα(1=Δευτέρα, 5=Παρασκευή) :", dayfield,
-							"Ώρα(8-21 :)", timefield
-							};
-					
+							"Μέρα('1'=Δευτέρα, '5'=Παρασκευή) :", dayfield,
+							"Ώρα(πχ '14') :", timefield,
+							"Διάρκεια(πχ '2') :",durationfield
+							};				
 					int option = JOptionPane.showConfirmDialog(null, act, "Προσθέστε Δραστηριότητα", JOptionPane.OK_CANCEL_OPTION);
-					
-					
-
 						String title = titlefield.getText();
 						String day = dayfield.getText();
+						int dayN = Integer.parseInt(day);
 						String time = timefield.getText();
-						
+						int timeN = Integer.parseInt(time);
+						String duration = durationfield.getText();
+						int durationN = Integer.parseInt(duration);	
 						boolean emptyfields =(title.trim().equals("") || day.trim().equals("") || time.trim().equals(""));
 						boolean invalidDayNumber = false; // Elegxos gia na deis oti einai enas mono arithmos apo to 1-5
 						boolean invalidTime = false; //Elegxos gia lanthasmeni diarkeia drasthriothtas
-						
+						boolean okToEnter = false;
 						
 						while((emptyfields || invalidDayNumber || invalidTime) && option ==JOptionPane.OK_OPTION) {
-						
 							JOptionPane.showMessageDialog(null, "Συμπλήρωσε σωστά τα κενά");
 							option = JOptionPane.showConfirmDialog(null, act, "Προσθέστε Δραστηριότητα", JOptionPane.OK_CANCEL_OPTION);
 							title = titlefield.getText();
 							day = dayfield.getText();
 							time = timefield.getText();
 						}
-						
-						if(option ==JOptionPane.OK_OPTION) {
-							
-							
-							//save data
-							
-							
-						System.out.println("Saving Data...");
-						}
-						
-				
-					
+						if(option ==JOptionPane.OK_OPTION) {						
+							int okToEnterCounter=0;				
+							for(int j = 0;j<durationN;j++)
+							{							
+								okToEnter = false;
+								for(int i=0;i<selectedCourses.size();i++)
+								{
+									if(dayN == selectedCourses.get(i).getDay() && timeN + durationN == selectedCourses.get(i).getHour())
+									{
+										JOptionPane.showMessageDialog(null, "Η Δραστηριότητα συμπίπτει με το μάθημα: " + selectedCourses.get(i).getName(),"ERROR",JOptionPane.ERROR_MESSAGE);
+										break;//Αν δεν συμπιπτει δραστηριοτητα με μαθημα. προσθηκη στον τελικο πινακα
+									}
+								}
+								okToEnterCounter++;
+							}
+							if(okToEnterCounter ==durationN || selectedCourses.isEmpty())
+							{
+								for(int i=0;i<durationN;i++)
+								{
+									selectedCourses.add(new Course(title,dayN,timeN + i  ,"","","",""));//προσθηκη δραστηριοτητας
+								}
+							}
+						}					
 				}//addactivitiesbutton
 			}
 		}//ButtonHandler
 	
-		
-		
-		
-		
 		class ActionHandler implements ActionListener{
-		
-	
-		
 		@Override
 		public void actionPerformed(ActionEvent ae) {
-			
-			ArrayList<Course> selectedCourses = new ArrayList<Course>();
-
 				JCheckBox selectedBox = ((JCheckBox) ae.getSource());
 					String selectedCourse = selectedBox.getText().substring(0,selectedBox.getText().indexOf("|")-2);
-					System.out.println(selectedCourse);
 					String temp = selectedBox.getText().substring(selectedBox.getText().indexOf("|")+3);
-					String selectedClass = temp.substring(0,temp.indexOf("|")-2);
-					
-					selectedBox.isEnabled();
+					String selectedClass = temp.substring(0,temp.indexOf("|")-2);				
+					ArrayList<Course> lastSelectedOnly = new ArrayList<Course>();
+					selectedBox.setSelected(true);
+					selectedBox.setEnabled(false);
 					int selectedIndex=0;
-					
-					
+				
 					for(int i = 0;i<arrcboxes.size();i++)
 					{
 						if(arrcboxes.get(i).isSelected() && arrcboxes.get(i).isVisible())
 						{
-							selectedIndex = i;
+							selectedIndex = i;//επιλεγμενος αριθμος τσεκμποξ
 						}
 					}
-
 					for(int k = 0;k<FCourses.size();k++)
 					{
 						if(FCourses.get(k).getName().equals(selectedCourse) && FCourses.get(k).getClasss().equals(selectedClass)) {
-							selectedCourses.add(FCourses.get(k));
-
-						}
-						
+							selectedCourses.add(FCourses.get(k));//προσθηκη επιλεγμενων μαθηματων
+							lastSelectedOnly.add(FCourses.get(k));
+						}		
 					}
 					if(selectedBox.isSelected())
-					{
+					{//αν το τσεκμποξ ειναι επιλεγμενο
 								for(int j=0;j<arrcboxes.size();j++)
-								{	
+								{	//για καθε τσεκμποξ
 									if(arrcboxes.get(j).isVisible()  )
-									{	
+									{	//αν ειναι visible
+										String cbText = arrcboxes.get(j).getText().substring(0,arrcboxes.get(j).getText().indexOf("|")-2);
+										String temp2 = arrcboxes.get(j).getText().substring(arrcboxes.get(j).getText().indexOf("|")+3);
+										String cbClass = temp2.substring(0,temp2.indexOf("|")-2);//substring ονομα και τμημα
+										boolean conflict = false;
 										for(int k =0 ;k<selectedCourses.size();k++)
-										{																			
-											for(int l = 0;l<FCourses.size();l++)
+										{
+											if(selectedCourses.get(k).getClasss().equals(""))//αναφερεται σε δραστηριοτητα
+											{
+												for(int l = 0 ;l<lastSelectedOnly.size();l++)
+												{
+													if(selectedCourses.get(k).getHour() == lastSelectedOnly.get(l).getHour() && selectedCourses.get(k).getDay() == lastSelectedOnly.get(l).getDay())
+													{// αν συμπιπτει ωρα και μερα μαθηματος με δραστηριοτητα
+														JOptionPane.showMessageDialog(null, "To μάθημα συμπίπτει με την δραστηριότητα " + selectedCourses.get(k).getName(),"ERROR",JOptionPane.ERROR_MESSAGE);
+														conflict = true;
+														selectedBox.setSelected(false);
+														break;// αν υπαρχει μαθημα που συμπιπτει με δραστηριοτητα
+													}
+												}
+											}
+											if(conflict)
+											{
+												break;// αν υπαρχει μαθημα που συμπιπτει με δραστηριοτητα
+											}
+											for(int l = 0;l<FCourses.size();l++)//για τα επιλεγμενα μαθηματα του προφιλ
 											{										
 												boolean identicalCourse = selectedCourses.get(k).equals(FCourses.get(l));
+												//αν ειναι το ιδιο μαθημα
 												boolean differentClass = selectedCourses.get(k).getName().equals(FCourses.get(l).getName()) && selectedCourses.get(k).getClasss().equals(FCourses.get(l).getClasss())==false;
-												//System.out.println(identicalCourse +""+ samedaytime);
-												//System.out.println(selectedCourses.get(k).toString() + FCourses.get(l).toString());
+												//ιδιο μαθημα διαφορετικο τμημα
+												boolean samedaytime = selectedCourses.get(k).getDayS().equals(FCourses.get(l).getDayS()) && selectedCourses.get(k).getHour() == FCourses.get(l).getHour();
+												//ιδια μερα και ωρα
 												String courseToDelete = FCourses.get(l).getName();
 												String classToDelete = FCourses.get(l).getClasss();
-												boolean samedaytime = selectedCourses.get(k).getDayS().equals(FCourses.get(l).getDayS()) && selectedCourses.get(k).getHour() == FCourses.get(l).getHour();
-												String cbText = arrcboxes.get(j).getText().substring(0,arrcboxes.get(j).getText().indexOf("|")-2);
-												String temp2 = arrcboxes.get(j).getText().substring(arrcboxes.get(j).getText().indexOf("|")+3);
-												String cbClass = temp2.substring(0,temp2.indexOf("|")-2);
 												if(cbText.equals(courseToDelete) && cbClass.equals(classToDelete) && (identicalCourse ==false) && samedaytime)
 												{
-													System.out.println(FCourses.get(l).getName() + "" +FCourses.get(l).getHour() + "" +FCourses.get(l).getDayS());
-													System.out.println(samedaytime +""+ j + " " + k + " " + l);
-													System.out.println(courseToDelete + cbText);
-													//arrcboxes.get(j).setSelected(true);
 													arrcboxes.get(j).setEnabled(false);
 												
 												}
-												if(cbText.equals(courseToDelete) && identicalCourse ==false && differentClass && j!=selectedIndex)
+												if(cbText.equals(courseToDelete) && identicalCourse ==false && differentClass && j!=selectedIndex )
 												{
-													System.out.println(courseToDelete + cbText);
-													arrcboxes.get(j).setSelected(true);
-													arrcboxes.get(j).setEnabled(false);								
+													arrcboxes.get(j).setEnabled(false);	
 												}
 												samedaytime = false;
-										
-											}		
+											}												
 										}
-									}
-								}
-					}
-					if(selectedBox.isSelected()==false)
-					{
-								for(int j=0;j<arrcboxes.size();j++)
-								{	
-									if(arrcboxes.get(j).isVisible()  )
-									{	
-										for(int k =0 ;k<selectedCourses.size();k++)
-										{																			
-											for(int l = 0;l<FCourses.size();l++)
-											{										
-												boolean identicalCourse = selectedCourses.get(k).equals(FCourses.get(l));
-												boolean differentClass = selectedCourses.get(k).getName().equals(FCourses.get(l).getName()) && selectedCourses.get(k).getClasss().equals(FCourses.get(l).getClasss())==false;
-												//System.out.println(identicalCourse +""+ samedaytime);
-												//System.out.println(selectedCourses.get(k).toString() + FCourses.get(l).toString());
-												String courseToDelete = FCourses.get(l).getName();
-												String classToDelete = FCourses.get(l).getClasss();
-												boolean samedaytime = selectedCourses.get(k).getDayS().equals(FCourses.get(l).getDayS()) && selectedCourses.get(k).getHour() == FCourses.get(l).getHour();
-												String cbText = arrcboxes.get(j).getText().substring(0,arrcboxes.get(j).getText().indexOf("|")-2);
-												String temp2 = arrcboxes.get(j).getText().substring(arrcboxes.get(j).getText().indexOf("|")+3);
-												String cbClass = temp2.substring(0,temp2.indexOf("|")-2);
-												if(cbText.equals(courseToDelete) && cbClass.equals(classToDelete) && (identicalCourse ==false) && samedaytime && arrcboxes.get(j).isSelected())
-												{
-													//arrcboxes.get(j).setSelected(true);
-													arrcboxes.get(j).setEnabled(true);
-												}
-												if(cbText.equals(courseToDelete)  && identicalCourse ==false && differentClass)
-												{
-													arrcboxes.get(j).setEnabled(true);	
-													arrcboxes.get(j).setSelected(false);								
-												}
-												samedaytime = false;
-											}		
-										}
-									}
-								}
-					}
-									
-							/*if(!identicalCourse && differentClass)
-							{
-								for(int j=0;j<arrcboxes.size();j++)
-								{
-									if(arrcboxes.get(j).isVisible())
-									{									
-										String courseToCompare = arrcboxes.get(j).getText().substring(0,arrcboxes.get(j).getText().indexOf("|")-2);
-										if(selectedCourse.equals(courseToCompare))
+										if(conflict)
 										{
-											arrcboxes.get(j).setSelected(true);
-											arrcboxes.get(j).setEnabled(false);
+											break;
 										}
 									}
-									
 								}
-							}*/
-							
-					
-				
-			
-				
-			
-			
-				
-	
-	
-			
-			
+					}	
 		}//actionPerformed
+	} //ActionHanlder	
 		
-
-	} //ActionHanlder
-	
-	
-	
 		ActionListener nextframebuttonListener = new ButtonHandler();
 		ActionListener checkboxListener = new ActionHandler();
 		ActionListener backbuttonlistener = new ButtonHandler();
 		ActionListener addactbuttonlistener = new ButtonHandler();
-		ActionListener clearbuttonlistener = new ButtonHandler();
-		
+		ActionListener clearbuttonlistener = new ButtonHandler();		
 		for( i=0;i<arrcboxes.size();i++)
-			arrcboxes.get(i).addActionListener(checkboxListener);
-		
+			arrcboxes.get(i).addActionListener(checkboxListener);		
 		backbutton.addActionListener(backbuttonlistener);
 		nextframebutton.addActionListener(nextframebuttonListener);
 		addactbutton.addActionListener(addactbuttonlistener);
