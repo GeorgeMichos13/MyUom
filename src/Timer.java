@@ -49,7 +49,7 @@ public class Timer extends JFrame{
 		model.addColumn("Τίτλος");
 		model.addColumn("Προθεσμία");
 		model.addColumn("Απομένουν");
-		backButton = new JButton("Back");
+		backButton = new JButton("Πίσω");
 		try {
 			BufferedReader fr = new BufferedReader(new FileReader("events.txt"));
 			String line1,line2;

@@ -45,7 +45,7 @@ public class notesGUI extends JFrame {
 		SubjectList.addAll(array);
 		NotePanel.setBackground(Color.GRAY);
 		System.out.println(SubjectList.size());
-		backButton = new JButton("Back");
+		backButton = new JButton("Πίσω");
 		NotePanel.add(backButton);
 		
 		

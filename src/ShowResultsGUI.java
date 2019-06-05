@@ -34,7 +34,7 @@ public class ShowResultsGUI extends JFrame {
 	
 	public ShowResultsGUI() {
 		
-		backButton  = new JButton("Back");
+		backButton  = new JButton("Πίσω");
 		panel = new JPanel();
 		MyProfile profilewindow = new MyProfile();
 		courses = profilewindow.getCourses();

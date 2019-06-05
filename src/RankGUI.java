@@ -50,7 +50,7 @@ public class RankGUI extends JFrame{
 		MyProfile profilewindow = new MyProfile();
 		courses = profilewindow.getCourses();
 		rankGuiPanel = new JPanel();
-		backButton = new JButton("Back");
+		backButton = new JButton("Πίσω");
 		backButton.setBounds(10, 6, 80, 30);
 		rankGuiPanel.add(backButton);
 		rankGuiPanel.setSize(896, 504);

@@ -31,7 +31,7 @@ public class ThemataGUI extends JFrame{
 		themataPanel = new JPanel();
 		courseName = new JTextField(course + "Παλία θέματα");
 		themata = new JTextArea();
-		backButton = new JButton("Back");
+		backButton = new JButton("Πίσω");
 		
 		
 		backButton.addActionListener(new ActionListener() {

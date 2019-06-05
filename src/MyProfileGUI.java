@@ -68,7 +68,7 @@ public class MyProfileGUI extends JFrame{
 		
 	
 		//Button GUI
-		backButton = new JButton("Back");
+		backButton = new JButton("Πίσω");
 		backButton.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		rankButton = new JButton("Αξιολoγηση Mαθημάτων");

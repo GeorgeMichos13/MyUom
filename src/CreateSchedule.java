@@ -31,7 +31,7 @@ public class CreateSchedule {
 	 */
 	private ArrayList<Course> selectedCourses = new ArrayList<Course>();
 	
-	//@SuppressWarnings("unchecked")
+	
 	public CreateSchedule(ArrayList<Course> array) {
 		
 		this.FCourses.addAll(array);
@@ -60,14 +60,11 @@ public class CreateSchedule {
 				
 				scrollpane.setViewportView(panel);
 					
-					
+					//Create All CheckBoxes
 					
 						JCheckBox checkBox1 = new JCheckBox("");
-						
 						checkBox1.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox1);
-						
-						
 						
 						JCheckBox checkBox2 = new JCheckBox("");
 						checkBox2.setVerticalAlignment(SwingConstants.TOP);
@@ -81,7 +78,6 @@ public class CreateSchedule {
 						checkBox4.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox4);
 					
-
 						JCheckBox checkBox5 = new JCheckBox("");
 						checkBox5.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox5);
@@ -98,16 +94,13 @@ public class CreateSchedule {
 						checkBox8.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox8);
 						
-						
 						JCheckBox checkBox9 = new JCheckBox((String) null);
 						checkBox9.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox9);
 						
 						JCheckBox checkBox10 = new JCheckBox((String) null);
-						checkBox10.setVerticalAlignment(SwingConstants.TOP);
-						
+						checkBox10.setVerticalAlignment(SwingConstants.TOP);	
 						arrcboxes.add(checkBox10);
-						
 						
 						JCheckBox checkBox11 = new JCheckBox((String) null);
 						checkBox11.setVerticalAlignment(SwingConstants.TOP);
@@ -128,8 +121,7 @@ public class CreateSchedule {
 						JCheckBox checkBox15 = new JCheckBox((String) null);
 						checkBox15.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox15);
-						
-						
+	
 						JCheckBox checkBox16 = new JCheckBox((String) null);
 						checkBox16.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox16);
@@ -151,49 +143,49 @@ public class CreateSchedule {
 						arrcboxes.add(checkBox20);
 						
 						JCheckBox checkBox21= new JCheckBox((String) null);
-						checkBox15.setVerticalAlignment(SwingConstants.TOP);
+						checkBox21.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox21);
 						
 						
 						JCheckBox checkBox22 = new JCheckBox((String) null);
-						checkBox16.setVerticalAlignment(SwingConstants.TOP);
+						checkBox22.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox22);
 						
 						JCheckBox checkBox23 = new JCheckBox((String) null);
-						checkBox17.setVerticalAlignment(SwingConstants.TOP);
+						checkBox23.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox23);
 						
 						JCheckBox checkBox24 = new JCheckBox((String) null);
-						checkBox18.setVerticalAlignment(SwingConstants.TOP);
+						checkBox24.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox24);
 						
 						JCheckBox checkBox25 = new JCheckBox((String) null);
-						checkBox19.setVerticalAlignment(SwingConstants.TOP);
+						checkBox25.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox25);
 						
 						JCheckBox checkBox26 = new JCheckBox((String) null);
-						checkBox20.setVerticalAlignment(SwingConstants.TOP);
+						checkBox26.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox26);
 						
 						JCheckBox checkBox27 = new JCheckBox((String) null);
-						checkBox15.setVerticalAlignment(SwingConstants.TOP);
+						checkBox27.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox27);
 						
 						
 						JCheckBox checkBox28 = new JCheckBox((String) null);
-						checkBox16.setVerticalAlignment(SwingConstants.TOP);
+						checkBox28.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox28);
 						
 						JCheckBox checkBox29 = new JCheckBox((String) null);
-						checkBox17.setVerticalAlignment(SwingConstants.TOP);
+						checkBox29.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox29);
 						
 						JCheckBox checkBox30 = new JCheckBox((String) null);
-						checkBox18.setVerticalAlignment(SwingConstants.TOP);
+						checkBox30.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox30);
 						
 						for(JCheckBox cb :arrcboxes)
-							cb.setFont(new Font("Tahoma", Font.PLAIN, 14));
+							cb.setFont(new Font("Tahoma", Font.PLAIN, 14));    
 						
 						int k=0;
 						int l=0;
@@ -234,7 +226,7 @@ public class CreateSchedule {
 							//τα υπολοιπα τσεκμποξες που ειναι αδεια κρυβονται
 						}
 								
-						GroupLayout gl_panel = new GroupLayout(panel);
+						GroupLayout gl_panel = new GroupLayout(panel);   //Graphics 
 						gl_panel.setHorizontalGroup(
 							gl_panel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel.createSequentialGroup()
@@ -356,7 +348,7 @@ public class CreateSchedule {
 						);
 						panel.setLayout(gl_panel);
 			
-						GroupLayout groupLayout = new GroupLayout(schedulefrm.getContentPane());
+						GroupLayout groupLayout = new GroupLayout(schedulefrm.getContentPane());  //Graphics
 						groupLayout.setHorizontalGroup(
 							groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addGroup(groupLayout.createSequentialGroup()
@@ -371,7 +363,7 @@ public class CreateSchedule {
 									.addGap(0))
 						);
 						groupLayout.setVerticalGroup(
-							groupLayout.createParallelGroup(Alignment.TRAILING)
+							groupLayout.createParallelGroup(Alignment.TRAILING)   //Graphics once again
 								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 									.addComponent(scrollpane, GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
 									.addGap(18)
@@ -385,7 +377,7 @@ public class CreateSchedule {
 		schedulefrm.setSize(896, 504);
 		schedulefrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		class ButtonHandler implements ActionListener{
+		class ButtonHandler implements ActionListener{  //ActionListener for All buttons
 			@Override
 			public void actionPerformed(ActionEvent ev) {
 				if(ev.getSource() == clearbutton) {					
@@ -401,10 +393,10 @@ public class CreateSchedule {
 					}
 		
 				}			
-				if(ev.getSource()==nextframebutton) {  					
+				if(ev.getSource()==nextframebutton) {  	 	
 					XlsWriter writer = new XlsWriter(selectedCourses);
 					writer.writeToExcel();
-						EventQueue.invokeLater(new Runnable() {
+						EventQueue.invokeLater(new Runnable() {  //Open MainFrame
 							public void run() {		
 								try {
 									MainFrame window = new MainFrame();
@@ -418,7 +410,7 @@ public class CreateSchedule {
 				}
 			
 				if(ev.getSource() ==backbutton) {
-					EventQueue.invokeLater(new Runnable() {
+					EventQueue.invokeLater(new Runnable() { //Go back to Mainframe
 						public void run() {		
 							try {
 								MainFrame window = new MainFrame();
@@ -430,7 +422,7 @@ public class CreateSchedule {
 					});
 					schedulefrm.setVisible(false);				
 				}			
-				if(ev.getSource() == addactbutton) {
+				if(ev.getSource() == addactbutton) { //Add an activity
 					
 					JTextField titlefield = new JTextField();
 					JTextField dayfield = new JTextField();
@@ -451,13 +443,14 @@ public class CreateSchedule {
 						int timeN = Integer.parseInt(time);
 						String duration = durationfield.getText();
 						int durationN = Integer.parseInt(duration);	
-						boolean emptyfields =(title.trim().equals("") || day.trim().equals("") || time.trim().equals(""));
-						boolean invalidDayNumber = false; // Elegxos gia na deis oti einai enas mono arithmos apo to 1-5
-						boolean invalidTime = false; //Elegxos gia lanthasmeni diarkeia drasthriothtas
-						boolean okToEnter = false;
+						boolean emptyfields =(title.trim().equals("") || day.trim().equals("") || time.trim().equals("") || duration.trim().equals(""));
+						boolean invalidDayNumber = dayN<1 || dayN>5; // Elegxos gia na deis oti einai enas mono arithmos apo to 1-5
+						boolean invalidTime = timeN>20 || timeN<8; //Elegxos gia lanthasmeni diarkeia drasthriothtas
+						boolean outofbounds = (timeN+durationN)>21 || (timeN+durationN)<9; //Elegxos gia lanthasmeni zwnh wras //gia na mhn vgainei ektos excel
+						boolean invalidDuration = durationN<1;
 						
-						while((emptyfields || invalidDayNumber || invalidTime) && option ==JOptionPane.OK_OPTION) {
-							JOptionPane.showMessageDialog(null, "Συμπλήρωσε σωστά τα κενά");
+						while((emptyfields || invalidDayNumber || invalidTime || outofbounds || invalidDuration) && option ==JOptionPane.OK_OPTION) { //Αν υπάρχουν λανθασμένα πεδία και επιλέξει "ΟΚ" 
+							JOptionPane.showMessageDialog(null, "Συμπλήρωσε σωστά τα κενά", "ΕRROR", JOptionPane.ERROR_MESSAGE);
 							option = JOptionPane.showConfirmDialog(null, act, "Προσθέστε Δραστηριότητα", JOptionPane.OK_CANCEL_OPTION);
 							title = titlefield.getText();
 							day = dayfield.getText();
@@ -467,7 +460,7 @@ public class CreateSchedule {
 							int okToEnterCounter=0;				
 							for(int j = 0;j<durationN;j++)
 							{							
-								okToEnter = false;
+							
 								for(int i=0;i<selectedCourses.size();i++)
 								{
 									if(dayN == selectedCourses.get(i).getDay() && timeN + durationN == selectedCourses.get(i).getHour())

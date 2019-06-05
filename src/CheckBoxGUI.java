@@ -426,11 +426,10 @@ public class CheckBoxGUI {
 							
 							
 						
-						for(int i=7; i<arcboxes.size();i++) {  //hide checkboxes that are empty 
-							arcboxes.get(i-1).hide();
+						for(int i=6; i<arcboxes.size();i++) {  //hide checkboxes that are empty 
+							arcboxes.get(i).hide();
 						}
 						
-							checkBox21.hide(); //bug 
 						
 
 									
@@ -583,7 +582,11 @@ public class CheckBoxGUI {
 					String username = "";
 					
 					while(username.trim().length()==0) { //while username is only white spaces
-						username = JOptionPane.showInputDialog("Enter Username");		//ask for username
+						try {
+							username = JOptionPane.showInputDialog("Enter Username"); //ask for username
+						} catch (Exception e) {
+							break;
+						}
 						
 					}
 					
@@ -593,8 +596,8 @@ public class CheckBoxGUI {
 					    /*write username into file */  
 					} 
 					catch (IOException ex) {
-					    ex.printStackTrace();
-					    System.out.println("username failed");
+						 System.out.println("username entering failed")
+						 ;ex.printStackTrace();
 					}
 					
 				
@@ -618,10 +621,7 @@ public class CheckBoxGUI {
 				
 				else {
 					  	//error Pop up
-					JOptionPane.showMessageDialog(null, 
-                            "Select Up to 10 Courses", 
-                            "Error", 
-                            JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Πρέπει να δηλώσετε μέχρι 10 μαθήματα", "ΕRROR", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 			
@@ -692,7 +692,7 @@ public class CheckBoxGUI {
 		}
 		
 		
-		private void readInfoFile(String course, JTextArea field) { //Uses Courses name to find the necessery text file containing all course's information
+		private void readInfoFile(String course, JTextArea field) { //Uses Courses name to find the necessary text file containing all course's information
 			String fileName = course + "info.txt";
 			Path path = Paths.get(fileName);
 			
