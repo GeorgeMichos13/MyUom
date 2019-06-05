@@ -139,6 +139,12 @@ public class MyProfile {
 		path = new File(input);
 		path.delete();
 		
+		//Deleting mySchedule	
+		filePath = Paths.get("MyUOMSchedule.xls");
+		input = filePath.toString();
+		path = new File(input);
+		path.delete();
+		
 		//Deleting all notes
 		String ending = "myUomNotes.txt";
 		ArrayList<String> courses;

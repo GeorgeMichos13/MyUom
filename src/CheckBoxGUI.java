@@ -419,7 +419,7 @@ public class CheckBoxGUI {
 						JTextArea infotext = new JTextArea();
 						infotext.setFont(new Font("Monospaced", Font.PLAIN, 13));
 						label.setLabelFor(infotext);
-						infotext.setText("Κάντε κλικ σε ένα μάθημα για να εμφανίσετε τις πληροφορίες του");
+						infotext.setText("Κάντε κλικ σε ένα μάθημα για\nνα εμφανίσετε τις πληροφορίες του.");
 						infoscrollpane.setViewportView(infotext);
 						frmInitScreen.getContentPane().setLayout(groupLayout);
 						

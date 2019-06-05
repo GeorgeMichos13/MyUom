@@ -428,7 +428,10 @@ public class CreateSchedule {
 					JTextField dayfield = new JTextField();
 					JTextField timefield = new JTextField();
 					JTextField durationfield = new JTextField();
-
+					if(selectedCourses.isEmpty()==false)
+					{
+						System.out.println(selectedCourses.toString());
+					}
 					Object[] act = {
 							"Τίτλος :", titlefield,
 							"Μέρα('1'=Δευτέρα, '5'=Παρασκευή) :", dayfield,
@@ -448,6 +451,7 @@ public class CreateSchedule {
 						boolean invalidTime = timeN>20 || timeN<8; //Elegxos gia lanthasmeni diarkeia drasthriothtas
 						boolean outofbounds = (timeN+durationN)>21 || (timeN+durationN)<9; //Elegxos gia lanthasmeni zwnh wras //gia na mhn vgainei ektos excel
 						boolean invalidDuration = durationN<1;
+						boolean conflict = false;
 						
 						while((emptyfields || invalidDayNumber || invalidTime || outofbounds || invalidDuration) && option ==JOptionPane.OK_OPTION) { //Αν υπάρχουν λανθασμένα πεδία και επιλέξει "ΟΚ" 
 							JOptionPane.showMessageDialog(null, "Συμπλήρωσε σωστά τα κενά", "ΕRROR", JOptionPane.ERROR_MESSAGE);
@@ -456,18 +460,30 @@ public class CreateSchedule {
 							day = dayfield.getText();
 							time = timefield.getText();
 						}
+						
 						if(option ==JOptionPane.OK_OPTION) {						
 							int okToEnterCounter=0;				
 							for(int j = 0;j<durationN;j++)
-							{							
-							
+							{														
 								for(int i=0;i<selectedCourses.size();i++)
 								{
-									if(dayN == selectedCourses.get(i).getDay() && timeN + durationN == selectedCourses.get(i).getHour())
+									if(dayN == selectedCourses.get(i).getDay() && timeN + j == selectedCourses.get(i).getHour())
 									{
-										JOptionPane.showMessageDialog(null, "Η Δραστηριότητα συμπίπτει με το μάθημα: " + selectedCourses.get(i).getName(),"ERROR",JOptionPane.ERROR_MESSAGE);
+										conflict = true;
+										if(selectedCourses.get(i).getClasss().equals(""))
+										{
+											JOptionPane.showMessageDialog(null, "Η Δραστηριότητα συμπίπτει με την δραστηριότητα: " + selectedCourses.get(i).getName(),"ERROR",JOptionPane.ERROR_MESSAGE);
+										}
+										else
+										{
+											JOptionPane.showMessageDialog(null, "Η Δραστηριότητα συμπίπτει με το μάθημα: " + selectedCourses.get(i).getName(),"ERROR",JOptionPane.ERROR_MESSAGE);
+										}
 										break;//Αν δεν συμπιπτει δραστηριοτητα με μαθημα. προσθηκη στον τελικο πινακα
 									}
+								}
+								if(conflict)
+								{
+									break;
 								}
 								okToEnterCounter++;
 							}
@@ -481,8 +497,7 @@ public class CreateSchedule {
 						}					
 				}//addactivitiesbutton
 			}
-		}//ButtonHandler
-	
+		}//ButtonHandler	
 		class ActionHandler implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent ae) {
@@ -527,7 +542,7 @@ public class CreateSchedule {
 												{
 													if(selectedCourses.get(k).getHour() == lastSelectedOnly.get(l).getHour() && selectedCourses.get(k).getDay() == lastSelectedOnly.get(l).getDay())
 													{// αν συμπιπτει ωρα και μερα μαθηματος με δραστηριοτητα
-														JOptionPane.showMessageDialog(null, "To μάθημα συμπίπτει με την δραστηριότητα " + selectedCourses.get(k).getName(),"ERROR",JOptionPane.ERROR_MESSAGE);
+														JOptionPane.showMessageDialog(null, "To μάθημα συμπίπτει με την δραστηριότητα: " + selectedCourses.get(k).getName(),"ERROR",JOptionPane.ERROR_MESSAGE);
 														conflict = true;
 														selectedBox.setSelected(false);
 														break;// αν υπαρχει μαθημα που συμπιπτει με δραστηριοτητα
