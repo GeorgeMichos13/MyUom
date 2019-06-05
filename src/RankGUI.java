@@ -55,6 +55,8 @@ public class RankGUI extends JFrame{
 		rankGuiPanel.add(backButton);
 		rankGuiPanel.setSize(896, 504);
 		
+		for(int i = 0; i < courses.size(); i++)
+			ranks[i] = 3;
 	
 		//Initialising sliders
 		slider1 = new JSlider(JSlider.HORIZONTAL,1,5,3);

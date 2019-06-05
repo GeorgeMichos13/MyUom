@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
@@ -48,8 +52,19 @@ public class XlsReader {
 	    	int prev=0;
 	    	boolean added;
 	        Workbook workbook = null;
-	        Path xlPath = Paths.get("TimeTable.xls");
+	        JOptionPane.showMessageDialog(null,  "Επιλέξτε το πρόγραμμα αφου το έχετε αποθηκεύσει ως .xls αρχείο.");
+	        JButton open = new JButton();
+	        JFileChooser chooser= new JFileChooser();
+	        chooser.setDialogTitle("Επιλογή προγραμματος");
+	        if(chooser.showOpenDialog(open) == JFileChooser.CANCEL_OPTION)        	
+	        {
+	        	System.exit(0);		      
+	        }
+
+
+	        Path xlPath = Paths.get(chooser.getSelectedFile().getAbsolutePath());
 	        String path = xlPath.toString();
+	      
 	        try {
 	            workbook = Workbook.getWorkbook(new File(path)); // Ανοιγουμε το εξελ σε μεταβλητη τυπου workbook και παιρνουμε στην μεταβλητη numOfSheets τα φυλλα του
 	            numOfSheets = workbook.getNumberOfSheets();
@@ -91,7 +106,12 @@ public class XlsReader {
 		            			{
 		            				cellinfo = cell.getContents().trim().replaceAll(" +", " ");
 		            				cindex = cellinfo.indexOf('(');
-			            			course = cellinfo.substring(0, cindex); // αποθηκευουμε τα ονοματα των μαθηματων πριν την παρενθεση που ξεκιναει ο κωδικος. Σασ συνιστω να εχετε και το excel διπλα να καταλαβαινετε τι λεω
+			            			course = cellinfo.substring(0, cindex);
+			            			if(course.contains(" / "))// αποθηκευουμε τα ονοματα των μαθηματων πριν την παρενθεση που ξεκιναει ο κωδικος. Σασ συνιστω να εχετε και το excel διπλα να καταλαβαινετε τι λεω
+			            			{
+			            				course = course.replace("/", "-");
+			            				
+			            			}
 			            			if(cellinfo.contains("Τμήμα ")) {
 				            			index2 = cellinfo.indexOf("Τμήμα ");
 				            			classs = cellinfo.substring(index2 + 6,index2 + 7);
@@ -210,6 +230,9 @@ public class XlsReader {
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        } catch (BiffException e) {
+	          
+	            JOptionPane.showMessageDialog(null,  "Λάθος αρχείο.","ERROR",JOptionPane.ERROR_MESSAGE);
+	            System.exit(1);
 	            e.printStackTrace();
 	        } finally {
 	            if (workbook != null) {

@@ -209,7 +209,7 @@ public class CreateSchedule {
 						}
 						l = FCourses.size() -1;
 						int i = FCourses.size() -1;
-						while(!flag && FCourses.isEmpty()==false)
+						while(!flag && FCourses.size()>1)
 						{//απο το τελος του πινακα FCourses για να ορισω το τελευταιο τσεκμποξ. Ουσιαστικα η ιδια μεθοδος με επανω αλλα αναποδα
 							lasthour = FCourses.get(l).getHour()+1 ;
 							if(FCourses.get(i).getName().equals(FCourses.get(i-1).getName())==false || (FCourses.get(i).getHour() - FCourses.get(i-1).getHour() !=1) || FCourses.get(i).getClasss().equals(FCourses.get(i-1).getClasss())==false)
@@ -429,10 +429,7 @@ public class CreateSchedule {
 					JTextField dayfield = new JTextField();
 					JTextField timefield = new JTextField();
 					JTextField durationfield = new JTextField();
-					if(selectedCourses.isEmpty()==false)
-					{
-						System.out.println(selectedCourses.toString());
-					}
+
 					Object[] act = {
 							"Τίτλος :", titlefield,
 							"Μέρα('1'=Δευτέρα, '5'=Παρασκευή) :", dayfield,
