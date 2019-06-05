@@ -235,11 +235,11 @@ public class CreateSchedule {
 											.addGap(10)
 											.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 												.addGroup(gl_panel.createSequentialGroup()
-													.addComponent(checkBox1, GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
-													.addGap(3))
+													.addComponent(checkBox1, GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
+													.addGap(0))
 												.addGroup(gl_panel.createSequentialGroup()
-													.addComponent(checkBox2, GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
-													.addGap(3))
+													.addComponent(checkBox2, GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
+													.addGap(0))
 												.addComponent(checkBox3, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox4, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox5, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
@@ -250,6 +250,8 @@ public class CreateSchedule {
 												.addComponent(checkBox10, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox11, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox12, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox13, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox14, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox15, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox16, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox17, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
@@ -258,16 +260,15 @@ public class CreateSchedule {
 												.addComponent(checkBox20, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox21, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox22, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-												.addComponent(checkBox23, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)
-												.addComponent(checkBox24, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox23, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox24, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox25, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox26, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox27, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox28, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox29, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox30, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-												.addComponent(checkBox13, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)
-												.addComponent(checkBox14, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)))
+												))
 										.addGroup(gl_panel.createSequentialGroup()
 											.addContainerGap()
 											.addComponent(backbutton, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
@@ -437,64 +438,110 @@ public class CreateSchedule {
 							"Μέρα('1'=Δευτέρα, '5'=Παρασκευή) :", dayfield,
 							"Ώρα(πχ '14') :", timefield,
 							"Διάρκεια(πχ '2') :",durationfield
-							};				
-					int option = JOptionPane.showConfirmDialog(null, act, "Προσθέστε Δραστηριότητα", JOptionPane.OK_CANCEL_OPTION);
-						String title = titlefield.getText();
-						String day = dayfield.getText();
-						int dayN = Integer.parseInt(day);
-						String time = timefield.getText();
-						int timeN = Integer.parseInt(time);
-						String duration = durationfield.getText();
-						int durationN = Integer.parseInt(duration);	
-						boolean emptyfields =(title.trim().equals("") || day.trim().equals("") || time.trim().equals("") || duration.trim().equals(""));
-						boolean invalidDayNumber = dayN<1 || dayN>5; // Elegxos gia na deis oti einai enas mono arithmos apo to 1-5
-						boolean invalidTime = timeN>20 || timeN<8; //Elegxos gia lanthasmeni diarkeia drasthriothtas
-						boolean outofbounds = (timeN+durationN)>21 || (timeN+durationN)<9; //Elegxos gia lanthasmeni zwnh wras //gia na mhn vgainei ektos excel
-						boolean invalidDuration = durationN<1;
-						boolean conflict = false;
-						
-						while((emptyfields || invalidDayNumber || invalidTime || outofbounds || invalidDuration) && option ==JOptionPane.OK_OPTION) { //Αν υπάρχουν λανθασμένα πεδία και επιλέξει "ΟΚ" 
-							JOptionPane.showMessageDialog(null, "Συμπλήρωσε σωστά τα κενά", "ΕRROR", JOptionPane.ERROR_MESSAGE);
-							option = JOptionPane.showConfirmDialog(null, act, "Προσθέστε Δραστηριότητα", JOptionPane.OK_CANCEL_OPTION);
-							title = titlefield.getText();
-							day = dayfield.getText();
-							time = timefield.getText();
-						}
-						
-						if(option ==JOptionPane.OK_OPTION) {						
-							int okToEnterCounter=0;				
-							for(int j = 0;j<durationN;j++)
-							{														
-								for(int i=0;i<selectedCourses.size();i++)
-								{
-									if(dayN == selectedCourses.get(i).getDay() && timeN + j == selectedCourses.get(i).getHour())
-									{
-										conflict = true;
-										if(selectedCourses.get(i).getClasss().equals(""))
-										{
-											JOptionPane.showMessageDialog(null, "Η Δραστηριότητα συμπίπτει με την δραστηριότητα: " + selectedCourses.get(i).getName(),"ERROR",JOptionPane.ERROR_MESSAGE);
+							};		
+					
+					boolean wronginput = false;  //χρησιμοποιείται για ανίχνευση λανθασμένου τύπου δεδομένων					
+					do {
+						titlefield.setText(""); //για να μην κρατήσει στα πεδία τα προηγούμενα λανθασμένα δεδομένα
+						dayfield.setText("");
+						timefield.setText("");
+						durationfield.setText("");
+						int option = JOptionPane.showConfirmDialog(null, act, "Προσθέστε Δραστηριότητα", JOptionPane.OK_CANCEL_OPTION);
+					
+						if(option==JOptionPane.CANCEL_OPTION || option == JOptionPane.CLOSED_OPTION) 
+							break;	// Σταμάτα όταν ο χρήστης πατήσει Cancel ή X
+							
+						if (option == JOptionPane.OK_OPTION) {  //αν πατήσει Οκ ανεξαρτήτως δεδομένων
+							try {
+								String title = titlefield.getText();
+								String day = dayfield.getText();
+								int dayN = Integer.parseInt(day);
+								String time = timefield.getText();
+								int timeN = Integer.parseInt(time);
+								String duration = durationfield.getText();
+								int durationN = Integer.parseInt(duration);
+								boolean emptyfields = (title.trim().equals("") || day.trim().equals("")
+										|| time.trim().equals("") || duration.trim().equals(""));
+								boolean invalidDayNumber = dayN < 1 || dayN > 5; // Elegxos gia na deis oti einai enas mono arithmos apo to 1-5
+								boolean invalidTime = timeN > 20 || timeN < 8; //Elegxos gia lanthasmeni diarkeia drasthriothtas
+								boolean outofbounds = (timeN + durationN) > 21 || (timeN + durationN) < 9; //Elegxos gia lanthasmeni zwnh wras //gia na mhn vgainei ektos excel
+								boolean invalidDuration = durationN < 1;
+								boolean conflict = false;
+
+								while ((emptyfields || invalidDayNumber || invalidTime || outofbounds
+										|| invalidDuration) && option == JOptionPane.OK_OPTION) { //Αν υπάρχουν λανθασμένα πεδία και επιλέξει "ΟΚ" 
+									JOptionPane.showMessageDialog(null, "Βγήκες εκτός ορίων. Η επιτρεπτή ζώνη είναι 8-21 από Δευτέρα έως Παρασκευή",
+											"ΕRROR", JOptionPane.ERROR_MESSAGE);
+									titlefield.setText("");  //για να μην κρατήσει στα πεδία τα προηγούμενα λανθασμένα δεδομένα
+									dayfield.setText("");
+									timefield.setText("");
+									durationfield.setText("");
+									option = JOptionPane.showConfirmDialog(null, act, "Προσθέστε Δραστηριότητα",
+											JOptionPane.OK_CANCEL_OPTION);
+									
+									//ανανέωσε τις μεταβλητές
+									title = titlefield.getText();
+									dayN = Integer.parseInt(dayfield.getText());
+									timeN = Integer.parseInt(timefield.getText());
+									durationN = Integer.parseInt(durationfield.getText());
+									emptyfields = (title.trim().equals("") || day.trim().equals("")
+											|| time.trim().equals("") || duration.trim().equals(""));
+									invalidDayNumber = dayN < 1 || dayN > 5; // Elegxos gia na deis oti einai enas mono arithmos apo to 1-5
+									invalidTime = timeN > 20 || timeN < 8; //Elegxos gia lanthasmeni diarkeia drasthriothtas
+									outofbounds = (timeN + durationN) > 21 || (timeN + durationN) < 9; //Elegxos gia lanthasmeni zwnh wras //gia na mhn vgainei ektos excel
+									invalidDuration = durationN < 1;
+								}
+
+									int okToEnterCounter = 0;
+									for (int j = 0; j < durationN; j++) {
+										for (int i = 0; i < selectedCourses.size(); i++) {
+											if (dayN == selectedCourses.get(i).getDay()
+													&& timeN + j == selectedCourses.get(i).getHour()) {
+												conflict = true;
+												if (selectedCourses.get(i).getClasss().equals("")) {
+													JOptionPane.showMessageDialog(null,
+															"Η Δραστηριότητα συμπίπτει με την δραστηριότητα: "
+																	+ selectedCourses.get(i).getName(),
+															"ERROR", JOptionPane.ERROR_MESSAGE);
+												} else {
+													JOptionPane.showMessageDialog(null,
+															"Η Δραστηριότητα συμπίπτει με το μάθημα: "
+																	+ selectedCourses.get(i).getName(),
+															"ERROR", JOptionPane.ERROR_MESSAGE);
+												}
+												break;//Αν δεν συμπιπτει δραστηριοτητα με μαθημα. προσθηκη στον τελικο πινακα
+											}
 										}
-										else
-										{
-											JOptionPane.showMessageDialog(null, "Η Δραστηριότητα συμπίπτει με το μάθημα: " + selectedCourses.get(i).getName(),"ERROR",JOptionPane.ERROR_MESSAGE);
+										if (conflict) {
+											break;
 										}
-										break;//Αν δεν συμπιπτει δραστηριοτητα με μαθημα. προσθηκη στον τελικο πινακα
+										okToEnterCounter++;
 									}
+									if (okToEnterCounter == durationN || selectedCourses.isEmpty()) {
+										for (int i = 0; i < durationN; i++) {
+											selectedCourses.add(new Course(title, dayN, timeN + i, "", "", "", ""));//προσθηκη δραστηριοτητας
+										}
+									}
+								
+
+							} catch (Exception e) {  //Χειρίσου λανθασμένες εισόδους
+								if (option == JOptionPane.OK_OPTION) {
+									JOptionPane.showMessageDialog(null, "Συμπλήρωσε σωστά τα κενά", "ΕRROR",
+											JOptionPane.ERROR_MESSAGE);
+								wronginput = true;
 								}
-								if(conflict)
-								{
-									break;
-								}
-								okToEnterCounter++;
+							
+					
 							}
-							if(okToEnterCounter ==durationN || selectedCourses.isEmpty())
-							{
-								for(int i=0;i<durationN;i++)
-								{
-									selectedCourses.add(new Course(title,dayN,timeN + i  ,"","","",""));//προσθηκη δραστηριοτητας
-								}
-							}
-						}					
+						}
+					} while (wronginput);
+					
+					
+					
+						
+				
+				
+							
 				}//addactivitiesbutton
 			}
 		}//ButtonHandler	
