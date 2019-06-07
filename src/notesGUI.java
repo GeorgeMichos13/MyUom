@@ -32,7 +32,7 @@ public class notesGUI extends JFrame {
 	private ArrayList<String> SubjectList = new ArrayList<String>();
 	private JScrollPane scroll = new JScrollPane(NotePanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	private static final int WIDTH = 1200;
-	private static final int HEIGHT = 900;
+	private static final int HEIGHT = 700;
 	private JButton backButton;
 	ArrayList<Notes> Notes = new ArrayList<Notes>();
 	ArrayList<JTextArea> NoteAreas = new ArrayList<JTextArea>();
@@ -89,92 +89,83 @@ public class notesGUI extends JFrame {
 
 			/* TextAreas Initialization */
 			JTextArea NoteArea1 = new JTextArea();
-			NoteArea1.setPreferredSize(new Dimension(350, 100));
-			NoteArea1.setMinimumSize(new Dimension(350, 100));
-			NoteArea1.setMaximumSize(new Dimension(350, 100));
+			NoteArea1.setPreferredSize(new Dimension(423, 100));
+			NoteArea1.setMinimumSize(new Dimension(423, 100));
+			NoteArea1.setMaximumSize(new Dimension(423, 100));
 			NoteArea1.setEditable(true);
 			NoteArea1.setVisible(false);
 			NoteArea1.setLineWrap(true);
-			JScrollPane scroll1 = new JScrollPane(NoteArea1, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+			
 			
 			
 			JTextArea NoteArea2 = new JTextArea();
-			JScrollPane scroll2 = new JScrollPane(NoteArea2, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-			NoteArea2.setPreferredSize(new Dimension(350, 100));
-			NoteArea2.setMinimumSize(new Dimension(350, 100));
-			NoteArea2.setMaximumSize(new Dimension(350, 100));
+			NoteArea2.setPreferredSize(new Dimension(423, 100));
+			NoteArea2.setMinimumSize(new Dimension(423, 100));
+			NoteArea2.setMaximumSize(new Dimension(423, 100));
 			NoteArea2.setEditable(true);
 			NoteArea2.setVisible(false);
 			NoteArea2.setLineWrap(true);
 			
 			JTextArea NoteArea3 = new JTextArea();
-			JScrollPane scroll3 = new JScrollPane(NoteArea3, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-			NoteArea3.setPreferredSize(new Dimension(350, 100));
-			NoteArea3.setMinimumSize(new Dimension(350, 100));
-			NoteArea3.setMaximumSize(new Dimension(350, 100));
+			NoteArea3.setPreferredSize(new Dimension(423, 100));
+			NoteArea3.setMinimumSize(new Dimension(423, 100));
+			NoteArea3.setMaximumSize(new Dimension(423, 100));
 			NoteArea3.setEditable(true);
 			NoteArea3.setVisible(false);
 			NoteArea3.setLineWrap(true);
 			
 			JTextArea NoteArea4 = new JTextArea();
-			JScrollPane scroll4 = new JScrollPane(NoteArea4, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-			NoteArea4.setPreferredSize(new Dimension(350, 100));
-			NoteArea4.setMinimumSize(new Dimension(350, 100));
-			NoteArea4.setMaximumSize(new Dimension(350, 100));
+			NoteArea4.setPreferredSize(new Dimension(423, 100));
+			NoteArea4.setMinimumSize(new Dimension(423, 100));
+			NoteArea4.setMaximumSize(new Dimension(423, 100));
 			NoteArea4.setEditable(true);
 			NoteArea4.setVisible(false);
 			NoteArea4.setLineWrap(true);
 			
 			JTextArea NoteArea5 = new JTextArea();
-			JScrollPane scroll5 = new JScrollPane(NoteArea5, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-			NoteArea5.setPreferredSize(new Dimension(350, 100));
-			NoteArea5.setMinimumSize(new Dimension(350, 100));
-			NoteArea5.setMaximumSize(new Dimension(350, 100));
+			NoteArea5.setPreferredSize(new Dimension(423, 100));
+			NoteArea5.setMinimumSize(new Dimension(423, 100));
+			NoteArea5.setMaximumSize(new Dimension(423, 100));
 			NoteArea5.setEditable(true);
 			NoteArea5.setVisible(false);
 			NoteArea5.setLineWrap(true);
 			
 			JTextArea NoteArea6 = new JTextArea();
-			JScrollPane scroll6 = new JScrollPane(NoteArea6, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-			NoteArea6.setPreferredSize(new Dimension(350, 100));
-			NoteArea6.setMinimumSize(new Dimension(350, 100));
-			NoteArea6.setMaximumSize(new Dimension(350, 100));
+			NoteArea6.setPreferredSize(new Dimension(423, 100));
+			NoteArea6.setMinimumSize(new Dimension(423, 100));
+			NoteArea6.setMaximumSize(new Dimension(423, 100));
 			NoteArea6.setEditable(true);
 			NoteArea6.setVisible(false);
 			NoteArea6.setLineWrap(true);
 			
 			JTextArea NoteArea7 = new JTextArea();
-			JScrollPane scroll7 = new JScrollPane(NoteArea7, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-			NoteArea7.setPreferredSize(new Dimension(350, 100));
-			NoteArea7.setMinimumSize(new Dimension(350, 100));
-			NoteArea7.setMaximumSize(new Dimension(350, 100));
+			NoteArea7.setPreferredSize(new Dimension(423, 100));
+			NoteArea7.setMinimumSize(new Dimension(423, 100));
+			NoteArea7.setMaximumSize(new Dimension(423, 100));
 			NoteArea7.setEditable(true);
 			NoteArea7.setVisible(false);
 			NoteArea7.setLineWrap(true);
 			
 			JTextArea NoteArea8 = new JTextArea();
-			JScrollPane scroll8 = new JScrollPane(NoteArea8, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-			NoteArea8.setPreferredSize(new Dimension(350, 100));
-			NoteArea8.setMinimumSize(new Dimension(350, 100));
-			NoteArea8.setMaximumSize(new Dimension(350, 100));
+			NoteArea8.setPreferredSize(new Dimension(423, 100));
+			NoteArea8.setMinimumSize(new Dimension(423, 100));
+			NoteArea8.setMaximumSize(new Dimension(423, 100));
 			NoteArea8.setEditable(true);
 			NoteArea8.setVisible(false);
 			NoteArea8.setLineWrap(true);
 			
 			JTextArea NoteArea9 = new JTextArea();
-			JScrollPane scroll9 = new JScrollPane(NoteArea9, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-			NoteArea9.setPreferredSize(new Dimension(350, 100));
-			NoteArea9.setMinimumSize(new Dimension(350, 100));
-			NoteArea9.setMaximumSize(new Dimension(350, 100));
+			NoteArea9.setPreferredSize(new Dimension(423, 100));
+			NoteArea9.setMinimumSize(new Dimension(423, 100));
+			NoteArea9.setMaximumSize(new Dimension(423, 100));
 			NoteArea9.setEditable(true);
 			NoteArea9.setVisible(false);
 			NoteArea9.setLineWrap(true);
 			
 			JTextArea NoteArea10 = new JTextArea();
-			JScrollPane scroll10 = new JScrollPane(NoteArea10, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-			NoteArea10.setPreferredSize(new Dimension(350, 100));
-			NoteArea10.setMinimumSize(new Dimension(350, 100));
-			NoteArea10.setMaximumSize(new Dimension(350, 100));
+			NoteArea10.setPreferredSize(new Dimension(423, 100));
+			NoteArea10.setMinimumSize(new Dimension(423, 100));
+			NoteArea10.setMaximumSize(new Dimension(423, 100));
 			NoteArea10.setEditable(true);
 			NoteArea10.setVisible(false);
 			NoteArea10.setLineWrap(true);
@@ -349,13 +340,13 @@ public class notesGUI extends JFrame {
 		
 		 File myfile = new File(SubjectList.get(i) + "myUomNotes.txt");
 		 Notes.get(i).readFromFile(myfile, NoteAreas.get(i));
-		 MyJButton set1 = new MyJButton("Αποθηκευση",myfile);
+		 MyJButton set = new MyJButton("Αποθηκευση",myfile);
 		 
 		 /*Write Button*/
-			JButton write1 = new JButton("Σημειωσε");
-			write1.setVisible(true);
-			write1.setPreferredSize(new Dimension(120, 30));
-			write1.addActionListener(new ActionListener() {
+			JButton write = new JButton("Σημειωσε");
+			write.setVisible(true);
+			write.setPreferredSize(new Dimension(120, 30));
+			write.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -364,14 +355,14 @@ public class notesGUI extends JFrame {
 			});
 			
 			/*Set1*/
-			ButtonPanels.get(i).add(set1);
-			ButtonPanels.get(i).add(write1);
+			ButtonPanels.get(i).add(set);
+			ButtonPanels.get(i).add(write);
 			ButtonPanels.get(i).setVisible(false);
 			ButtonPanels.get(i).setBackground(Color.GRAY);
 			ButtonPanels.get(i).setPreferredSize(new Dimension(150, 90));
-			set1.setPreferredSize(new Dimension(120, 30));
+			set.setPreferredSize(new Dimension(120, 30));
 			
-			set1.addActionListener(new ActionListener() {
+			set.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent arg0) {

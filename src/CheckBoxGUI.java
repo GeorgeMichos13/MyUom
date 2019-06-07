@@ -41,8 +41,6 @@ import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-import java.awt.SystemColor;
-import java.awt.Frame;
 
 
 

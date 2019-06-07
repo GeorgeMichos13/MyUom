@@ -13,11 +13,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import java.awt.Color;
 import javax.swing.UIManager;
-import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
 
 public class MainFrame {
 
