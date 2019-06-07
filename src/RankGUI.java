@@ -12,9 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.SwingConstants;
 
 public class RankGUI extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -41,7 +41,8 @@ public class RankGUI extends JFrame{
 	private JTextField field9;
 	private JTextField field10;
 	private JButton backButton;
-	public static Integer[] ranks = new Integer[10];
+	private JButton saveButton;
+	private Integer[] ranks = new Integer[10];
 	private static ArrayList<String> courses = new ArrayList<String>();
 	
 	
@@ -51,9 +52,11 @@ public class RankGUI extends JFrame{
 		courses = profilewindow.getCourses();
 		rankGuiPanel = new JPanel();
 		backButton = new JButton("Πίσω");
+		saveButton = new JButton("Αποθηκεύση");
 		backButton.setBounds(10, 6, 80, 30);
-		rankGuiPanel.add(backButton);
+		saveButton.setBounds(600, 450, 160, 30);
 		rankGuiPanel.setSize(896, 504);
+		
 
 		
 		for(int i = 0; i < courses.size(); i++)
@@ -289,28 +292,51 @@ public class RankGUI extends JFrame{
 		
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent back) {
-				if(ranks[0] != null) {
-					File statsF = new File("didRank.txt");
-					try {
-						FileWriter fileWriter = new FileWriter(statsF);
-						PrintWriter writer = new PrintWriter(fileWriter);
-						writer.write("TRUE");
-						writer.close();
-						
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
 				setVisible(false);
 				new MyProfileGUI(); 
 			}
 			
 		});
 		
+		saveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent save) {
+				//User's ranks.txt is going to be collected
+				//so after some students have ranked courses
+				//we can have trust worthy data.
+				File file = new File("User's ranks.txt");
+				
+				//New Statistics.txt is used only in ShowResults GUI
+				File file1 = new File("New Statistics.txt");
+				
+				try {
+					FileWriter fileWriter = new FileWriter(file,true);
+					PrintWriter writer = new PrintWriter(fileWriter);
+					FileWriter fileWriter1 = new FileWriter(file1);
+					PrintWriter writer1 = new PrintWriter(fileWriter1);
+					
+					
+					for(int i = 0; i < courses.size(); i++) {
+						writer.write(courses.get(i) + "\r\n" + ranks[i] + "\r\n");
+						writer1.write(ranks[i] + "\r\n");
+					}
+					
+					writer.close();
+					writer1.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+			}
+		});
+		
+		
+		
 		this.setContentPane(rankGuiPanel);
 		rankGuiPanel.setLayout(null);
 		rankGuiPanel.add(backButton);
+		rankGuiPanel.add(saveButton);
 		rankGuiPanel.add(field1);
 		rankGuiPanel.add(slider1);
 		rankGuiPanel.add(field6);
@@ -332,7 +358,7 @@ public class RankGUI extends JFrame{
 		rankGuiPanel.add(slider5);
 		rankGuiPanel.add(slider10);
 		this.setVisible(true);
-		this.setSize(847,471);
+		this.setSize(847,530);
 		this.setLocationRelativeTo(null);
 		this.setTitle("Rank panel");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -461,16 +487,6 @@ public class RankGUI extends JFrame{
 	    }
 	}
 	
-	//Getting the ranks from the user
-	public static ArrayList<Integer> getRanks() {
-		ArrayList<Integer> stats = new ArrayList<Integer>();
-		
-		for(int i = 0 ; i <courses.size(); i++) {
-			int st = ranks[i];
-			stats.add(st);
-		}
-		return stats;	
-	}
-
+	
 	
 }

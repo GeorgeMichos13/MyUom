@@ -84,6 +84,7 @@ public class MyProfile {
 	}
 	
 	//Getting all stats for each course
+	//Stats are random
 	public  ArrayList<Integer> getStats(){
 	
 		ArrayList<String> courses = getCourses();
@@ -140,6 +141,14 @@ public class MyProfile {
 		
 		//Deleting mySchedule	
 		filePath = Paths.get("MyUOMSchedule.xls");
+		input = filePath.toString();
+		path = new File(input);
+		path.delete();
+		
+		
+		//Deleting user's statistics file
+		//Used only for ShowResults
+		filePath = Paths.get("New Statistics.txt");
 		input = filePath.toString();
 		path = new File(input);
 		path.delete();

@@ -136,13 +136,13 @@ public class MyProfileGUI extends JFrame{
 		
 		rankButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Path path = Paths.get("didRank.txt");
+				Path path = Paths.get("New Statistics.txt");
 				final JPanel panel = new JPanel();
 				if(Files.exists(path)) {
-				    JOptionPane.showMessageDialog(panel, "You can rank only once. Sorry.", "Error", JOptionPane.ERROR_MESSAGE);
+				    JOptionPane.showMessageDialog(panel, "Έχεις ήδη αξιολογήσει τα μαθήματα.", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
-					 JOptionPane.showMessageDialog(panel, "You can rank once, so be sure to rank(click and drag!) every lesson.", "Advise", JOptionPane.INFORMATION_MESSAGE);
+					 JOptionPane.showMessageDialog(panel, "Μπορείς να αξιολογήσεις την δυσκολία των μαθημάτων μόνο μία φορά.", "Advise", JOptionPane.INFORMATION_MESSAGE);
 					setVisible(false);
 					new RankGUI();
 				}

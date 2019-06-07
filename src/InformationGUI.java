@@ -18,7 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class InformationGUI extends JFrame {
-
+	private static final long serialVersionUID = 1L;
 	public JFrame InfoFrame = new JFrame("Information");
 	private JPanel InfoPanel = new JPanel();
 

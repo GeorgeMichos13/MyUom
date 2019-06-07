@@ -5,9 +5,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,7 +26,7 @@ public class ShowResultsGUI extends JFrame {
 	private JPanel panel;
 	private JButton backButton;
 	private ArrayList<String> courses = new ArrayList<String>();
-	private  ArrayList<Integer> newStats  = new ArrayList<Integer>();
+	private  ArrayList<Integer> stats  = new ArrayList<Integer>();
 
 	
 	
@@ -44,8 +42,8 @@ public class ShowResultsGUI extends JFrame {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		
 		//Adding data to set
-		for(int i=0 ; i < newStats.size(); i++) {
-			dataset.addValue(newStats.get(i),courses.get(i),courses.get(i));
+		for(int i=0 ; i < stats.size(); i++) {
+			dataset.addValue(stats.get(i),courses.get(i),courses.get(i));
 		}
 		
 		
@@ -59,7 +57,6 @@ public class ShowResultsGUI extends JFrame {
 				setVisible(false);
 				new MyProfileGUI(); 
 			}
-			
 		});
 		
 		
@@ -76,55 +73,33 @@ public class ShowResultsGUI extends JFrame {
 	}
 	//Getting stats depending on case
 	public void alterStatistics() {
-		ArrayList<Integer> selectedRanks;
+		
 	
 		MyProfile profilewindow = new MyProfile();
 		
+	
+		Path path = Paths.get("New Statistics.txt");
 		
-		Path path = Paths.get("didRank.txt");
-		Path path1 = Paths.get("newStats.txt");
-		String input = path1.toString();
-		File file = new File(input);
 		
-		//Writing new stats and reading them
-		//Case:Users just ranked 
-		if(Files.exists(path) && !Files.exists(path1)) {
-			selectedRanks = RankGUI.getRanks();	
-			ArrayList<Integer> oldStats = profilewindow.getStats();
-			FileWriter fileWriter;
-			try {
-				fileWriter = new FileWriter(file);
-				PrintWriter writer = new PrintWriter(fileWriter);
-				for (int i = 0; i <oldStats.size(); i++) {
-					newStats.add((oldStats.get(i) + selectedRanks.get(i))/2);
-					int s = newStats.get(i);
-					writer.write(s + "\r\n");
-					}
-				writer.close();
-				
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-		else if (Files.exists(path1) && Files.exists(path))
-			//Reading altered stats
-			//Case: User has ranked and exited programm
-			//Wants to see results again
+		//Reading statistics
+		//Case:Users ranked 
+		if(Files.exists(path)) {
 			getStatistics();
+		}
 		else 
-			//Stats before they have been ranked
-			//Case:Users hasnt ranked yet
-			newStats = profilewindow.getStats();
+			//Getting statistics
+			//Case:Users hasn't ranked yet
+			stats = profilewindow.getStats();
 		
 		}
 	
 	
 	//Getting stats if the user has ranked
 	public void getStatistics() {
-		Path path = Paths.get("newStats.txt");
+		
+		//We are showing the ranks from the user
+		//Because we don't have actual data
+		Path path = Paths.get("New Statistics.txt");
 		String input = path.toString();
 		File file = new File(input);
 		
@@ -138,11 +113,15 @@ public class ShowResultsGUI extends JFrame {
 			e.printStackTrace();
 		} 
 		
-		String st; 
+		String st;
+		
+		
 		  try {
 			while ((st = br.readLine()) != null) {
-			    int s = Integer.parseInt(st);
-			    newStats.add(s);
+				
+					int s = Integer.parseInt(st);
+				    stats.add(s);
+				
 			    
 			  }
 			br.close();

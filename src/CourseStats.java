@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class CourseStats implements Comparable<CourseStats>,Serializable{
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private int stat;
 	private String semester;

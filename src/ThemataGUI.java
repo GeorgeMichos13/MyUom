@@ -20,7 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class ThemataGUI extends JFrame{
-	
+	private static final long serialVersionUID = 1L;
 	private JPanel themataPanel;
 	private JTextField courseName;
 	private JTextArea themata;

@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class notesGUI extends JFrame {
-
+	private static final long serialVersionUID = 1L;
 	private JFrame NoteFrame = new JFrame("Notes");
 	private JPanel NotePanel = new JPanel();
 	private JPanel ButtonPanel1 = new JPanel();
