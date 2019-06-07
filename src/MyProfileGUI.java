@@ -31,6 +31,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.JLabel;
+import java.awt.SystemColor;
 
 
 
@@ -52,6 +53,7 @@ public class MyProfileGUI extends JFrame{
 	public MyProfileGUI() {
 		
 		myProfilePanel = new JPanel();
+		myProfilePanel.setBackground(SystemColor.menu);
 		
 		//Initialising field for username
 		nameArea = new JTextField();
@@ -183,6 +185,7 @@ public class MyProfileGUI extends JFrame{
 		
 
 		this.setSize(768,432);
+		this.setLocationRelativeTo(null);
 		this.setTitle("My Profile");
 		this.setVisible(true);
 		this.setContentPane(myProfilePanel);

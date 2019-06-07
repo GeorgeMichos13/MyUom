@@ -17,7 +17,7 @@ import javax.swing.JTextArea;
 
 public class notesGUI extends JFrame {
 
-	private JFrame NoteFrame = new JFrame("Personal Notes");
+	private JFrame NoteFrame = new JFrame("Notes");
 	private JPanel NotePanel = new JPanel();
 	private JPanel ButtonPanel1 = new JPanel();
 	private JPanel ButtonPanel2 = new JPanel();

@@ -32,6 +32,10 @@ import javax.swing.table.DefaultTableModel;
 import com.toedter.calendar.*;  
 
 public class Timer extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected JPanel panel;
 	protected JButton add,save,show,delete,cancel;
 	protected JTextField title,hours_field,minutes_field;
@@ -76,6 +80,7 @@ public class Timer extends JFrame{
 		frame.setContentPane(panel);
 		frame.setVisible(true);
 		frame.setSize(500, 500);
+		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ButtonListenerAdd listenerAdd = new ButtonListenerAdd();
 		add.addActionListener(listenerAdd);
@@ -110,6 +115,11 @@ public class Timer extends JFrame{
 	
 	class ButtonListenerAdd extends JFrame implements ActionListener{        
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {  
 			if(e.getSource() == add) {
 				panel.remove(delete);
@@ -137,6 +147,11 @@ public class Timer extends JFrame{
 	}
 	
 	class ButtonListenerSave extends JFrame implements ActionListener{        
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 
 		public void actionPerformed(ActionEvent e){  
 			if(e.getSource() == save) 
@@ -219,6 +234,11 @@ public class Timer extends JFrame{
 	}
 	
 	class ButtonListenerShow extends JFrame implements ActionListener{        
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {  
 			Date event=null,today = null;
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
@@ -268,6 +288,11 @@ public class Timer extends JFrame{
 	
 	class ButtonListenerDelete extends JFrame implements ActionListener{        
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {  
 			if(e.getSource() == delete) {
 				if(table.getParent()!=null)
@@ -305,6 +330,11 @@ public class Timer extends JFrame{
 	
 	class ButtonListenerCancel extends JFrame implements ActionListener{        
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void actionPerformed(ActionEvent e) {  
 			if(e.getSource() == cancel) {
 			    panel.remove(title);
@@ -323,7 +353,11 @@ public class Timer extends JFrame{
 	
 	public class HintTextField extends JTextField {  
   
-  Font gainFont = new Font("Tahoma", Font.PLAIN, 11);  
+  /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+Font gainFont = new Font("Tahoma", Font.PLAIN, 11);  
   Font lostFont = new Font("Tahoma", Font.ITALIC, 11);  
   
   public HintTextField(final String hint) {  

@@ -41,6 +41,8 @@ import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import java.awt.SystemColor;
+import java.awt.Frame;
 
 
 
@@ -48,11 +50,7 @@ import javax.swing.SwingConstants;
 public class CheckBoxGUI {
 
 	JFrame frmInitScreen;
-	private JButton nextframebutton;
 	
-	
-	
-
 	/**
 	 * Launch occurs in class Main
 	 */
@@ -60,26 +58,6 @@ public class CheckBoxGUI {
 	   private ArrayList<String> arrcourses = new ArrayList<String>(); //contains selected courses
 	   private ArrayList<JCheckBox> arcboxes = new ArrayList<JCheckBox>(); //contains all checkboxes
 		
-	   public JFrame getFrmInitScreen() {
-		return frmInitScreen;
-	}
-
-	public JButton getNextframebutton() {
-		return nextframebutton;
-	}
-
-	public HashSet<String> getHashcourses() {
-		return hashcourses;
-	}
-
-	public ArrayList<String> getArrcourses() {
-		return arrcourses;
-	}
-
-	public ArrayList<JCheckBox> getArcboxes() {
-		return arcboxes;
-	}
-
 	
 	
 	public CheckBoxGUI() {
@@ -88,15 +66,9 @@ public class CheckBoxGUI {
 		
 		frmInitScreen = new JFrame();
 		frmInitScreen.setTitle("Select Courses");
-		frmInitScreen.getContentPane().setBackground(Color.LIGHT_GRAY);
+		frmInitScreen.getContentPane().setBackground(Color.WHITE);
 		frmInitScreen.setSize(1024, 504);
-		
-		
-		 
-		  
-		   
-							
-							
+		frmInitScreen.setLocationRelativeTo(null);
 				
 				JScrollPane BoxscrollPane = new JScrollPane();
 				BoxscrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -105,9 +77,9 @@ public class CheckBoxGUI {
 					
 					JLayeredPane panel = new JLayeredPane();
 					BoxscrollPane.setViewportView(panel);
+				
 					
-					
-					
+					//Set Up ComboBoxes
 					
 					JComboBox<String> comboBoxS = new JComboBox<String>();   //semester combobox
 					comboBoxS.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -120,7 +92,7 @@ public class CheckBoxGUI {
 					comboBoxD.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 					comboBoxD.setModel(new DefaultComboBoxModel<String>(new String[] {"ΔΙΟΙΚΗΣΗ ΤΕΧΝΟΛΟΓΙΑΣ", "ΕΦΑΡΜΟΣΜΕΝΗ ΠΛΗΡΟΦΟΡΙΚΗ"}));
 					comboBoxD.setMaximumRowCount(2);
-					comboBoxD.setToolTipText("-Επιλέξτε Κατεύθυνση-\r\n");
+					comboBoxD.setToolTipText("Επιλέξτε την κατεύθυνση σας. Μόλις επιλέξετε δεν έχετε δικαίωμα να αλλάξετε\r\n");
 					
 					
 	
@@ -163,7 +135,6 @@ public class CheckBoxGUI {
 						checkBox8.setVerticalAlignment(SwingConstants.TOP);
 						arcboxes.add(checkBox8);
 						
-						
 						JCheckBox checkBox9 = new JCheckBox((String) null);
 						checkBox9.setVerticalAlignment(SwingConstants.TOP);
 						arcboxes.add(checkBox9);
@@ -171,8 +142,6 @@ public class CheckBoxGUI {
 						JCheckBox checkBox10 = new JCheckBox((String) null);
 						checkBox10.setVerticalAlignment(SwingConstants.TOP);
 						arcboxes.add(checkBox10);
-						
-						
 						
 						JCheckBox checkBox11 = new JCheckBox((String) null);
 						checkBox11.setVerticalAlignment(SwingConstants.TOP);
@@ -192,8 +161,7 @@ public class CheckBoxGUI {
 						
 						JCheckBox checkBox15 = new JCheckBox((String) null);
 						checkBox15.setVerticalAlignment(SwingConstants.TOP);
-						arcboxes.add(checkBox15);
-						
+						arcboxes.add(checkBox15);		
 						
 						JCheckBox checkBox16 = new JCheckBox((String) null);
 						checkBox16.setVerticalAlignment(SwingConstants.TOP);
@@ -361,35 +329,35 @@ public class CheckBoxGUI {
 						nextframebutton = new JButton("Υποβολή");
 						
 						
-						GroupLayout groupLayout = new GroupLayout(frmInitScreen.getContentPane());  //more graphics
+						GroupLayout groupLayout = new GroupLayout(frmInitScreen.getContentPane());
 						groupLayout.setHorizontalGroup(
 							groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addContainerGap()
-									.addComponent(BoxscrollPane, GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-									.addGap(18)
+									.addComponent(BoxscrollPane, GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(addbutton, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+											.addComponent(addbutton, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
 											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(clearbutton, GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
-										.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+											.addComponent(clearbutton, GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+											.addPreferredGap(ComponentPlacement.RELATED)))
 									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 										.addGroup(groupLayout.createSequentialGroup()
 											.addGap(18)
-											.addComponent(infoscrollpane, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
+											.addComponent(infoscrollpane, GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE))
 										.addGroup(groupLayout.createSequentialGroup()
 											.addPreferredGap(ComponentPlacement.RELATED)
 											.addComponent(nextframebutton)
 											.addContainerGap())))
 						);
 						groupLayout.setVerticalGroup(
-							groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(BoxscrollPane, GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addGroup(groupLayout.createSequentialGroup()
 									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addComponent(infoscrollpane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
-										.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE))
+										.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+										.addComponent(infoscrollpane, GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
 									.addGap(18)
 									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -397,6 +365,7 @@ public class CheckBoxGUI {
 											.addComponent(addbutton, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
 										.addComponent(nextframebutton))
 									.addGap(26))
+								.addComponent(BoxscrollPane, GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
 						);
 				
 						/*
@@ -417,6 +386,7 @@ public class CheckBoxGUI {
 						infoscrollpane.setColumnHeaderView(label);
 						
 						JTextArea infotext = new JTextArea();
+						infotext.setEditable(false);
 						infotext.setFont(new Font("Monospaced", Font.PLAIN, 13));
 						label.setLabelFor(infotext);
 						infotext.setText("Κάντε κλικ σε ένα μάθημα για\nνα εμφανίσετε τις πληροφορίες του.");

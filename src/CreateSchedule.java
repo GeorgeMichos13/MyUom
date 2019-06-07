@@ -18,6 +18,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.UIManager;
 
 public class CreateSchedule {
 	
@@ -45,9 +48,13 @@ public class CreateSchedule {
 		
 		
 				JButton backbutton = new JButton("Πίσω");
+				backbutton.setBorder(new SoftBevelBorder(BevelBorder.RAISED, Color.LIGHT_GRAY, Color.LIGHT_GRAY, null, null));
 				JButton nextframebutton = new JButton("Εντάξει");
+				nextframebutton.setBorder(new SoftBevelBorder(BevelBorder.RAISED, UIManager.getColor("Button.background"), new Color(240, 240, 240), new Color(105, 105, 105), new Color(105, 105, 105)));
 				JButton addactbutton = new JButton("Προσθήκη Νέας Δραστηριότητας");
+				addactbutton.setBorder(new SoftBevelBorder(BevelBorder.RAISED, UIManager.getColor("Button.highlight"), UIManager.getColor("Button.background"), UIManager.getColor("Button.darkShadow"), null));
 				JButton clearbutton = new JButton("Καθαρισμός");
+				clearbutton.setBorder(new SoftBevelBorder(BevelBorder.RAISED, UIManager.getColor("Button.background"), UIManager.getColor("Button.background"), UIManager.getColor("Button.darkShadow"), UIManager.getColor("Button.darkShadow")));
 							
 							
 				
@@ -212,10 +219,14 @@ public class CreateSchedule {
 						while(!flag && FCourses.size()>1)
 						{//απο το τελος του πινακα FCourses για να ορισω το τελευταιο τσεκμποξ. Ουσιαστικα η ιδια μεθοδος με επανω αλλα αναποδα
 							lasthour = FCourses.get(l).getHour()+1 ;
-							if(FCourses.get(i).getName().equals(FCourses.get(i-1).getName())==false || (FCourses.get(i).getHour() - FCourses.get(i-1).getHour() !=1) || FCourses.get(i).getClasss().equals(FCourses.get(i-1).getClasss())==false)
+							if(FCourses.get(i).getName().equals(FCourses.get(i-1).getName())==false 
+									|| (FCourses.get(i).getHour() - FCourses.get(i-1).getHour() !=1) 
+									|| FCourses.get(i).getClasss().equals(FCourses.get(i-1).getClasss())==false)
 							{
 								flag = true;//μολις εισαχθει το τελευτεο τσεκμποξ
-								arrcboxes.get(j).setText(FCourses.get(i).getName()+ "  |  " + FCourses.get(i).getClasss() + "  |  "+ FCourses.get(i).getDayS() +"  |  " +FCourses.get(i).getHour() + ":00 - " + lasthour + ":00  |" );
+								arrcboxes.get(j).setText(FCourses.get(i).getName()+ "  |  " 
+										+ FCourses.get(i).getClasss() + "  |  "+ FCourses.get(i).getDayS() +"  |  " 
+										+FCourses.get(i).getHour() + ":00 - " + lasthour + ":00  |" );
 								j++;
 							}
 							i--;
@@ -226,7 +237,7 @@ public class CreateSchedule {
 							//τα υπολοιπα τσεκμποξες που ειναι αδεια κρυβονται
 						}
 								
-						GroupLayout gl_panel = new GroupLayout(panel);   //Graphics 
+						GroupLayout gl_panel = new GroupLayout(panel);
 						gl_panel.setHorizontalGroup(
 							gl_panel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel.createSequentialGroup()
@@ -235,10 +246,10 @@ public class CreateSchedule {
 											.addGap(10)
 											.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 												.addGroup(gl_panel.createSequentialGroup()
-													.addComponent(checkBox1, GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
+													.addComponent(checkBox1, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
 													.addGap(0))
 												.addGroup(gl_panel.createSequentialGroup()
-													.addComponent(checkBox2, GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
+													.addComponent(checkBox2, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
 													.addGap(0))
 												.addComponent(checkBox3, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox4, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
@@ -267,13 +278,12 @@ public class CreateSchedule {
 												.addComponent(checkBox27, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox28, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox29, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-												.addComponent(checkBox30, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-												))
+												.addComponent(checkBox30, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)))
 										.addGroup(gl_panel.createSequentialGroup()
 											.addContainerGap()
 											.addComponent(backbutton, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
-									.addGap(41)
-									.addComponent(clearbutton)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(clearbutton, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
 									.addGap(31))
 						);
 						gl_panel.setVerticalGroup(
@@ -349,24 +359,24 @@ public class CreateSchedule {
 						);
 						panel.setLayout(gl_panel);
 			
-						GroupLayout groupLayout = new GroupLayout(schedulefrm.getContentPane());  //Graphics
+						GroupLayout groupLayout = new GroupLayout(schedulefrm.getContentPane());
 						groupLayout.setHorizontalGroup(
 							groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 										.addComponent(scrollpane, GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
-										.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+										.addGroup(groupLayout.createSequentialGroup()
 											.addContainerGap()
-											.addComponent(addactbutton)
-											.addPreferredGap(ComponentPlacement.RELATED, 543, Short.MAX_VALUE)
+											.addComponent(addactbutton, GroupLayout.PREFERRED_SIZE, 175, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED, 555, Short.MAX_VALUE)
 											.addComponent(nextframebutton, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
 											.addGap(27)))
 									.addGap(0))
 						);
 						groupLayout.setVerticalGroup(
-							groupLayout.createParallelGroup(Alignment.TRAILING)   //Graphics once again
-								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-									.addComponent(scrollpane, GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+							groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(scrollpane, GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
 									.addGap(18)
 									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 										.addComponent(nextframebutton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
@@ -376,6 +386,7 @@ public class CreateSchedule {
 						schedulefrm.getContentPane().setLayout(groupLayout);
 							
 		schedulefrm.setSize(896, 504);
+		schedulefrm.setLocationRelativeTo(null);
 		schedulefrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		class ButtonHandler implements ActionListener{  //ActionListener for All buttons
@@ -512,12 +523,15 @@ public class CreateSchedule {
 										if (conflict) {
 											break;
 										}
+										
 										okToEnterCounter++;
 									}
 									if (okToEnterCounter == durationN || selectedCourses.isEmpty()) {
 										for (int i = 0; i < durationN; i++) {
 											selectedCourses.add(new Course(title, dayN, timeN + i, "", "", "", ""));//προσθηκη δραστηριοτητας
 										}
+										JOptionPane.showMessageDialog(null, "H Δραστηριότητα προστέθηκε", "Success",
+												JOptionPane.PLAIN_MESSAGE);
 									}
 								
 
@@ -584,9 +598,11 @@ public class CreateSchedule {
 											{
 												for(int l = 0 ;l<lastSelectedOnly.size();l++)
 												{
-													if(selectedCourses.get(k).getHour() == lastSelectedOnly.get(l).getHour() && selectedCourses.get(k).getDay() == lastSelectedOnly.get(l).getDay())
+													if(selectedCourses.get(k).getHour() == lastSelectedOnly.get(l).getHour() &&
+															selectedCourses.get(k).getDay() == lastSelectedOnly.get(l).getDay())
 													{// αν συμπιπτει ωρα και μερα μαθηματος με δραστηριοτητα
-														JOptionPane.showMessageDialog(null, "To μάθημα συμπίπτει με την δραστηριότητα: " + selectedCourses.get(k).getName(),"ERROR",JOptionPane.ERROR_MESSAGE);
+														JOptionPane.showMessageDialog(null, "To μάθημα συμπίπτει με την δραστηριότητα: " 
+																+ selectedCourses.get(k).getName(),"ERROR",JOptionPane.ERROR_MESSAGE);
 														conflict = true;
 														selectedBox.setSelected(false);
 														break;// αν υπαρχει μαθημα που συμπιπτει με δραστηριοτητα
@@ -601,9 +617,11 @@ public class CreateSchedule {
 											{										
 												boolean identicalCourse = selectedCourses.get(k).equals(FCourses.get(l));
 												//αν ειναι το ιδιο μαθημα
-												boolean differentClass = selectedCourses.get(k).getName().equals(FCourses.get(l).getName()) && selectedCourses.get(k).getClasss().equals(FCourses.get(l).getClasss())==false;
+												boolean differentClass = selectedCourses.get(k).getName().equals(FCourses.get(l).getName()) &&
+														selectedCourses.get(k).getClasss().equals(FCourses.get(l).getClasss())==false;
 												//ιδιο μαθημα διαφορετικο τμημα
-												boolean samedaytime = selectedCourses.get(k).getDayS().equals(FCourses.get(l).getDayS()) && selectedCourses.get(k).getHour() == FCourses.get(l).getHour();
+												boolean samedaytime = selectedCourses.get(k).getDayS().equals(FCourses.get(l).getDayS()) &&
+														selectedCourses.get(k).getHour() == FCourses.get(l).getHour();
 												//ιδια μερα και ωρα
 												String courseToDelete = FCourses.get(l).getName();
 												String classToDelete = FCourses.get(l).getClasss();

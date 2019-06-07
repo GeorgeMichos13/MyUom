@@ -73,6 +73,7 @@ public class ThemataGUI extends JFrame{
 		
 		
 		this.setSize(700,600);
+		this.setLocationRelativeTo(null);
 		this.setTitle("Themata");
 		this.setVisible(true);
 		this.setContentPane(themataPanel);

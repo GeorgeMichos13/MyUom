@@ -54,6 +54,7 @@ public class RankGUI extends JFrame{
 		backButton.setBounds(10, 6, 80, 30);
 		rankGuiPanel.add(backButton);
 		rankGuiPanel.setSize(896, 504);
+
 		
 		for(int i = 0; i < courses.size(); i++)
 			ranks[i] = 3;
@@ -332,6 +333,7 @@ public class RankGUI extends JFrame{
 		rankGuiPanel.add(slider10);
 		this.setVisible(true);
 		this.setSize(847,471);
+		this.setLocationRelativeTo(null);
 		this.setTitle("Rank panel");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

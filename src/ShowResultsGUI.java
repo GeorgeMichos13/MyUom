@@ -70,6 +70,7 @@ public class ShowResultsGUI extends JFrame {
 		
 		this.setVisible(true);
 		this.setSize(1000, 500);
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
