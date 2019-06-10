@@ -6,12 +6,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.io.File;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
@@ -28,6 +30,8 @@ public class MainFrame {
 	/**
 	 * Create the application.
 	 */
+
+	
 	public MainFrame() {
 		
 		frmMainframe = new JFrame();
@@ -171,10 +175,22 @@ public class MainFrame {
 					EventQueue.invokeLater(new Runnable() { //Open CreateSchedule window
 						public void run() {		
 							try {
-								MyProfile profilewindow = new MyProfile();
-								
-								CreateSchedule schedulewindow = new CreateSchedule(profilewindow.getFCourses());
-								schedulewindow.schedulefrm.setVisible(true);
+								File uomSchedule = new File("MyUOMSchedule.xls");
+								if (!uomSchedule.exists())
+								{
+									
+									MyProfile profilewindow = new MyProfile();
+									
+									CreateSchedule schedulewindow = new CreateSchedule(profilewindow.getFCourses());
+									schedulewindow.schedulefrm.setVisible(true);
+								}
+								else
+								{
+									JOptionPane.showMessageDialog(null, "Ένα πρόγραμμα έχει ήδη δημιουργηθεί. Εάν θέλετε να δημιουργήσετε νέο πρόγραμμα κάντε RESET", "Ήδη υπάρχον αρχείο",
+											JOptionPane.PLAIN_MESSAGE);
+									frmMainframe.setVisible(true);
+								}
+
 							} catch (Exception e) {
 								e.printStackTrace();
 								System.out.println("CreateSchedule didn't ran");

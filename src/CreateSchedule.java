@@ -705,11 +705,19 @@ public class CreateSchedule {
 				JCheckBox selectedBox = ((JCheckBox) ae.getSource());
 					String selectedCourse = selectedBox.getText().substring(0,selectedBox.getText().indexOf("|")-2);
 					String temp = selectedBox.getText().substring(selectedBox.getText().indexOf("|")+3);
-					String selectedClass = temp.substring(0,temp.indexOf("|")-2);				
+					String selectedClass = temp.substring(0,temp.indexOf("|")-2);	
+					temp = temp.substring(temp.indexOf("|")+1);
+					temp = temp.substring(temp.indexOf("|")+3);
+					String sHour = temp.substring(0,temp.indexOf(":"));
+					temp = temp.substring(temp.indexOf("-") +2);
+					String fHour = temp.substring(0,temp.indexOf(":"));
+					int sHourN = Integer.parseInt(sHour);
+					int fHourN = Integer.parseInt(fHour);
 					ArrayList<Course> lastSelectedOnly = new ArrayList<Course>();
 					selectedBox.setSelected(true);
 					selectedBox.setEnabled(false);
 					int selectedIndex=0;
+					System.out.println(FCourses.toString());
 				
 					for(int i = 0;i<arrcboxes.size();i++)
 					{
@@ -734,6 +742,14 @@ public class CreateSchedule {
 										String cbText = arrcboxes.get(j).getText().substring(0,arrcboxes.get(j).getText().indexOf("|")-2);
 										String temp2 = arrcboxes.get(j).getText().substring(arrcboxes.get(j).getText().indexOf("|")+3);
 										String cbClass = temp2.substring(0,temp2.indexOf("|")-2);//substring ονομα και τμημα
+										temp2 = temp2.substring(temp2.indexOf("|")+1);
+										temp2 = temp2.substring(temp2.indexOf("|")+3);
+										String cbsHour = temp2.substring(0,temp2.indexOf(":"));
+										temp2 = temp2.substring(temp2.indexOf("-") +2);
+										String cbfHour = temp2.substring(0,temp2.indexOf(":"));
+										int cbsHourN = Integer.parseInt(cbsHour);
+										int cbfHourN = Integer.parseInt(cbfHour);
+										
 										boolean conflict = false;
 										for(int k =0 ;k<selectedCourses.size();k++)
 										{
@@ -768,13 +784,17 @@ public class CreateSchedule {
 												//ιδια μερα και ωρα
 												String courseToDelete = FCourses.get(l).getName();
 												String classToDelete = FCourses.get(l).getClasss();
-												if(cbText.equals(courseToDelete) && cbClass.equals(classToDelete) && (identicalCourse ==false) && samedaytime)
-												{
+												if(cbText.equals(courseToDelete) && cbClass.equals(classToDelete) && (identicalCourse ==false) && samedaytime) 
+												{// αν συμπιπτει ωρα και μερα
 													arrcboxes.get(j).setEnabled(false);
 												
 												}
-												if(cbText.equals(courseToDelete) && identicalCourse ==false && differentClass && j!=selectedIndex )
-												{
+												if(cbText.equals(courseToDelete) && identicalCourse ==false && differentClass && j!=selectedIndex && fHourN - sHourN != 1 && cbfHourN-cbsHourN !=1) 
+												{// αν ειναι διαφορετικο τμημα αλλα οχι εργαστηριο
+													arrcboxes.get(j).setEnabled(false);	
+												}
+												else if(cbText.equals(courseToDelete) && identicalCourse ==false && differentClass && j!=selectedIndex && fHourN - sHourN == 1 && cbfHourN-cbsHourN ==1)
+												{// αν ειναι διαφορετικο τμημα αλλα ειναι εργαστηριο
 													arrcboxes.get(j).setEnabled(false);	
 												}
 												samedaytime = false;

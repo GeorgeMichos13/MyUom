@@ -281,6 +281,7 @@ public class XlsReader {
 			dirstr = str;
 		}
 	    
+	    
 		public void writeSelectedCourses() {	
 			//serialize των επιλεγμενων μαθηματων απο την CheckboxGui
 			for(int i=0;i<courseStr.size();i++)
