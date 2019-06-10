@@ -167,7 +167,7 @@ public class MainFrame {
 		class ActionHandler implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent ev) {  //fire up actions when buttons are selected
-				
+				MyProfile profilewindow = new MyProfile();
 				
 				if(ev.getSource() == programbutton){ 
 					
@@ -177,10 +177,7 @@ public class MainFrame {
 							try {
 								File uomSchedule = new File("MyUOMSchedule.xls");
 								if (!uomSchedule.exists())
-								{
-									
-									MyProfile profilewindow = new MyProfile();
-									
+								{	
 									CreateSchedule schedulewindow = new CreateSchedule(profilewindow.getFCourses());
 									schedulewindow.schedulefrm.setVisible(true);
 								}
@@ -224,14 +221,11 @@ public class MainFrame {
 				}
 				else if(ev.getSource() == notesbutton) { 
 					frmMainframe.setVisible(false);
-					
-					MyProfile profilewindow = new MyProfile();
 					notesGUI s1 = new notesGUI(profilewindow.getCourses()) ;
 					
 				}
 				else if(ev.getSource() == infobutton) {
 					frmMainframe.setVisible(false);
-					MyProfile profilewindow = new MyProfile();  
 					new InformationGUI(profilewindow.getCourses());
 				}
 				else if(ev.getSource() == profilebutton) {

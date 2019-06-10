@@ -29,12 +29,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import com.toedter.calendar.*;  
+import com.toedter.calendar.JDateChooser;
 
 public class Timer extends JFrame{
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	protected JPanel panel;
 	protected JButton add,save,show,delete,cancel;
@@ -53,7 +51,7 @@ public class Timer extends JFrame{
 		model.addColumn("Τίτλος");
 		model.addColumn("Προθεσμία");
 		model.addColumn("Απομένουν");
-		backButton = new JButton("Πίσω");
+		//Ελεγχος για υπαρχων αρχειο και συμπληρωση του arraylist event_data
 		try {
 			BufferedReader fr = new BufferedReader(new FileReader("events.txt"));
 			String line1,line2;
@@ -66,12 +64,14 @@ public class Timer extends JFrame{
 			fr.close();
 		} catch (IOException e) {
 		}
+		//Δημιουργια panel,button
 		panel = new JPanel();
 		table = new JTable();
 		add = new JButton("Προσθήκη Timer");
 		delete = new JButton("Διαγραφή");
 		show = new JButton("Προβολή");
 		cancel = new JButton("Ακύρωση");
+		backButton = new JButton("Πίσω");
 		panel.add(backButton);
 		panel.add(add);
 		panel.add(show);
@@ -80,7 +80,6 @@ public class Timer extends JFrame{
 		frame.setContentPane(panel);
 		frame.setVisible(true);
 		frame.setSize(500, 500);
-		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ButtonListenerAdd listenerAdd = new ButtonListenerAdd();
 		add.addActionListener(listenerAdd);
@@ -90,7 +89,6 @@ public class Timer extends JFrame{
 		delete.addActionListener(listenerDelete);
 		ButtonListenerCancel listenerCancel = new ButtonListenerCancel();
 		cancel.addActionListener(listenerCancel);
-		
 		
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent back) {
@@ -114,14 +112,11 @@ public class Timer extends JFrame{
 	}
 	
 	class ButtonListenerAdd extends JFrame implements ActionListener{        
-
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
 
 		public void actionPerformed(ActionEvent e) {  
 			if(e.getSource() == add) {
+				//Λειτουργιες του κουμπιου Προσθηκης Timer
 				panel.remove(delete);
 				panel.remove(sp);
 				panel.remove(show);
@@ -139,27 +134,28 @@ public class Timer extends JFrame{
 				panel.add(minutes_field);
 				panel.add(save);
 				panel.add(cancel);
+			
 				frame.setContentPane(panel);
 				ButtonListenerSave listenerSave = new ButtonListenerSave();
 				save.addActionListener(listenerSave);
+				
+				
 			}
 		}
 	}
 	
 	class ButtonListenerSave extends JFrame implements ActionListener{        
-
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
 
 		public void actionPerformed(ActionEvent e){  
 			if(e.getSource() == save) 
 			{
+				//Λειτουργιες του κουμπιου Αποθηκευσης
 				boolean flag=true,flag1=true;
 				String s1=hours_field.getText();
 				String s2=minutes_field.getText();
 				int check1=-1,check2=-1;
+				//Ελεγχος των TextField της ωρα και των λεπτων για τυχον λαθη
 				if((s1 != null) && s1.matches("[-+]?\\d*\\.?\\d+") && (s2 != null) && s2.matches("[-+]?\\d*\\.?\\d+"))
 				{
 					check1=Integer.valueOf(hours_field.getText());
@@ -167,34 +163,43 @@ public class Timer extends JFrame{
 				}
 				else
 					flag=false;
-				String date,years,months,days,hours,minutes,current_date;
+				String date="",years,months,days,hours,minutes,current_date;
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 				SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
-				date=sdf2.format(calendar.getDate());
-				hours=hours_field.getText();
-				minutes=minutes_field.getText();
-				date=date + " "+hours+':'+minutes;
+				//Ελεγχος επιλογης του jCalendar και συμπληρωση του date 
+				if(calendar.getDate()!=null)
+					{
+					date=sdf2.format(calendar.getDate());
+					hours=hours_field.getText();
+					minutes=minutes_field.getText();
+					date=date + " "+hours+':'+minutes;
+					}
+				else
+					flag=false;
 				Date event = null;
+				//Ελεγχος τιτλου ωστε να μην υπαρχουν ιδιοι
 				for(int j=0; j<event_data.size(); j++)
 					if(title.getText().equals(event_data.get(j)[2]))
 						{
 						JOptionPane.showMessageDialog(frame, "Έχεις ξαναβάλει τον ίδιο τίτλο");
 						flag1=false;
 						}
-				if((check1>=0 && check1<24) && (check2>=0 && check2<60) && flag1)
+				if((check1>=0 && check1<24) && (check2>=0 && check2<60) && flag1 && flag)
 					{
 					try {
 						event=sdf.parse(date);
 					} catch (ParseException e1) {
 						e1.printStackTrace();
 					}
+					//Ευρεση διαφορας τρεχουσας ημερομηνιας με ζητουμενης
 				   	Date today = Calendar.getInstance().getTime();
 				    current_date=sdf.format(today);
 				    long diff =event.getTime() - today.getTime();
 				    int diffhours = (int) ((diff / (60 * 60 * 1000)) % 24);
 				    int diffmin = (int) ((diff / (60 * 1000)) % 60);
 				    int diffDays = (int) (diff / (24 * 60 * 60 * 1000));
-				    if((check1>=0 && check1<24) && (check2>=0 && check2<60) && title.getText()!=null && calendar.getDate()!=null && flag && diff>0)
+				    //Αποθηκευση σημαντικων πληροφοριων στην array list event_data
+				    if((title.getText()!=null && diff>0))
 				    {
 				    	event_data.add(new String[] {date,current_date,title.getText(),String.valueOf(diffDays)+" / "+String.valueOf(diffhours)+":"+String.valueOf(diffmin)});
 					    panel.remove(title);
@@ -207,6 +212,7 @@ public class Timer extends JFrame{
 					    panel.add(show);
 					    panel.add(delete);
 					    frame.setContentPane(panel);
+					    //Δημιουργια αρχειου για αποθυκευση ολων των event του χρηστη
 					    try {
 					    	File file = new File("events.txt");
 					    	FileWriter fw = new FileWriter(file);
@@ -234,9 +240,6 @@ public class Timer extends JFrame{
 	}
 	
 	class ButtonListenerShow extends JFrame implements ActionListener{        
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
 
 		public void actionPerformed(ActionEvent e) {  
@@ -245,12 +248,14 @@ public class Timer extends JFrame{
 			String minutes;
 			if(e.getSource() == show) {
 				{
+					//Λειτουργιες κουμπιου Προβολης
 					model = new DefaultTableModel();
 					model.addColumn("Τίτλος");
 					model.addColumn("Προθεσμία");
 					model.addColumn("Απομένουν");
 					for(int i=0; i<event_data.size(); i++)
 						{
+							//Ευρεση διαφορας τρεχουσας με ζητουμενης ημερομηνιας ωστε να γινεται ανανεωση του χρονου που απομενει
 							today = Calendar.getInstance().getTime();
 							try {
 								event=sdf.parse(event_data.get(i)[0]);
@@ -287,14 +292,11 @@ public class Timer extends JFrame{
 	}
 	
 	class ButtonListenerDelete extends JFrame implements ActionListener{        
-
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
 
 		public void actionPerformed(ActionEvent e) {  
 			if(e.getSource() == delete) {
+				//Λειτουργιες κουμπιου Διαγραφης
 				if(table.getParent()!=null)
 					if(table.getSelectedRow() != -1)
 						{
@@ -309,6 +311,7 @@ public class Timer extends JFrame{
 						sp.getVerticalScrollBar().setPreferredSize(new Dimension(10,0));
 						panel.add(sp);
 						frame.setContentPane(panel);
+						//Ανανεωση αρχειου αποθηκευσης event
 					    try {
 					    	File file = new File("events.txt");
 					    	FileWriter fw = new FileWriter(file);
@@ -330,13 +333,11 @@ public class Timer extends JFrame{
 	
 	class ButtonListenerCancel extends JFrame implements ActionListener{        
 
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
 
 		public void actionPerformed(ActionEvent e) {  
 			if(e.getSource() == cancel) {
+				//Λειτουργιες κουμπιου Ακυρωση
 			    panel.remove(title);
 			    panel.remove(calendar);
 			    panel.remove(hours_field);
@@ -351,49 +352,39 @@ public class Timer extends JFrame{
 		}
 	}
 	
+	//Κλαση η οποια δημιουργει JTextFeild και δειχνει τα γραμματα μεσα στο πλαισιο με γκριζο χρωμα (StackOverflow)
 	public class HintTextField extends JTextField {  
-  
-  /**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
-Font gainFont = new Font("Tahoma", Font.PLAIN, 11);  
-  Font lostFont = new Font("Tahoma", Font.ITALIC, 11);  
-  
-  public HintTextField(final String hint) {  
-  
-    setText(hint);  
-    setFont(lostFont);  
-    setForeground(Color.GRAY);  
-  
-    this.addFocusListener(new FocusAdapter() {  
-  
-      @Override  
-      public void focusGained(FocusEvent e) {  
-        if (getText().equals(hint)) {  
-          setText("");  
-          setFont(gainFont);  
-        } else {  
-          setText(getText());  
-          setFont(gainFont);  
-        }  
-      }  
-  
-      @Override  
-      public void focusLost(FocusEvent e) {  
-        if (getText().equals(hint)|| getText().length()==0) {  
-          setText(hint);  
-          setFont(lostFont);  
-          setForeground(Color.GRAY);  
-        } else {  
-          setText(getText());  
-          setFont(gainFont);  
-          setForeground(Color.BLACK);  
-        }  
-      }  
-    });  
-  
-  }  
-}  
-	
+		Font gainFont = new Font("Tahoma", Font.PLAIN, 11);  
+		  Font lostFont = new Font("Tahoma", Font.ITALIC, 11);  
+		  public HintTextField(final String hint) {  
+		    setText(hint);  
+		    setFont(lostFont);  
+		    setForeground(Color.GRAY);  
+		    this.addFocusListener(new FocusAdapter() {  
+		      @Override  
+		      public void focusGained(FocusEvent e) {  
+		        if (getText().equals(hint)) {  
+		          setText("");  
+		          setFont(gainFont);  
+		        } else {  
+		          setText(getText());  
+		          setFont(gainFont);  
+		        }  
+		      }  
+		      @Override  
+		      public void focusLost(FocusEvent e) {  
+		        if (getText().equals(hint)|| getText().length()==0) {  
+		          setText(hint);  
+		          setFont(lostFont);  
+		          setForeground(Color.GRAY);  
+		        } else {  
+		          setText(getText());  
+		          setFont(gainFont);  
+		          setForeground(Color.BLACK);  
+		        }  
+		      }  
+		    });  
+		  }  
+		}  
 }

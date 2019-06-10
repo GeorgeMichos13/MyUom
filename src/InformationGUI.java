@@ -164,7 +164,6 @@ public class InformationGUI extends JFrame {
 			InfoArea10.setVisible(false);
 			InfoArea10.setLineWrap(true);
 			
-			 int num = SubjectList.size();
 			
 			
 			Notes info1  = new Notes(InfoArea1);
@@ -206,115 +205,8 @@ public class InformationGUI extends JFrame {
 			InfoPanel.setLayout(new BoxLayout(InfoPanel, BoxLayout.Y_AXIS));
 			
 
-			switch(num) {
-			case 1:{
-				
-				setInfo(0);
-				
-				break;
-			}
-			case 2:{
-				
-				setInfo(0);
-				setInfo(1);
-				
-				break;
-			}
-			case 3:{
-				
-				setInfo(0);
-				setInfo(1);
-				setInfo(2);
-				
-				break;
-				
-			}
-			case 4:{
-				
-				setInfo(0);
-				setInfo(1);
-				setInfo(2);
-				setInfo(3);
-				
-				break;
-			}
-			case 5:{
-				
-				setInfo(0);
-				setInfo(1);
-				setInfo(2);
-				setInfo(3);
-				setInfo(4);
-				
-				break;
-			}
-			case 6:{
-				
-				setInfo(0);
-				setInfo(1);
-				setInfo(2);
-				setInfo(3);
-				setInfo(4);
-				setInfo(5);
-				
-				break;
-			}
-			case 7:{
-				
-				setInfo(0);
-				setInfo(1);
-				setInfo(2);
-				setInfo(3);
-				setInfo(4);
-				setInfo(5);
-				setInfo(6);
-				
-				break;
-			}
-			case 8:{
-				
-				setInfo(0);
-				setInfo(1);
-				setInfo(2);
-				setInfo(3);
-				setInfo(4);
-				setInfo(5);
-				setInfo(6);
-				setInfo(7);
-				
-				break;
-			}
-			case 9:{
-				
-				setInfo(0);
-				setInfo(1);
-				setInfo(2);
-				setInfo(3);
-				setInfo(4);
-				setInfo(5);
-				setInfo(6);
-				setInfo(7);
-				setInfo(8);
-				
-				break;
-			}
-			case 10:{
-				
-				setInfo(0);
-				setInfo(1);
-				setInfo(2);
-				setInfo(3);
-				setInfo(4);
-				setInfo(5);
-				setInfo(6);
-				setInfo(7);
-				setInfo(8);
-				setInfo(9);
-				
-				break;
-			}
-			}
-			
+			for(int i = 0 ; i < SubjectList.size() ; i++)
+				setInfo(i);
 			
 	}
 	
@@ -363,6 +255,7 @@ public class InformationGUI extends JFrame {
 		
 		infoLabel.setVisible(true);
 		InfoAreas.get(i).setVisible(true);
+		InfoAreas.get(i).setEditable(false);
 		
 	}
 	

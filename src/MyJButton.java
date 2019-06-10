@@ -14,4 +14,12 @@ public class MyJButton extends JButton {
 		this.aFile = aFile;
 		
 	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public File getFile() {
+		return aFile;
+	}
 }

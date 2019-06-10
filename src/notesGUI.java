@@ -74,9 +74,6 @@ public class notesGUI extends JFrame {
 		
 		NoteFrame.add(scroll);
 		
-		
-		
-			
 			
 			/* Frame Initialization */
 			NoteFrame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -170,9 +167,6 @@ public class notesGUI extends JFrame {
 			NoteArea10.setVisible(false);
 			NoteArea10.setLineWrap(true);
 			
-			 int num = SubjectList.size();
-			
-			System.out.println(new File(".").getAbsoluteFile());
 			
 			Notes note1  = new Notes(NoteArea1);
 			Notes note2  = new Notes(NoteArea2);
@@ -227,111 +221,8 @@ public class notesGUI extends JFrame {
 			scroll.setVisible(true);
 			
 
-			switch(num) {
-			case 1:
-				
-				setNote(0);
-				
-				break;
-			case 2:{
-				
-				setNote(0);
-				setNote(1);
-				
-				break;
-			}
-			case 3:{
-				
-				setNote(0);
-				setNote(1);
-				setNote(2);
-			
-				break;
-			}
-			case 4:{
-				
-				setNote(0);
-				setNote(1);
-				setNote(2);
-				setNote(3);
-				
-				break;
-			}
-			case 5:{
-				setNote(0);
-				setNote(1);
-				setNote(2);
-				setNote(3);
-				setNote(4);
-				
-				break;
-			}
-			case 6:{
-				
-				setNote(0);
-				setNote(1);
-				setNote(2);
-				setNote(3);
-				setNote(4);
-				setNote(5);
-				
-				break;
-			}
-			case 7:{
-				
-				setNote(0);
-				setNote(1);
-				setNote(2);
-				setNote(3);
-				setNote(4);
-				setNote(5);
-				setNote(6);
-				
-				break;
-			}
-			case 8:{
-				
-				setNote(0);
-				setNote(1);
-				setNote(2);
-				setNote(3);
-				setNote(4);
-				setNote(5);
-				setNote(6);
-				setNote(7);
-				
-				break;
-			}
-			case 9:{
-				
-				setNote(0);
-				setNote(1);
-				setNote(2);
-				setNote(3);
-				setNote(4);
-				setNote(5);
-				setNote(6);
-				setNote(7);
-				setNote(8);
-				
-				break;
-			}
-			case 10:{
-				
-				setNote(0);
-				setNote(1);
-				setNote(2);
-				setNote(3);
-				setNote(4);
-				setNote(5);
-				setNote(6);
-				setNote(7);
-				setNote(8);
-				setNote(9);
-				
-				break;
-			}
-			}
+			for(int i = 0; i < SubjectList.size(); i++)
+				setNote(i);
 			
 	}
 	
