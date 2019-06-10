@@ -537,14 +537,12 @@ public class CheckBoxGUI {
 	
 				if (arrcourses.size()>0 && arrcourses.size()<=10) { //prevent faulty number of selected courses
 					int dirindex = comboBoxD.getSelectedIndex();
-					String dirstr="";
+					String dirstr=""; //Saves selected Direction from User 
 					if(dirindex ==0)
 						dirstr = "ΚΔΤ";
 					else if(dirindex ==1)
 						dirstr ="ΚΕΠ";
-					re.setArrayString(arrcourses);   //transfer array to XlsReader
-					re.setSelectedDirection(dirstr);
-					re.writeSelectedCourses();  
+					
 
 					
 					String username = "";
@@ -552,24 +550,31 @@ public class CheckBoxGUI {
 					while(username.trim().length()==0) { //while username is only white spaces
 						try {
 							username = JOptionPane.showInputDialog("Enter Username"); //ask for username
+							
 						} catch (Exception e) {
-							break;
+							break;	
 						}
+					}
+					
+					
+					if (username.trim().length()!=0) { //if username is given
+						try (Writer writer = new BufferedWriter(
+								new OutputStreamWriter(new FileOutputStream("username.txt"), StandardCharsets.UTF_8))) {
+							writer.write(username);
+							/*write username into file */
+						} catch (IOException ex) {
+							System.out.println("username entering failed");
+							ex.printStackTrace();
+						} 
 						
+						re.setArrayString(arrcourses);   //transfer array to XlsReader
+						re.setSelectedDirection(dirstr);
+						re.writeSelectedCourses();  
 					}
 					
-					
-					try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("username.txt"), StandardCharsets.UTF_8))) {
-					    writer.write(username);
-					    /*write username into file */  
-					} 
-					catch (IOException ex) {
-						 System.out.println("username entering failed")
-						 ;ex.printStackTrace();
-					}
 					
 				
-					//Saves selected Direction from User and 
+					
 				
 				
 					
@@ -601,6 +606,7 @@ public class CheckBoxGUI {
 			if(ae.getSource()==clearbutton)  //deletes all selected courses 
 			{
 				hashcourses.clear();  //flushes hashset
+				arrcourses.clear(); //flushes string array with selected courses
 				textcourses.setText(null);
 			}	
 			

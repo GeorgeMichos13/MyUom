@@ -178,7 +178,7 @@ public class MyProfileGUI extends JFrame{
 		});
 		
 
-		this.setSize(768,432);
+		this.setSize(768,480);
 		this.setLocationRelativeTo(null);
 		this.setTitle("My Profile");
 		this.setVisible(true);

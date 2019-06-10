@@ -61,13 +61,13 @@ public class ThemataGUI extends JFrame{
 		themata.setPreferredSize(new Dimension(600, 450));
 		
 		courseName.setEditable(false);
-		courseName.setBackground(Color.GREEN);
+		//courseName.setBackground(Color.GREEN);
 		
 		readFile(course, themata);
 		
 		themataPanel.add(themata);
 		themata.setEditable(false);
-		themata.setBackground(Color.CYAN);
+		themata.setBackground(Color.WHITE);
 		
 		
 		
@@ -111,8 +111,8 @@ public class ThemataGUI extends JFrame{
 			field.setText(them);
 		}
 		else {
-			//A very loving message from us.
-			field.setText("Δεν βρέθηκαν παλιά θέματα.\n\nΛυπούμαστε ταμάλα.\n\nΝα πας να διαβάσεις μονος σου τωρα.\n\n\n#MyUomTeam#SorryNotSorry");
+			
+			field.setText("Δεν βρέθηκαν παλιά θέματα");
 		}
 		
 	}

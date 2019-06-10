@@ -191,6 +191,88 @@ public class CreateSchedule {
 						checkBox30.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox30);
 						
+						JCheckBox checkBox31 = new JCheckBox((String) null);
+						checkBox31.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox31);
+						
+						JCheckBox checkBox32= new JCheckBox((String) null);
+						checkBox32.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox32);
+						
+						JCheckBox checkBox33 = new JCheckBox((String) null);
+						checkBox33.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox33);
+						
+						JCheckBox checkBox34 = new JCheckBox((String) null);
+						checkBox34.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox34);
+						
+						JCheckBox checkBox35 = new JCheckBox((String) null);
+						checkBox35.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox35);
+						
+						JCheckBox checkBox36 = new JCheckBox((String) null);
+						checkBox36.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox36);
+						
+						JCheckBox checkBox37 = new JCheckBox((String) null);
+						checkBox37.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox37);
+						
+						JCheckBox checkBox38 = new JCheckBox((String) null);
+						checkBox38.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox38);
+						
+						JCheckBox checkBox39 = new JCheckBox((String) null);
+						checkBox39.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox39);
+						
+						JCheckBox checkBox40 = new JCheckBox((String) null);
+						checkBox40.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox40);
+						
+						JCheckBox checkBox41 = new JCheckBox((String) null);
+						checkBox41.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox41);
+						
+						JCheckBox checkBox42= new JCheckBox((String) null);
+						checkBox42.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox42);
+						
+						JCheckBox checkBox43 = new JCheckBox((String) null);
+						checkBox43.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox43);
+						
+						JCheckBox checkBox44 = new JCheckBox((String) null);
+						checkBox44.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox44);
+						
+						JCheckBox checkBox45 = new JCheckBox((String) null);
+						checkBox45.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox45);
+						
+						JCheckBox checkBox46 = new JCheckBox((String) null);
+						checkBox46.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox46);
+						
+						JCheckBox checkBox47 = new JCheckBox((String) null);
+						checkBox47.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox47);
+						
+						JCheckBox checkBox48 = new JCheckBox((String) null);
+						checkBox48.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox48);
+						
+						JCheckBox checkBox49 = new JCheckBox((String) null);
+						checkBox49.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox49);
+						
+						JCheckBox checkBox50 = new JCheckBox((String) null);
+						checkBox50.setVerticalAlignment(SwingConstants.TOP);
+						arrcboxes.add(checkBox50);
+						
+						
+						
 						for(JCheckBox cb :arrcboxes)
 							cb.setFont(new Font("Tahoma", Font.PLAIN, 14));    
 						
@@ -278,7 +360,27 @@ public class CreateSchedule {
 												.addComponent(checkBox27, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox28, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
 												.addComponent(checkBox29, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
-												.addComponent(checkBox30, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)))
+												.addComponent(checkBox30, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox31, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox32, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox33, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox34, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox35, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox36, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox37, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox38, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox39, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox40, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox41, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox42, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox43, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox44, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox45, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox46, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox47, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox48, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox49, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBox50, GroupLayout.PREFERRED_SIZE, 670, GroupLayout.PREFERRED_SIZE)))
 										.addGroup(gl_panel.createSequentialGroup()
 											.addContainerGap()
 											.addComponent(backbutton, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
@@ -351,7 +453,48 @@ public class CreateSchedule {
 											.addComponent(checkBox28, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 											.addGap(3)
 											.addComponent(checkBox29, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-											.addComponent(checkBox30, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+											.addGap(3)
+											.addComponent(checkBox30, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox31, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox32, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox33, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox34, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox35, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox36, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox37, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox38, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox39, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox40, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox41, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox42, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox43, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox44, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox45, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox46, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox47, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox48, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox49, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+											.addGap(3)
+											.addComponent(checkBox50, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 										.addGroup(gl_panel.createSequentialGroup()
 											.addContainerGap()
 											.addComponent(clearbutton, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)))
@@ -367,7 +510,7 @@ public class CreateSchedule {
 										.addComponent(scrollpane, GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
 										.addGroup(groupLayout.createSequentialGroup()
 											.addContainerGap()
-											.addComponent(addactbutton, GroupLayout.PREFERRED_SIZE, 175, GroupLayout.PREFERRED_SIZE)
+											.addComponent(addactbutton, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
 											.addPreferredGap(ComponentPlacement.RELATED, 555, Short.MAX_VALUE)
 											.addComponent(nextframebutton, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
 											.addGap(27)))
