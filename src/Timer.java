@@ -80,6 +80,7 @@ public class Timer extends JFrame{
 		frame.setContentPane(panel);
 		frame.setVisible(true);
 		frame.setSize(500, 500);
+		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ButtonListenerAdd listenerAdd = new ButtonListenerAdd();
 		add.addActionListener(listenerAdd);

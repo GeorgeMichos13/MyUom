@@ -88,7 +88,7 @@ public class MyProfile {
 	public  ArrayList<Integer> getStats(){
 	
 		ArrayList<String> courses = getCourses();
-		System.out.println(courses.size());
+
 		for(int i = 0; i<courses.size(); i++) {
 			int stat = FCourseStats.get(i).getStat();
 			stats.add(stat);

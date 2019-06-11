@@ -81,7 +81,7 @@ public class CheckBoxGUI {
 					
 					JComboBox<String> comboBoxS = new JComboBox<String>();   //semester combobox
 					comboBoxS.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-					comboBoxS.setToolTipText("-Επιλέξτε Εξάμηνο-");
+					comboBoxS.setToolTipText("Επιλέξτε Εξάμηνο");
 					comboBoxS.setFont(new Font("Arial", Font.BOLD, 11));
 					comboBoxS.setModel(new DefaultComboBoxModel<String>(new String[] {"Εξάμηνο 2ο", "Εξάμηνο 4ο", "Εξάμηνο 6ο ", "Εξάμηνο 8ο"}));
 										
@@ -547,12 +547,14 @@ public class CheckBoxGUI {
 					
 					String username = "";
 					
-					while(username.trim().length()==0) { //while username is only white spaces
+					while(username.trim().length()==0 && username!=null) { //while username is only white spaces
 						try {
 							username = JOptionPane.showInputDialog("Enter Username"); //ask for username
+							//user might cancel or close the dialog. Null will be assigned to username so an error will present
+						} catch (Exception e ) {
 							
-						} catch (Exception e) {
 							break;	
+							
 						}
 					}
 					
@@ -683,11 +685,11 @@ public class CheckBoxGUI {
 							them += line + "\n";
 						}
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				field.setText(them);

@@ -153,7 +153,6 @@ public class CreateSchedule {
 						checkBox21.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox21);
 						
-						
 						JCheckBox checkBox22 = new JCheckBox((String) null);
 						checkBox22.setVerticalAlignment(SwingConstants.TOP);
 						arrcboxes.add(checkBox22);
@@ -717,7 +716,6 @@ public class CreateSchedule {
 					selectedBox.setSelected(true);
 					selectedBox.setEnabled(false);
 					int selectedIndex=0;
-					System.out.println(FCourses.toString());
 				
 					for(int i = 0;i<arrcboxes.size();i++)
 					{

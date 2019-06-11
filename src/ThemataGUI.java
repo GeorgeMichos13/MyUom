@@ -85,7 +85,6 @@ public class ThemataGUI extends JFrame{
 		//Getting path
 		String fileName = course + "themata.txt";
 		Path path = Paths.get(fileName);
-		System.out.println(path);
 		
 		BufferedReader reader = null;
 		String line = "";

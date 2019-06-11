@@ -6,25 +6,16 @@ import java.util.ArrayList;
 
 public class Main {
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//XlsReader re = new XlsReader();	
-		//re.read();						  
-		//re.printCoursesStats();
-		//re.printCourses();
-		
+	public static void main(String[] args) {	
 
 		ArrayList<Course> FCourses = new ArrayList<Course>();
 			
-			GUI();
-		
-			//Panel Initiation
+			GUI();	//Panel Initiation
 	
-		
-		
 	}//main
 	
 	public static void GUI() {
+		
 		File tempFile = new File( "CourseStats.ser" ); 
 		boolean exists = tempFile.exists();
 		if(exists)
@@ -32,8 +23,8 @@ public class Main {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						MainFrame window = new MainFrame();
-						window.frmMainframe.setVisible(true);
+						MainFrame mainwindow = new MainFrame();
+						mainwindow.frmMainframe.setVisible(true);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -45,8 +36,8 @@ public class Main {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						CheckBoxGUI window = new CheckBoxGUI();
-						window.frmInitScreen.setVisible(true);
+						CheckBoxGUI initwindow = new CheckBoxGUI();
+						initwindow.frmInitScreen.setVisible(true);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
