@@ -550,7 +550,10 @@ public class CheckBoxGUI {
 					while(username.trim().length()==0 && username!=null) { //while username is only white spaces
 						try {
 							username = JOptionPane.showInputDialog("Enter Username"); //ask for username
-							//user might cancel or close the dialog. Null will be assigned to username so an error will present
+							if (username == null) {//user might cancel or close the dialog. Null will be assigned to username
+								System.exit(0);    //program will shut down.
+							}						
+							
 						} catch (Exception e ) {
 							
 							break;	
@@ -558,7 +561,7 @@ public class CheckBoxGUI {
 						}
 					}
 					
-					
+				
 					if (username.trim().length()!=0) { //if username is given
 						try (Writer writer = new BufferedWriter(
 								new OutputStreamWriter(new FileOutputStream("username.txt"), StandardCharsets.UTF_8))) {

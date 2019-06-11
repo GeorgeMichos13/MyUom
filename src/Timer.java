@@ -77,6 +77,7 @@ public class Timer extends JFrame{
 		panel.add(show);
 		panel.add(delete);
 		sp = new JScrollPane(table);
+		frame.setTitle("Timers");
 		frame.setContentPane(panel);
 		frame.setVisible(true);
 		frame.setSize(500, 500);
@@ -136,6 +137,8 @@ public class Timer extends JFrame{
 				panel.add(save);
 				panel.add(cancel);
 			
+			
+				
 				frame.setContentPane(panel);
 				ButtonListenerSave listenerSave = new ButtonListenerSave();
 				save.addActionListener(listenerSave);

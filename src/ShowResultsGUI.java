@@ -37,7 +37,7 @@ public class ShowResultsGUI extends JFrame {
 		MyProfile profilewindow = new MyProfile();
 		courses = profilewindow.getCourses();
 		
-		alterStatistics();
+		readStatistics();
 		
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		
@@ -72,7 +72,7 @@ public class ShowResultsGUI extends JFrame {
 		
 	}
 	//Getting stats depending on case
-	public void alterStatistics() {
+	public void readStatistics() {
 		
 	
 		MyProfile profilewindow = new MyProfile();
@@ -84,7 +84,7 @@ public class ShowResultsGUI extends JFrame {
 		//Reading statistics
 		//Case:Users ranked 
 		if(Files.exists(path)) {
-			getStatistics();
+			newStats();
 		}
 		else 
 			//Getting statistics
@@ -95,7 +95,7 @@ public class ShowResultsGUI extends JFrame {
 	
 	
 	//Getting stats if the user has ranked
-	public void getStatistics() {
+	public void newStats() {
 		
 		//We are showing the ranks from the user
 		//Because we don't have actual data
