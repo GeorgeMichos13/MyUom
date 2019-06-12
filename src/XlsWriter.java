@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import jxl.Workbook;
 import jxl.write.Label;
+import jxl.write.WritableCellFormat;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
@@ -19,14 +20,26 @@ public class XlsWriter {
 	public void writeToExcel()	
 	{
         WritableWorkbook workbook = null;
+       
         try {
 
         	workbook = Workbook.createWorkbook(new File("MyUOMSchedule.xls"));
             //δημιουργια νεου excel
             WritableSheet excelSheet = workbook.createSheet("MySchedule", 0);
             //δημιουργια φυλλου excel
+            WritableCellFormat cellFormat = new WritableCellFormat();
+            cellFormat.setWrap(true);
+            cellFormat.setBackground(cellFormat.getBackgroundColour().GRAY_25);
             Label label = new Label(0, 0, "ΩΡΑ/ΜΕΡΑ");
-            excelSheet.addCell(label);        
+            excelSheet.addCell(label);   
+            for(int j=1;j<6;j++)
+            {
+            	excelSheet.setColumnView(j, 50);
+            }
+            for(int i=1;i<14;i++)
+            {
+            	excelSheet.setRowView(i, 500);
+            }
             int i=8;
             int inext=i+1;
             Label hour = new Label(0, 1,""+ i +"-"+inext);
@@ -56,16 +69,19 @@ public class XlsWriter {
             
             if(!FCourses.isEmpty())
             {
-            	labels.add(new Label(FCourses.get(0).getDay(),FCourses.get(0).getHour()-7,FCourses.get(0).getName()));
+            	labels.add(new Label(FCourses.get(0).getDay(),FCourses.get(0).getHour()-7,FCourses.get(0).getName()
+            			+"\n"+FCourses.get(0).getClassr(),cellFormat));
              
                 for(i=1;i<FCourses.size();i++)
                 {
-                	labels.add(new Label(FCourses.get(i).getDay(),FCourses.get(i).getHour()-7,FCourses.get(i).getName()));
+                	labels.add(new Label(FCourses.get(i).getDay(),FCourses.get(i).getHour()-7,
+                			FCourses.get(i).getName() +"\n"+FCourses.get(i).getClassr(),cellFormat));
                 }
             }    
             for(i=0;i<labels.size();i++)
             {
             	excelSheet.addCell(labels.get(i));
+            	
             }//προσθηκη μαθηματων και δραστηριοτητων στο mySchedule                        
             workbook.write();//γραψιμο στο excel
         } catch (IOException e) {

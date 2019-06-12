@@ -19,7 +19,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -459,7 +458,7 @@ public class CheckBoxGUI {
 			
 			
 			private void Efarmosmeni(int S){  // receives semester number, sets up the needed names for the current semester for ΚΕΠ direction
-				;
+				
 				if(S==2) { //IDIA MATHIMATA EFARM KAI DIOIKHSH STO 2o EKSAMINO
 					
 					setCheckBoxes(0,5);
