@@ -187,7 +187,7 @@ public class XlsReader {
 			            				course = courses.get(courses.size()-1).getName();	
 			            				classs = courses.get(courses.size()-1).getClasss();	
 			            				classr = courses.get(courses.size()-1).getClassr();	
-			            				if(classs.equals("1") || classs.equals("2") || classs.equals("3") || classs.equals("4"))
+			            				if(classs.equals("4") && (classr.contains("Εργαστήριο") || classr.contains("ΚΕΥΠ")))
 			            				{
 			            					break;
 			            				}

@@ -716,7 +716,7 @@ public class CreateSchedule {
 					selectedBox.setSelected(true);
 					selectedBox.setEnabled(false);
 					int selectedIndex=0;
-				
+					System.out.println(FCourses.toString());
 					for(int i = 0;i<arrcboxes.size();i++)
 					{
 						if(arrcboxes.get(i).isSelected() && arrcboxes.get(i).isVisible())

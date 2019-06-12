@@ -1,3 +1,4 @@
+import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
@@ -186,6 +187,7 @@ public class MainFrame {
 									JOptionPane.showMessageDialog(null, "Ένα πρόγραμμα έχει ήδη δημιουργηθεί. Εάν θέλετε να δημιουργήσετε νέο πρόγραμμα κάντε RESET", "Ήδη υπάρχον αρχείο",
 											JOptionPane.PLAIN_MESSAGE);
 									frmMainframe.setVisible(true);
+
 								}
 
 							} catch (Exception e) {

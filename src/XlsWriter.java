@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import jxl.Workbook;
+import jxl.write.Border;
+import jxl.write.BorderLineStyle;
 import jxl.write.Label;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableSheet;
@@ -30,8 +32,10 @@ public class XlsWriter {
             WritableCellFormat cellFormat = new WritableCellFormat();
             cellFormat.setWrap(true);
             cellFormat.setBackground(cellFormat.getBackgroundColour().GRAY_25);
-            Label label = new Label(0, 0, "ΩΡΑ/ΜΕΡΑ");
-            excelSheet.addCell(label);   
+            cellFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
+            Label label = new Label(0, 0, "ΩΡΑ/ΜΕΡΑ",cellFormat);
+            excelSheet.addCell(label);  
+            excelSheet.setColumnView(0, 12);
             for(int j=1;j<6;j++)
             {
             	excelSheet.setColumnView(j, 50);
@@ -42,29 +46,29 @@ public class XlsWriter {
             }
             int i=8;
             int inext=i+1;
-            Label hour = new Label(0, 1,""+ i +"-"+inext);
+            Label hour = new Label(0, 1,""+ i +":00 -"+inext+":00",cellFormat);
             excelSheet.addCell(hour);
             for(int k=2;k<14;k++)
             {
             	i++;
             	inext++;
-            	hour = new Label(0, k,""+ i +"-"+inext);
+            	hour = new Label(0, k,""+ i +":00-"+inext+":00",cellFormat);
             	excelSheet.addCell(hour);
             }
            
-            Label day = new Label(1, 0, "ΔΕΥΤΕΡΑ");
+            Label day = new Label(1, 0, "ΔΕΥΤΕΡΑ",cellFormat);
             excelSheet.addCell(day);
             
-            day = new Label(2, 0, "ΤΡΙΤΗ");
+            day = new Label(2, 0, "ΤΡΙΤΗ",cellFormat);
             excelSheet.addCell(day);
             
-            day = new Label(3, 0, "ΤΕΤΑΡΤΗ");
+            day = new Label(3, 0, "ΤΕΤΑΡΤΗ",cellFormat);
             excelSheet.addCell(day);
             
-            day = new Label(4, 0, "ΠΕΜΠΤΗ");
+            day = new Label(4, 0, "ΠΕΜΠΤΗ",cellFormat);
             excelSheet.addCell(day);
             
-            day = new Label(5, 0, "ΠΑΡΑΣΚΕΥΗ");
+            day = new Label(5, 0, "ΠΑΡΑΣΚΕΥΗ",cellFormat);
             excelSheet.addCell(day);//προσθηκη μερων και ωρων με την μεθοδο addCell
             
             if(!FCourses.isEmpty())

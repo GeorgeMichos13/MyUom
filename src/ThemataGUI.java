@@ -5,9 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -94,7 +97,7 @@ public class ThemataGUI extends JFrame{
 			String input = path.toString();
 			File file = new File(input);
 			try {
-				reader = new BufferedReader(new FileReader(file));
+				reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
 				try {
 					while((line = reader.readLine()) != null) {
 						them += line + "\n";
@@ -103,7 +106,7 @@ public class ThemataGUI extends JFrame{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} catch (FileNotFoundException e) {
+			} catch (FileNotFoundException | UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
