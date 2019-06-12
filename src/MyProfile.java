@@ -153,6 +153,13 @@ public class MyProfile {
 		path = new File(input);
 		path.delete();
 		
+		//Deleting User's statistics
+		//Used for data gathering
+		filePath = Paths.get("User's ranks.txt");
+		input = filePath.toString();
+		path = new File(input);
+		path.delete();
+		
 		//Deleting all notes
 		String ending = "myUomNotes.txt";
 		ArrayList<String> courses;

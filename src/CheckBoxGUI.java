@@ -11,11 +11,13 @@ import java.awt.event.ItemListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -564,7 +566,7 @@ public class CheckBoxGUI {
 				
 					if (username.trim().length()!=0) { //if username is given
 						try (Writer writer = new BufferedWriter(
-								new OutputStreamWriter(new FileOutputStream("username.txt"), StandardCharsets.UTF_8))) {
+								new OutputStreamWriter(new FileOutputStream("username.txt"), "UTF-8"))) {
 							writer.write(username);
 							/*write username into file */
 						} catch (IOException ex) {
@@ -682,7 +684,7 @@ public class CheckBoxGUI {
 				String input = path.toString();
 				File file = new File(input);
 				try {
-					reader = new BufferedReader(new FileReader(file));
+					reader = new BufferedReader(new InputStreamReader(new FileInputStream(input), "UTF-8"));
 					try {
 						while((line = reader.readLine()) != null) {
 							them += line + "\n";
@@ -694,6 +696,9 @@ public class CheckBoxGUI {
 				} catch (FileNotFoundException e) {
 					
 					e.printStackTrace();
+				} catch (UnsupportedEncodingException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 				field.setText(them);
 			}

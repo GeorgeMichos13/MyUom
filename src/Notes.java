@@ -31,9 +31,9 @@ public class Notes {
 					
 					FileOutputStream out = new FileOutputStream(myFile);
 					String textArea = text.getText();
-					OutputStreamWriter writer = new OutputStreamWriter(out);
+					OutputStreamWriter writer = new OutputStreamWriter(out,"UTF-8");
 					Writer fileWriter = new BufferedWriter(writer);
-					Scanner  NoteReader = new Scanner(myFile);
+					Scanner  NoteReader = new Scanner(myFile,"UTF-8");
 					
 					if(NoteReader.hasNext()) {
 						fileWriter.write("");
@@ -62,7 +62,7 @@ public class Notes {
 					System.out.println("The file does not exist" + myFile);
 				}
 				else {
-					Scanner  NoteReader = new Scanner(myFile);
+					Scanner  NoteReader = new Scanner(myFile,"UTF-8");
 					
 					while(NoteReader.hasNextLine()) {
 					String notes = NoteReader.nextLine();

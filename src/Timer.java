@@ -9,10 +9,14 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,7 +57,7 @@ public class Timer extends JFrame{
 		model.addColumn("Απομένουν");
 		//Ελεγχος για υπαρχων αρχειο και συμπληρωση του arraylist event_data
 		try {
-			BufferedReader fr = new BufferedReader(new FileReader("events.txt"));
+			BufferedReader fr = new BufferedReader(new InputStreamReader(new FileInputStream("events.txt"), "UTF-8"));
 			String line1,line2;
 			int j=0;
 			while((line1=fr.readLine())!=null){
@@ -219,7 +223,7 @@ public class Timer extends JFrame{
 					    //Δημιουργια αρχειου για αποθυκευση ολων των event του χρηστη
 					    try {
 					    	File file = new File("events.txt");
-					    	FileWriter fw = new FileWriter(file);
+					    	OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
 							PrintWriter writer = new PrintWriter(fw,true);
 							writer.flush();
 							for(int j=0; j<event_data.size(); j++)
@@ -318,7 +322,8 @@ public class Timer extends JFrame{
 						//Ανανεωση αρχειου αποθηκευσης event
 					    try {
 					    	File file = new File("events.txt");
-					    	FileWriter fw = new FileWriter(file);
+					    	OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
+					    	
 							PrintWriter writer = new PrintWriter(fw,true);
 							writer.flush();
 							for(int j=0; j<event_data.size(); j++)

@@ -1,9 +1,11 @@
-
+	
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -309,9 +311,10 @@ public class RankGUI extends JFrame{
 				File file1 = new File("New Statistics.txt");
 				
 				try {
-					FileWriter fileWriter = new FileWriter(file,true);
+					
+					OutputStreamWriter fileWriter = new OutputStreamWriter(new FileOutputStream(file,true), "UTF-8");
 					PrintWriter writer = new PrintWriter(fileWriter);
-					FileWriter fileWriter1 = new FileWriter(file1);
+					OutputStreamWriter fileWriter1 = new OutputStreamWriter(new FileOutputStream(file1), "UTF-8");
 					PrintWriter writer1 = new PrintWriter(fileWriter1);
 					
 					
@@ -322,6 +325,8 @@ public class RankGUI extends JFrame{
 					
 					writer.close();
 					writer1.close();
+					setVisible(false);
+					new MyProfileGUI(); 
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -6,9 +6,11 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -85,7 +87,7 @@ public class MyProfileGUI extends JFrame{
 		Path namefile = Paths.get("username.txt");
 		String user = namefile.toString();
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(user));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(user), "UTF-8"));
 			try {
 				username = reader.readLine();
 				reader.close();
@@ -93,7 +95,7 @@ public class MyProfileGUI extends JFrame{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		} catch (FileNotFoundException e1) {
+		} catch (FileNotFoundException | UnsupportedEncodingException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
