@@ -1,6 +1,6 @@
 # MyUom  <img src="https://github.com/GeorgeMichos13/MyUom/blob/master/icons/MyUom%20Icon.png" alt="app icon" width="27" height="27">
 
-__MyUom__ is a desktop app that is able to generate the best suited *Schedule* for students of [Uom](https://www.uom.gr/). It also includes *Information* about courses, *Maps* of the building, *Countdown Timers* and *Notes* for selected courses
+__MyUom__ is a desktop app that is able to generate the best suited *Schedule* for students of [uom](https://www.uom.gr/). It also includes *Information* about courses, *Maps* of the building, *Countdown Timers* and *Notes* for selected courses
 
 
 ## How to Install - Run:
@@ -10,16 +10,16 @@ __MyUom__ is a desktop app that is able to generate the best suited *Schedule* f
 4. Browse and select the "TimeTable..." **xls** file
 5. Choose your Direction (*Cannot be changed once selected*) and choose Courses from each Semester
 6. Select up to 10 courses, press **Προσθήκη** or **Καθαρισμός** if you changed your mind
-7. Submit your selections with **Υποβολή*
+7. Submit your selections with **Υποβολή**
 8. Enter your Username
 9. Enjoy our Features
 
 ### Some Info
 
-* Once you create your Schedule look for the ***MyUOMSchedule*** file inside the folder
+* Once you create your Schedule look for the ***MyUOMSchedule*** file inside **MyUom** folder
 * Inside the folder you can also find information about courses and past exams or your Notes
 * If you dont rank your courses, statistics will be randomly generated
-* You can always RESET from your Profile
+* You can always *RESET* from your Profile
 
 
 
