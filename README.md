@@ -20,6 +20,7 @@ __MyUom__ is a desktop app that is able to generate the best suited *Schedule* f
 * Inside the folder you can also find information about courses and past exams or your Notes
 * If you dont rank your courses, statistics will be randomly generated
 * You can always *RESET* from your Profile
+* **Avoid** **renaming** any file 
 
 
 
@@ -35,7 +36,7 @@ __MyUom__ is a desktop app that is able to generate the best suited *Schedule* f
   ___Michos Giwrgos___\
   ___Papageorgiadis Savvas___\
   ___Papaxenidis Alexandros___\
-  ___Rorosthenous Alexandros___\
+  ___Rodosthenous Alexandros___\
   ___Samourgkanidis Giwrgos___\
   ___Tsarchopoulou Anastasia___\
   ___Uka Alexandros___
